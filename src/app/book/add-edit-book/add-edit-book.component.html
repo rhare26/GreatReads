@@ -1,0 +1,26 @@
+<div class="form-group row">
+  <label class="col-sm-2 col-form-label">Title</label>
+  <div class="col-sm-10">
+    <input type="text" class="form-control" [(ngModel)]="title"
+           placeholder="Enter Title">
+  </div>
+
+  <label class="col-sm-2 col-form-label">Author</label>
+  <div class="col-sm-10">
+    <select class="form-control" [(ngModel)]="author">
+      <option>--Select--</option>
+      <option *ngFor="let author of AuthorList" [ngValue]="author">
+        {{author.firstName}} {{author.lastName}}
+      </option>
+    </select>
+  </div>
+</div>
+
+<button (click)="addBook()" *ngIf="book.id==0" class="btn btn-primary">
+  Add
+</button>
+
+<button (click)="editBook()" *ngIf="book.id!=0" class="btn btn-primary">
+  Update
+</button>
+
