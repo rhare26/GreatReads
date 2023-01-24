@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ViewMyReadComponent } from './view-my-read.component';
+import { ShowMyReadComponent } from './show-my-read.component';
 
-describe('ViewMyReadComponent', () => {
-  let component: ViewMyReadComponent;
-  let fixture: ComponentFixture<ViewMyReadComponent>;
+describe('ShowMyReadComponent', () => {
+  let component: ShowMyReadComponent;
+  let fixture: ComponentFixture<ShowMyReadComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ViewMyReadComponent ]
+      declarations: [ ShowMyReadComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(ViewMyReadComponent);
+    fixture = TestBed.createComponent(ShowMyReadComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
