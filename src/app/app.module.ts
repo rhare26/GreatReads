@@ -15,6 +15,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { RouterModule } from '@angular/router';
 import { MatToolbarModule } from '@angular/material/toolbar';
+import { MyReadComponent } from './my-read/my-read/my-read.component';
+import { ViewMyReadComponent } from './my-read/view-my-read/view-my-read.component';
+import { AddEditMyReadComponent } from './my-read/add-edit-my-read/add-edit-my-read.component';
 
 
 @NgModule({
@@ -25,7 +28,10 @@ import { MatToolbarModule } from '@angular/material/toolbar';
     ShowBookComponent,
     AddEditBookComponent,
     AddEditAuthorComponent,
-    ShowAuthorComponent
+    ShowAuthorComponent,
+    MyReadComponent,
+    ViewMyReadComponent,
+    AddEditMyReadComponent
   ],
   imports: [
     BrowserModule,
