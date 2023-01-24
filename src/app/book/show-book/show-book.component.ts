@@ -28,7 +28,8 @@ export class ShowBookComponent {
     this.book={
       id:0,
       title:"",
-      author:""
+      author:"",
+      synopsis:""
     }
     this.ModalTitle="Add Book";
     this.ActivateAddEditBookComp=true;

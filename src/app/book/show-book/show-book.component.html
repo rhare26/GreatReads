@@ -1,5 +1,5 @@
 <!-- Button trigger modal -->
-<button type="button" class="btn btn-primary float-right m-2"
+<button mat-raised-button color="primary"
         data-bs-toggle="modal" data-bs-target="#exampleModal"
         (click)="addClick()" data-backdrop="static" data-keyboard="false">
   Add Book
@@ -24,32 +24,33 @@
   </div>
 </div>
 
-<table class="table table-striped">
-  <thead>
-  <tr>
-    <th>ID</th>
-    <th>Title</th>
-    <th>Author</th>
-  </tr>
-  </thead>
-  <tbody>
-  <tr *ngFor="let book of BookList">
-    <td>{{book.id}}</td>
-    <td>{{book.title}}</td>
+<div *ngFor="let book of BookList">
+  <mat-card >
+    <mat-card-header>
+      <div mat-card-avatar>
+      </div>
+      <mat-card-title>
+        {{book.id}} {{book.title}}
+      </mat-card-title>
+      <mat-card-subtitle
+        *ngIf="book.author">{{book.author.firstName}} {{book.author.lastName}}
+      </mat-card-subtitle>
+    </mat-card-header>
 
-    <td *ngIf="book.author">{{book.author.firstName}} {{book.author.lastName}}</td>
-    <td>
-      <button type="button" class="btn btn-primary float-right m-2"
-              data-bs-toggle="modal" data-bs-target="#exampleModal"
-              (click)="editClick(book)" data-backdrop="static" data-keyboard="false">
-        Edit
+    <mat-card-actions align="end">
+      <button mat-button (click)="editClick(book)">
+        <mat-icon aria-hidden="false" aria-label="Edit pencil" fontIcon="edit">
+        </mat-icon>
       </button>
-      <button type="button" class="btn btn-light mr-1"
-      (click)="deleteClick(book)">
-        Delete
+      <button mat-button (click)="deleteClick(book)">
+        <mat-icon aria-hidden="false" aria-label="Edit pencil" fontIcon="delete" >
+        </mat-icon>
       </button>
-    </td>
-  </tr>
+    </mat-card-actions>
 
-  </tbody>
-</table>
+    <mat-card-content
+      *ngIf="book.synopsis">{{book.synopsis}}
+    </mat-card-content>
+
+  </mat-card>
+</div>

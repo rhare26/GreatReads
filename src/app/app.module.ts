@@ -20,7 +20,9 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatTabsModule } from '@angular/material/tabs';
 import { ShowMyReadComponent } from './my-read/show-my-read/show-my-read.component';
 import { BrowserAnimationsModule} from "@angular/platform-browser/animations";
-
+import { MatButtonModule } from "@angular/material/button";
+import { MatCardModule } from "@angular/material/card";
+import { MatIconModule } from '@angular/material/icon';
 
 @NgModule({
   declarations: [
@@ -44,7 +46,10 @@ import { BrowserAnimationsModule} from "@angular/platform-browser/animations";
     HttpClientModule,
     MatToolbarModule,
     MatTabsModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    MatButtonModule,
+    MatCardModule,
+    MatIconModule
   ],
   providers: [SharedService],
   bootstrap: [AppComponent]
