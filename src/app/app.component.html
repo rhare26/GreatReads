@@ -1,15 +1,19 @@
-<div class="container">
-  <mat-toolbar>
-    <span>GreatReads</span>
-  </mat-toolbar>
+<mat-toolbar color="primary">
+  <span> {{title}} </span>
+  <span class="example-fill-remaining-space"></span>
+</mat-toolbar>
 
-  <mat-tab-nav-panel>
-    <a mat-tab-link label="All Books"  routerLinkActive="active-link" routerLink="/book"></a>
-    <a mat-tab-link label="All Authors" routerLinkActive="active-link" routerLink="/author"> </a>>
-    <a mat-tab-link label="My Reads" routerLinkActive="active-link" routerLink="/myread"> </a>
-  </mat-tab-nav-panel>
+<nav mat-tab-nav-bar [tabPanel]="tabPanel" S>
+    <a mat-tab-link  color="primary"
+       *ngFor="let link of navLinks"
+       [routerLink]="link.link"
+       routerLinkActive #rla="routerLinkActive"
+       [active]="rla.isActive">
+      {{link.label}}
+    </a>
+</nav>
+<mat-tab-nav-panel #tabPanel>
+  <router-outlet></router-outlet>
+</mat-tab-nav-panel>
 
 
-
-<router-outlet></router-outlet>
-</div>
