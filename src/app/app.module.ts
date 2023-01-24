@@ -14,6 +14,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { RouterModule } from '@angular/router';
+import { MatToolbarModule } from '@angular/material/toolbar';
+
 
 @NgModule({
   declarations: [
@@ -31,7 +33,8 @@ import { RouterModule } from '@angular/router';
     ReactiveFormsModule,
     AppRoutingModule,
     RouterModule,
-    HttpClientModule
+    HttpClientModule,
+    MatToolbarModule
   ],
   providers: [SharedService],
   bootstrap: [AppComponent]
