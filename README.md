@@ -1,7 +1,7 @@
 # GreatReads
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.1.1.
 
-##Acknowledgments
+## Acknowledgments
 For help with search function- https://plainenglish.io/blog/how-to-implement-an-instant-search-functionality-in-angular-e0c0a1e97502
 
 ## Development server
