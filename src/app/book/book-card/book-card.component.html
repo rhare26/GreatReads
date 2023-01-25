@@ -1,0 +1,28 @@
+<mat-card >
+  <mat-card-header>
+    <div mat-card-avatar>
+    </div>
+    <mat-card-title>
+      {{book.id}} {{book.title}}
+    </mat-card-title>
+    <mat-card-subtitle
+      *ngIf="book.author">{{book.author.firstName}} {{book.author.lastName}}
+    </mat-card-subtitle>
+  </mat-card-header>
+
+  <mat-card-actions align="end">
+    <button mat-button (click)="editClick(book)">
+      <mat-icon aria-hidden="false" aria-label="Edit pencil" fontIcon="edit">
+      </mat-icon>
+    </button>
+    <button mat-button (click)="deleteClick(book)">
+      <mat-icon aria-hidden="false" aria-label="Edit pencil" fontIcon="delete" >
+      </mat-icon>
+    </button>
+  </mat-card-actions>
+
+  <mat-card-content
+    *ngIf="book.synopsis">{{book.synopsis}}
+  </mat-card-content>
+
+</mat-card>

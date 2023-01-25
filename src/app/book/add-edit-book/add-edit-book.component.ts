@@ -1,5 +1,7 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { SharedService } from 'src/app/shared.service';
+import {Book} from "../../models/book";
+import {Author} from "../../models/author";
 
 @Component({
   selector: 'app-add-edit-book',
@@ -7,11 +9,12 @@ import { SharedService } from 'src/app/shared.service';
   styleUrls: ['./add-edit-book.component.css']
 })
 export class AddEditBookComponent {
-  @Input() book:any
-  id:string="";
+  @Input()
+  book!: Book;
+  id:number=0;
   title:string="";
   author:any="";
-  AuthorList:any=[];
+  AuthorList:Author[]=[];
 
   constructor(private service:SharedService){}
 
@@ -23,18 +26,18 @@ export class AddEditBookComponent {
   }
 
   addBook() {
-    var newBook = {
-      title:this.title,
-      author:this.author.id
-    };
+    var newBook:Book = new Book
     this.service.addBook(newBook).subscribe()
   }
 
   editBook() {
-    var editedBook = {
+    var editedBook:Book = {
       id:this.id,
       title:this.title,
-      author: this.author.id
+      author: this.author.id,
+      averageRating: 0,
+      genre: "",
+      synopsis: "",
     };
     this.service.updateBook(editedBook).subscribe()
   }

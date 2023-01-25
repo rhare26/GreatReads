@@ -1,0 +1,11 @@
+<!-- Button to add a new book -->
+<button mat-raised-button color="primary"
+        data-bs-toggle="modal" data-bs-target="#exampleModal"
+        (click)="addClick()" data-backdrop="static" data-keyboard="false">
+  Add Book
+</button>
+
+<!-- List of books -->
+<div *ngFor="let book of BookList">
+  <app-book-card [book]=book></app-book-card>
+</div>

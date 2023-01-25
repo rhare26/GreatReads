@@ -4,7 +4,7 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { BookComponent } from './book/book.component';
 import { AuthorComponent } from './author/author.component';
-import { ShowBookComponent } from './book/show-book/show-book.component';
+import { ShowBookListComponent } from './book/show-book-list/show-book-list.component';
 import { AddEditBookComponent } from './book/add-edit-book/add-edit-book.component';
 import { AddEditAuthorComponent } from './author/add-edit-author/add-edit-author.component';
 import { ShowAuthorComponent } from './author/show-author/show-author.component';
@@ -23,19 +23,21 @@ import { BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import { MatButtonModule } from "@angular/material/button";
 import { MatCardModule } from "@angular/material/card";
 import { MatIconModule } from '@angular/material/icon';
+import { BookCardComponent } from './book/book-card/book-card.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     BookComponent,
     AuthorComponent,
-    ShowBookComponent,
+    ShowBookListComponent,
     AddEditBookComponent,
     AddEditAuthorComponent,
     ShowAuthorComponent,
     MyReadComponent,
     AddEditMyReadComponent,
-    ShowMyReadComponent
+    ShowMyReadComponent,
+    BookCardComponent
   ],
   imports: [
     BrowserModule,
