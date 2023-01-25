@@ -1,4 +1,6 @@
 <mat-card class="container">
+
+  <!-- Header with author, title, and actions -->
   <mat-card-header>
     <div mat-card-avatar>
     </div>
@@ -6,7 +8,7 @@
       *ngIf="book.author">{{book.author.firstName}} {{book.author.lastName}}
     </mat-card-subtitle>
     <mat-card-title>
-      {{book.id}} {{book.title}}
+      {{book.title}}
     </mat-card-title>
     <mat-card-actions align="end" class="fill">
       <button mat-button (click)="editClick()" >
@@ -22,10 +24,8 @@
   <mat-card-content>
 
   </mat-card-content>
-
-
-  <mat-card-content
-    *ngIf="book.synopsis">{{book.synopsis}}
+  <mat-card-content>
+    <strong>[{{book.genre}}]</strong> {{book.synopsis}}
   </mat-card-content>
 
 </mat-card>

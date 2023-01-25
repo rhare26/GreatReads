@@ -1,42 +1,37 @@
-<mat-drawer-container class="container">
-  <mat-drawer mode="side" opened>
-    <div class="fixed-header">
-      <!-- Search bar -->
-      <mat-form-field >
-        <input type="string" class="search" matInput
-               placeholder="Enter title or author"
-               name= "search" [(ngModel)]= "searchInput">
-        <button matPrefix mat-button ><mat-icon >search</mat-icon></button>
-      </mat-form-field>
 
-      <!-- Button to add a new book -->
-      <div style="float:right;">
-        <button mat-fab color="primary"
-                data-bs-toggle="modal" data-bs-target="#exampleModal"
-                (click)="addBook()" data-backdrop="static" data-keyboard="false">
-          <mat-icon>add</mat-icon>
+<div class="left-panel">
+  <!-- Button to add a new book -->
+  <button mat-fab color="primary" (click)="addBook()">
+    <mat-icon>add</mat-icon>Add new book
+  </button>
 
-        </button>
-      </div>
-    </div>
+  <!-- Search bar -->
+  <mat-form-field [style.width.px]=450>
+    <input  type="string"  matInput
+            placeholder="Enter title or author"
+            name= "search" [(ngModel)]= "searchInput">
+    <button matPrefix mat-button ><mat-icon >search</mat-icon></button>
+  </mat-form-field>
 
+  <!-- List all books -->
+  <div class="scroll-list">
 
-    <!-- List all books -->
     <app-show-book-list
       [bookList]="bookList"
       [filterFor]="searchInput"
       (onEditBook)="editBook($event)">
-
     </app-show-book-list>
-  </mat-drawer>
+  </div>
 
-  <mat-card-content>
+</div>
 
+  <div class="right-panel">
     <app-add-edit-book  *ngIf="editMode" [book]="selectedBook" [mode]="'Update'"></app-add-edit-book>
     <app-add-edit-book  *ngIf="addMode"  [book]="selectedBook" [mode]="'Add'"></app-add-edit-book>
-  </mat-card-content>
+  </div>
 
-</mat-drawer-container>
+
+
 
 
 

@@ -4,16 +4,17 @@
 </mat-toolbar>
 
 <nav mat-tab-nav-bar [tabPanel]="tabPanel" S>
-    <a mat-tab-link  color="primary"
-       *ngFor="let link of navLinks"
-       [routerLink]="link.link"
-       routerLinkActive #rla="routerLinkActive"
-       [active]="rla.isActive">
-      {{link.label}}
-    </a>
+  <a mat-tab-link  color="primary"
+     *ngFor="let link of navLinks"
+     [routerLink]="link.link"
+     routerLinkActive #rla="routerLinkActive"
+     [active]="rla.isActive">
+    {{link.label}}
+  </a>
 </nav>
 <mat-tab-nav-panel #tabPanel>
   <router-outlet></router-outlet>
 </mat-tab-nav-panel>
+
 
 
