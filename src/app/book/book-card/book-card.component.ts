@@ -13,9 +13,7 @@ export class BookCardComponent {
 
   constructor() {}
 
-  ngOnInit(): void{
-    alert(this.book.genre + this.book.synopsis)
-  }
+  ngOnInit(): void{}
 
   //starts to pass this to grandparent of book-card
   editClick() {
