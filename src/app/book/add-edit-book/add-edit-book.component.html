@@ -1,26 +1,39 @@
-<div class="form-group row">
-  <label class="col-sm-2 col-form-label">Title</label>
-  <div class="col-sm-10">
-    <input type="text" class="form-control" [(ngModel)]="title"
-           placeholder="Enter Title">
-  </div>
+<!-- Title !-->
+<mat-form-field appearance="fill">
+  <mat-label>Title</mat-label>
+  <input matInput [(ngModel)]="tempBook.title">
+</mat-form-field>
 
-  <label class="col-sm-2 col-form-label">Author</label>
-  <div class="col-sm-10">
-    <select class="form-control" [(ngModel)]="author">
-      <option>--Select--</option>
-      <option *ngFor="let author of AuthorList" [ngValue]="author">
-        {{author.firstName}} {{author.lastName}}
-      </option>
-    </select>
-  </div>
-</div>
+<!-- Author !-->
+<mat-form-field appearance="fill" >
+  <mat-label>Author</mat-label>
+  <mat-select [(ngModel)]="tempBook.author">
+    <mat-option *ngFor="let author of authorList" >
+      {{author.firstName}} {{author.lastName}}
+    </mat-option>
+  </mat-select>
+</mat-form-field>
 
-<button (click)="addBook()" *ngIf="book.id==0" class="btn btn-primary">
+
+<!-- Genre !-->
+<mat-form-field appearance="fill">
+  <mat-label>Genre</mat-label>
+  <input matInput [(ngModel)]="tempBook.genre">
+</mat-form-field>
+
+<!-- Synopsis !-->
+<mat-form-field appearance="fill">
+  <mat-label>Synopsis</mat-label>
+  <textarea matInput [(ngModel)]="tempBook.synopsis"></textarea>
+</mat-form-field>
+
+
+
+<button mat-button (click)="addBook()" *ngIf="book.id==0" class="btn btn-primary">
   Add
 </button>
 
-<button (click)="editBook()" *ngIf="book.id!=0" class="btn btn-primary">
+<button mat-button (click)="editBook()" *ngIf="book.id!=0" class="btn btn-primary">
   Update
 </button>
 

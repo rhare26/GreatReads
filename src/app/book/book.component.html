@@ -1,2 +1,24 @@
-<app-show-book-list></app-show-book-list>
+<!-- Button to add a new book -->
+<button mat-raised-button color="primary"
+        data-bs-toggle="modal" data-bs-target="#exampleModal"
+        (click)="addClick()" data-backdrop="static" data-keyboard="false">
+  Add Book
+</button>
+
+<!-- List all books -->
+<app-show-book-list
+  [bookList]="bookList"
+  (onEditBook)="editBook($event)">
+
+</app-show-book-list>
+
+<!-- If triggered, display the add-edit-book  -->
+<div *ngIf="editMode">
+  <app-add-edit-book [book]="selectedBook"></app-add-edit-book>
+</div>
+
+<div *ngIf="addMode">
+  <app-add-edit-book [book]="selectedBook"></app-add-edit-book>
+</div>
+
 

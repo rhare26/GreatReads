@@ -1,4 +1,4 @@
-import {Component, Input, Output} from '@angular/core';
+import {Component, EventEmitter, Input, Output} from '@angular/core';
 import {Book} from "../../models/book";
 
 @Component({
@@ -7,21 +7,22 @@ import {Book} from "../../models/book";
   styleUrls: ['./book-card.component.css']
 })
 export class BookCardComponent {
-  @Input()
-  book!: Book;
-  @Output() addEditMode:Boolean = false;
+  @Input() book!: Book;
+  @Output() onEditBook: EventEmitter<Book> = new EventEmitter();
+  @Output() onDeleteBook: EventEmitter<Book> = new EventEmitter();
 
   constructor() {}
 
   ngOnInit(): void{
-    this.addEditMode = false;
+    alert(this.book.genre + this.book.synopsis)
   }
 
-  editClick(book:Book) {
-    this.addEditMode=true;
+  //starts to pass this to grandparent of book-card
+  editClick() {
+    this.onEditBook.emit(this.book);
   }
-
-  deleteClick(book:Book) {
-
+  //passes this to parent of book-card
+  deleteClick() {
+    this.onDeleteBook.emit(this.book);
   }
 }

@@ -9,14 +9,16 @@
       *ngIf="book.author">{{book.author.firstName}} {{book.author.lastName}}
     </mat-card-subtitle>
   </mat-card-header>
+  <mat-card-content>
 
+  </mat-card-content>
   <mat-card-actions align="end">
-    <button mat-button (click)="editClick(book)">
-      <mat-icon aria-hidden="false" aria-label="Edit pencil" fontIcon="edit">
+    <button mat-button (click)="editClick()">
+      <mat-icon aria-hidden="false" aria-label="Edit" fontIcon="edit">
       </mat-icon>
     </button>
-    <button mat-button (click)="deleteClick(book)">
-      <mat-icon aria-hidden="false" aria-label="Edit pencil" fontIcon="delete" >
+    <button mat-button (click)="deleteClick()">
+      <mat-icon aria-hidden="false" aria-label="Delete" fontIcon="delete" >
       </mat-icon>
     </button>
   </mat-card-actions>

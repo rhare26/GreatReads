@@ -6,7 +6,7 @@ class BookSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Book
-        fields = ['id', 'author', 'title']
+        fields = '__all__'
 
     def to_representation(self, instance):
         data = super().to_representation(instance)
@@ -20,7 +20,7 @@ class BookSerializer(serializers.ModelSerializer):
 class MyBookSerializer(serializers.ModelSerializer):
   class Meta:
     model = MyBook
-    fields = ['id', 'author', 'title']
+    fields = '__all__'
 
   def to_representation(self, instance):
     data = super().to_representation(instance)
@@ -35,4 +35,4 @@ class AuthorSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Author
-        fields = ['id', 'firstName', 'lastName']
+        fields = '__all__'

@@ -30,6 +30,7 @@ class Book(models.Model):
     def __str__(self):
         return self.title
 
+#todo: rename to MyRead
 class MyBook(models.Model):
   WANT = 'WANT'
   CURRENTLY = 'CURRENTLY'

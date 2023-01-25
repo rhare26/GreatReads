@@ -9,42 +9,33 @@ import {Author} from "../../models/author";
   styleUrls: ['./add-edit-book.component.css']
 })
 export class AddEditBookComponent {
-  @Input()
-  book!: Book;
-  id:number=0;
-  title:string="";
-  author:any="";
-  AuthorList:Author[]=[];
+  @Input() book!: Book;
+  @Input() mode!: string;
+
+  authorList: Author[]=[];
+  tempBook: Book = new Book;
 
   constructor(private service:SharedService){}
 
   ngOnInit(): void{
     this.loadAuthorList();
-    this.id=this.book.id;
-    this.title=this.book.title;
-    this.author=this.book.author;
   }
 
+  ngOnChanges(): void{
+    //makes a copy of the inputted book (for add mode, this will be empty)
+    this.tempBook = Book.copy(this.book);
+  }
   addBook() {
-    var newBook:Book = new Book
-    this.service.addBook(newBook).subscribe()
+    this.service.addBook(this.tempBook).subscribe()
   }
 
   editBook() {
-    var editedBook:Book = {
-      id:this.id,
-      title:this.title,
-      author: this.author.id,
-      averageRating: 0,
-      genre: "",
-      synopsis: "",
-    };
-    this.service.updateBook(editedBook).subscribe()
+    this.service.updateBook(this.tempBook).subscribe()
   }
 
   loadAuthorList(){
     this.service.getAuthorList().subscribe(data=>{
-      this.AuthorList=data;
+      this.authorList=data;
     });
 
   }
