@@ -1,6 +1,6 @@
 import {Component, EventEmitter, Output, Input} from '@angular/core';
 import { SharedService } from 'src/app/shared.service'
-import {Book} from "../../models/book";
+import { Book } from "../../models/book";
 
 @Component({
   selector: 'app-show-book-list',
@@ -13,7 +13,9 @@ export class ShowBookListComponent {
   editMode:boolean = false;
   addMode:boolean = false;
 
+
   @Input() bookList!:Book[];
+  @Input() filterFor!:string;
 
   @Output() onEditBook: EventEmitter<Book> = new EventEmitter();
   @Output() onAddBook: EventEmitter<Book> = new EventEmitter();
@@ -21,6 +23,7 @@ export class ShowBookListComponent {
   constructor(private service:SharedService){}
 
   ngOnInit(): void{}
+
 
   //continue to pass this to grandparent of book-card
   editBook(book: Book) {
@@ -30,7 +33,7 @@ export class ShowBookListComponent {
   deleteBook(book: Book) {
     if(confirm('Are you sure?')){
       //TODO: filter the deleted book out so you don't have to refresh
-      this.service.deleteBook(book).subscribe(data=>{})
+      this.service.deleteBook(book).subscribe()
     }
   }
 }

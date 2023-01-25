@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import {Book} from "../models/book";
-import {SharedService} from "../shared.service";
+import { Component } from '@angular/core';
+import { Book } from "../models/book";
+import { SharedService } from "../shared.service";
 
 @Component({
   selector: 'app-book',
@@ -12,6 +12,7 @@ export class BookComponent {
   bookList: Book[] = [];
   addMode:boolean = false;
   editMode:boolean = false;
+  searchInput: string = "";
 
   constructor(private service:SharedService){}
 
@@ -38,7 +39,4 @@ export class BookComponent {
     });
   }
 
-  addClick() {
-
-  }
 }

@@ -1,13 +1,22 @@
+<!-- Search bar -->
+<mat-form-field>
+  <input type="string" matInput
+         placeholder="Search by title"
+         name= "search" [(ngModel)]= "searchInput">
+  <button matPrefix mat-button ><mat-icon >search</mat-icon></button>
+</mat-form-field>
+
 <!-- Button to add a new book -->
-<button mat-raised-button color="primary"
+<br><button mat-raised-button color="primary"
         data-bs-toggle="modal" data-bs-target="#exampleModal"
-        (click)="addClick()" data-backdrop="static" data-keyboard="false">
+        (click)="addBook()" data-backdrop="static" data-keyboard="false">
   Add Book
 </button>
 
 <!-- List all books -->
 <app-show-book-list
   [bookList]="bookList"
+  [filterFor]="searchInput"
   (onEditBook)="editBook($event)">
 
 </app-show-book-list>

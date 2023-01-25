@@ -12,6 +12,7 @@ import { MyReadComponent } from "./my-read/my-read.component";
 import { AddEditMyReadComponent } from './my-read/add-edit-my-read/add-edit-my-read.component';
 import { BookCardComponent } from './book/book-card/book-card.component';
 import { SharedService } from './shared.service';
+import { SearchPipe } from './search.pipe'
 
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -27,6 +28,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from "@angular/material/list";
 import { MatInputModule } from "@angular/material/input";
 import { MatSelectModule } from "@angular/material/select";
+import { MatAutocompleteModule } from "@angular/material/autocomplete";
 
 @NgModule({
   declarations: [
@@ -40,7 +42,8 @@ import { MatSelectModule } from "@angular/material/select";
     MyReadComponent,
     AddEditMyReadComponent,
     ShowMyReadComponent,
-    BookCardComponent
+    BookCardComponent,
+    SearchPipe
   ],
   imports: [
     BrowserModule,
@@ -58,6 +61,7 @@ import { MatSelectModule } from "@angular/material/select";
     MatListModule,
     MatInputModule,
     MatSelectModule,
+    MatAutocompleteModule
   ],
   providers: [SharedService],
   bootstrap: [AppComponent]
