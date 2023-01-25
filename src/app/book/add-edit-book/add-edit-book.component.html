@@ -1,10 +1,13 @@
-<!-- Title !-->
+
+<mat-header-row>{{mode}}</mat-header-row>
+
+<!-- Title -->
 <mat-form-field appearance="fill">
   <mat-label>Title</mat-label>
   <input matInput [(ngModel)]="tempBook.title">
 </mat-form-field>
 
-<!-- Author !-->
+<!-- Author -->
 <mat-form-field appearance="fill" >
   <mat-label>Author</mat-label>
   <mat-select [(ngModel)]="tempBook.author">
@@ -15,20 +18,19 @@
 </mat-form-field>
 
 
-<!-- Genre !-->
+<!-- Genre -->
 <mat-form-field appearance="fill">
   <mat-label>Genre</mat-label>
   <input matInput [(ngModel)]="tempBook.genre">
 </mat-form-field>
 
-<!-- Synopsis !-->
+<!-- Synopsis -->
 <mat-form-field appearance="fill">
   <mat-label>Synopsis</mat-label>
   <textarea matInput [(ngModel)]="tempBook.synopsis"></textarea>
 </mat-form-field>
 
-
-
+<!-- Add Button -->
 <button mat-button (click)="addBook()" *ngIf="book.id==0" class="btn btn-primary">
   Add
 </button>
@@ -36,4 +38,6 @@
 <button mat-button (click)="editBook()" *ngIf="book.id!=0" class="btn btn-primary">
   Update
 </button>
+
+
 

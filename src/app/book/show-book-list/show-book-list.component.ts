@@ -24,7 +24,6 @@ export class ShowBookListComponent {
 
   ngOnInit(): void{}
 
-
   //continue to pass this to grandparent of book-card
   editBook(book: Book) {
     this.onEditBook.emit(book);

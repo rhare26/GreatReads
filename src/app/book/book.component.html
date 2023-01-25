@@ -1,33 +1,46 @@
-<!-- Search bar -->
-<mat-form-field>
-  <input type="string" matInput
-         placeholder="Search by title"
-         name= "search" [(ngModel)]= "searchInput">
-  <button matPrefix mat-button ><mat-icon >search</mat-icon></button>
-</mat-form-field>
+<mat-drawer-container class="container">
+  <mat-drawer mode="side" opened>
+    <div class="fixed-header">
+      <!-- Search bar -->
+      <mat-form-field >
+        <input type="string" class="search" matInput
+               placeholder="Enter title or author"
+               name= "search" [(ngModel)]= "searchInput">
+        <button matPrefix mat-button ><mat-icon >search</mat-icon></button>
+      </mat-form-field>
 
-<!-- Button to add a new book -->
-<br><button mat-raised-button color="primary"
-        data-bs-toggle="modal" data-bs-target="#exampleModal"
-        (click)="addBook()" data-backdrop="static" data-keyboard="false">
-  Add Book
-</button>
+      <!-- Button to add a new book -->
+      <div style="float:right;">
+        <button mat-fab color="primary"
+                data-bs-toggle="modal" data-bs-target="#exampleModal"
+                (click)="addBook()" data-backdrop="static" data-keyboard="false">
+          <mat-icon>add</mat-icon>
 
-<!-- List all books -->
-<app-show-book-list
-  [bookList]="bookList"
-  [filterFor]="searchInput"
-  (onEditBook)="editBook($event)">
+        </button>
+      </div>
+    </div>
 
-</app-show-book-list>
 
-<!-- If triggered, display the add-edit-book  -->
-<div *ngIf="editMode">
-  <app-add-edit-book [book]="selectedBook"></app-add-edit-book>
-</div>
+    <!-- List all books -->
+    <app-show-book-list
+      [bookList]="bookList"
+      [filterFor]="searchInput"
+      (onEditBook)="editBook($event)">
 
-<div *ngIf="addMode">
-  <app-add-edit-book [book]="selectedBook"></app-add-edit-book>
-</div>
+    </app-show-book-list>
+  </mat-drawer>
+
+  <mat-card-content>
+
+    <app-add-edit-book  *ngIf="editMode" [book]="selectedBook" [mode]="'Update'"></app-add-edit-book>
+    <app-add-edit-book  *ngIf="addMode"  [book]="selectedBook" [mode]="'Add'"></app-add-edit-book>
+  </mat-card-content>
+
+</mat-drawer-container>
+
+
+
+
+
 
 

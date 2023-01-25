@@ -13,15 +13,15 @@ export class AppComponent {
   ngOnInit(): void{
     this.navLinks = [
       {
-        label: 'All Books',
+        label: 'Browse Books',
         link: './book',
         index: 0
       }, {
-        label: 'All Authors',
+        label: 'Browse Authors',
         link: './author',
         index: 1
       }, {
-        label: 'My Reads',
+        label: 'My Profile',
         link: './myread',
         index: 2
       },

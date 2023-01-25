@@ -29,6 +29,9 @@ import { MatListModule } from "@angular/material/list";
 import { MatInputModule } from "@angular/material/input";
 import { MatSelectModule } from "@angular/material/select";
 import { MatAutocompleteModule } from "@angular/material/autocomplete";
+import {MatTableModule} from "@angular/material/table";
+import {MatDialogModule} from "@angular/material/dialog";
+import {MatSidenavModule} from "@angular/material/sidenav";
 
 @NgModule({
   declarations: [
@@ -61,7 +64,10 @@ import { MatAutocompleteModule } from "@angular/material/autocomplete";
     MatListModule,
     MatInputModule,
     MatSelectModule,
-    MatAutocompleteModule
+    MatAutocompleteModule,
+    MatTableModule,
+    MatDialogModule,
+    MatSidenavModule
   ],
   providers: [SharedService],
   bootstrap: [AppComponent]

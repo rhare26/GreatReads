@@ -1,6 +1,12 @@
 .container {
-  min-width: 400px;
-  max-width: 600px;
+  min-width: 300px;
+  max-width: 450px;
+  display: flex;
+  justify-content: space-between;
+}
+.search {
+  min-width: 300px;
+  max-width: 450px;
   display: flex;
   justify-content: space-between;
 }
