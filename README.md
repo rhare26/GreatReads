@@ -2,8 +2,12 @@
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.1.1.
 
 ## Acknowledgments
-For help with search function- https://plainenglish.io/blog/how-to-implement-an-instant-search-functionality-in-angular-e0c0a1e97502
+For setting up the project structure                      https://www.youtube.com/watch?v=1Hc7KlLiU9w
+For frontend components, @Input, @Output, & EventEmitter  https://www.youtube.com/watch?v=3dHNOWTI7H8
+For search function on frontend                           https://plainenglish.io/blog/how-to-implement-an-instant-search-functionality-in-angular-e0c0a1e97502
 
+
+# Frontend Setup
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
