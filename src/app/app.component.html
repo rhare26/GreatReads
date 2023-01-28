@@ -1,10 +1,12 @@
-<mat-toolbar color="primary">
-  <span> {{title}} </span>
-  <span class="example-fill-remaining-space"></span>
+
+<mat-toolbar color="primary" style="padding-top: 15px;padding-bottom: 5px;">
+  <span style="font-size:50px;">
+    {{title}}
+  </span>
 </mat-toolbar>
 
-<nav mat-tab-nav-bar [tabPanel]="tabPanel" S>
-  <a mat-tab-link  color="primary"
+<nav mat-tab-nav-bar [tabPanel]="tabPanel" color="primary">
+  <a mat-tab-link
      *ngFor="let link of navLinks"
      [routerLink]="link.link"
      routerLinkActive #rla="routerLinkActive"

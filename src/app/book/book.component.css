@@ -6,14 +6,16 @@
 }
 
 .left-panel{
-  width: 450px;
+  float:left;
   height: 100%;
-  float: left
+  padding-left:20px;
+  padding-right:20px;
 }
 
 .right-panel{
+
   height: 100%;
-  float: left;
+  display: flex;
 }
 
 .scroll-list{

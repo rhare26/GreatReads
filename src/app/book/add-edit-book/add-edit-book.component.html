@@ -1,28 +1,31 @@
 
 <mat-header-row>{{mode}}</mat-header-row>
+<div>
+  <!-- Title -->
+  <mat-form-field appearance="fill">
+    <mat-label>Title</mat-label>
+    <input matInput [(ngModel)]="tempBook.title">
+  </mat-form-field>
 
-<!-- Title -->
-<mat-form-field appearance="fill">
-  <mat-label>Title</mat-label>
-  <input matInput [(ngModel)]="tempBook.title">
-</mat-form-field>
-
-<!-- Author -->
-<mat-form-field appearance="fill" >
-  <mat-label>Author</mat-label>
-  <mat-select [(ngModel)]="tempBook.author">
-    <mat-option *ngFor="let author of authorList" >
-      {{author.firstName}} {{author.lastName}}
-    </mat-option>
-  </mat-select>
-</mat-form-field>
+  <!-- Author -->
+  <mat-form-field appearance="fill" >
+    <mat-label>Author</mat-label>
+    <mat-select [(ngModel)]="tempBook.author">
+      <mat-option *ngFor="let author of authorList" >
+        {{author.firstName}} {{author.lastName}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
 
 
-<!-- Genre -->
-<mat-form-field appearance="fill">
-  <mat-label>Genre</mat-label>
-  <input matInput [(ngModel)]="tempBook.genre">
-</mat-form-field>
+  <!-- Genre -->
+  <mat-form-field appearance="fill">
+    <mat-label>Genre</mat-label>
+    <input matInput [(ngModel)]="tempBook.genre">
+  </mat-form-field>
+
+</div>
+
 
 <!-- Synopsis -->
 <mat-form-field appearance="fill">

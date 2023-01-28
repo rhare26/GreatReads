@@ -32,6 +32,7 @@ import { MatAutocompleteModule } from "@angular/material/autocomplete";
 import {MatTableModule} from "@angular/material/table";
 import {MatDialogModule} from "@angular/material/dialog";
 import {MatSidenavModule} from "@angular/material/sidenav";
+import {MatExpansionModule} from "@angular/material/expansion";
 
 @NgModule({
   declarations: [
@@ -48,27 +49,28 @@ import {MatSidenavModule} from "@angular/material/sidenav";
     BookCardComponent,
     SearchPipe
   ],
-  imports: [
-    BrowserModule,
-    FormsModule,
-    ReactiveFormsModule,
-    AppRoutingModule,
-    RouterModule,
-    HttpClientModule,
-    MatToolbarModule,
-    MatTabsModule,
-    BrowserAnimationsModule,
-    MatButtonModule,
-    MatCardModule,
-    MatIconModule,
-    MatListModule,
-    MatInputModule,
-    MatSelectModule,
-    MatAutocompleteModule,
-    MatTableModule,
-    MatDialogModule,
-    MatSidenavModule
-  ],
+    imports: [
+        BrowserModule,
+        FormsModule,
+        ReactiveFormsModule,
+        AppRoutingModule,
+        RouterModule,
+        HttpClientModule,
+        MatToolbarModule,
+        MatTabsModule,
+        BrowserAnimationsModule,
+        MatButtonModule,
+        MatCardModule,
+        MatIconModule,
+        MatListModule,
+        MatInputModule,
+        MatSelectModule,
+        MatAutocompleteModule,
+        MatTableModule,
+        MatDialogModule,
+        MatSidenavModule,
+        MatExpansionModule
+    ],
   providers: [SharedService],
   bootstrap: [AppComponent]
 })
