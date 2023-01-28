@@ -2,6 +2,7 @@
 <mat-list *ngFor="let book of bookList | search:filterFor">
   <app-book-card
     [book]="book"
+    (onViewBook)="viewBook(book)"
     (onEditBook)="editBook(book)"
     (onDeleteBook)="deleteBook(book)"
   ></app-book-card>

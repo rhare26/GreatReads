@@ -17,6 +17,7 @@ export class ShowBookListComponent {
   @Input() bookList!:Book[];
   @Input() filterFor!:string;
 
+  @Output() onViewBook: EventEmitter<Book> = new EventEmitter();
   @Output() onEditBook: EventEmitter<Book> = new EventEmitter();
   @Output() onAddBook: EventEmitter<Book> = new EventEmitter();
 
@@ -29,10 +30,17 @@ export class ShowBookListComponent {
     this.onEditBook.emit(book);
   }
 
+  //continue to pass this to grandparent of book-card
+  viewBook(book: any) {
+    this.onViewBook.emit(book);
+  }
+
   deleteBook(book: Book) {
     if(confirm('Are you sure?')){
       //TODO: filter the deleted book out so you don't have to refresh
       this.service.deleteBook(book).subscribe()
     }
   }
+
+
 }

@@ -19,15 +19,16 @@
     <app-show-book-list
       [bookList]="bookList"
       [filterFor]="searchInput"
-      (onEditBook)="editBook($event)">
+      (onEditBook)="editBook($event)"
+      (onViewBook)="viewBook($event)">
     </app-show-book-list>
   </div>
 
 </div>
 
   <div class="right-panel">
-    <app-add-edit-book  *ngIf="editMode" [book]="selectedBook" [mode]="'Update'"></app-add-edit-book>
-    <app-add-edit-book  *ngIf="addMode"  [book]="selectedBook" [mode]="'Add'"></app-add-edit-book>
+    <app-add-edit-book  *ngIf="mode==EDIT" [book]="selectedBook" [mode]="'Update'"></app-add-edit-book>
+    <app-add-edit-book  *ngIf="mode==ADD" [book]="selectedBook" [mode]="'Add'"></app-add-edit-book>
   </div>
 
 

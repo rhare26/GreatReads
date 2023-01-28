@@ -21,11 +21,12 @@
       </button>
     </mat-card-actions>
   </mat-card-header>
-  <mat-card-content>
 
-  </mat-card-content>
   <mat-card-content>
     <strong>[{{book.genre}}]</strong> {{book.synopsis}}
+    <button mat-button (click)="viewClick()">
+      View
+    </button>
   </mat-card-content>
 
 </mat-card>

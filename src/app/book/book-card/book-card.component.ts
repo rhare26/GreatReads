@@ -8,6 +8,7 @@ import {Book} from "../../models/book";
 })
 export class BookCardComponent {
   @Input() book!: Book;
+  @Output() onViewBook: EventEmitter<Book> = new EventEmitter();
   @Output() onEditBook: EventEmitter<Book> = new EventEmitter();
   @Output() onDeleteBook: EventEmitter<Book> = new EventEmitter();
 
@@ -21,6 +22,10 @@ export class BookCardComponent {
   }
   //passes this to parent of book-card
   deleteClick() {
+    this.onDeleteBook.emit(this.book);
+  }
+  //starts to pass this to grandparent of book-card
+  viewClick() {
     this.onDeleteBook.emit(this.book);
   }
 }
