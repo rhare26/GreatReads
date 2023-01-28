@@ -26,6 +26,6 @@ export class BookCardComponent {
   }
   //starts to pass this to grandparent of book-card
   viewClick() {
-    this.onDeleteBook.emit(this.book);
+    this.onViewBook.emit(this.book);
   }
 }
