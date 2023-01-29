@@ -1,0 +1,10 @@
+<app-card
+  [item]="book"
+  [title]="book.title"
+  [subtitle]="book.author.firstName + ' ' + book.author.lastName"
+  [contentPrefix]="book.genre"
+  [content]="book.synopsis"
+  (onView)="view(book)"
+  (onEdit)="edit(book)"
+  (onDelete)="delete(book)"
+></app-card>

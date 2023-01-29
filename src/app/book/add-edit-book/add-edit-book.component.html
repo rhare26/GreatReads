@@ -38,11 +38,11 @@
 </mat-form-field>
 
 <!-- Add Button -->
-<button mat-button (click)="addBook()" *ngIf="book.id==0" class="btn btn-primary">
+<button mat-button (click)="add()" *ngIf="book.id==0" class="btn btn-primary">
   Add
 </button>
 
-<button mat-button (click)="editBook()" *ngIf="book.id!=0" class="btn btn-primary">
+<button mat-button (click)="edit()" *ngIf="book.id!=0" class="btn btn-primary">
   Update
 </button>
 

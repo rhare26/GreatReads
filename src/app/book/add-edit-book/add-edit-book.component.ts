@@ -25,11 +25,11 @@ export class AddEditBookComponent {
     //makes a copy of the inputted book (for add mode, this will be empty)
     this.tempBook = Book.copy(this.book);
   }
-  addBook() {
+  add() {
     this.service.addBook(this.tempBook).subscribe()
   }
 
-  editBook() {
+  edit() {
     this.service.updateBook(this.tempBook).subscribe()
   }
 

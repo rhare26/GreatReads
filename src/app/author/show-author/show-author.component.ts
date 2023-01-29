@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import { SharedService } from 'src/app/shared.service'
+import {Book} from "../../models/book";
 
 
 @Component({
@@ -8,52 +9,39 @@ import { SharedService } from 'src/app/shared.service'
   styleUrls: ['./show-author.component.css']
 })
 export class ShowAuthorComponent {
-  AuthorList:any=[];
-  ModalTitle: string="";
-  ActivateAddEditAuthorComp: boolean=false;
-  author: any;
+
+  selectedBook: Book = new Book;
+  editMode:boolean = false;
+  addMode:boolean = false;
+
+
+  @Input() bookList!:Book[];
+  @Input() filterFor!:string;
+
+  @Output() onViewBook: EventEmitter<Book> = new EventEmitter();
+  @Output() onEditBook: EventEmitter<Book> = new EventEmitter();
+  @Output() onAddBook: EventEmitter<Book> = new EventEmitter();
 
   constructor(private service:SharedService){}
 
-  ngOnInit(): void{
-    this.refreshAuthorList();
+  ngOnInit(): void{}
+
+  //continue to pass this to grandparent of book-card
+  editBook(book: Book) {
+    this.onEditBook.emit(book);
   }
 
-  refreshAuthorList(){
-    this.service.getAuthorList().subscribe(data=>{
-      this.AuthorList=data;
-    });
+  //continue to pass this to grandparent of book-card
+  viewBook(book: any) {
+    this.onViewBook.emit(book);
   }
 
-  addClick() {
-
-    this.author={
-      AuthorId:0,
-      AuthorFirstName:"",
-      AuthorFLastName:""
-    }
-    this.ModalTitle="Add Author";
-    this.ActivateAddEditAuthorComp=true;
-  }
-
-  editClick(a:any) {
-    this.author=a;
-    this.ModalTitle= "Edit Author";
-    this.ActivateAddEditAuthorComp=true;
-  }
-
-  closeClick() {
-    this.ActivateAddEditAuthorComp=false;
-    this.refreshAuthorList();
-  }
-
-  deleteClick(a:any) {
+  deleteBook(book: Book) {
     if(confirm('Are you sure?')){
-      this.service.deleteAuthor(a.AuthorId).subscribe(data=>{
-        this.refreshAuthorList()
-      })
+      //TODO: filter the deleted book out so you don't have to refresh
+      this.service.deleteBook(book).subscribe()
     }
-
   }
+
 
 }

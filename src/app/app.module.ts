@@ -28,11 +28,12 @@ import { MatListModule } from "@angular/material/list";
 import { MatInputModule } from "@angular/material/input";
 import { MatSelectModule } from "@angular/material/select";
 import { MatAutocompleteModule } from "@angular/material/autocomplete";
-import {MatTableModule} from "@angular/material/table";
-import {MatDialogModule} from "@angular/material/dialog";
-import {MatSidenavModule} from "@angular/material/sidenav";
-import {MatExpansionModule} from "@angular/material/expansion";
+import { MatTableModule } from "@angular/material/table";
+import { MatDialogModule } from "@angular/material/dialog";
+import { MatSidenavModule } from "@angular/material/sidenav";
+import { MatExpansionModule } from "@angular/material/expansion";
 import { CardComponent } from './card/card.component';
+import { BookCardComponent } from './book/book-card/book-card.component';
 
 @NgModule({
   declarations: [
@@ -47,7 +48,8 @@ import { CardComponent } from './card/card.component';
     AddEditMyReadComponent,
     ShowMyReadComponent,
     SearchPipe,
-    CardComponent
+    CardComponent,
+    BookCardComponent
   ],
     imports: [
         BrowserModule,

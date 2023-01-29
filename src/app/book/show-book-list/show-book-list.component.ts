@@ -17,25 +17,25 @@ export class ShowBookListComponent {
   @Input() bookList!:Book[];
   @Input() filterFor!:string;
 
-  @Output() onViewBook: EventEmitter<Book> = new EventEmitter();
-  @Output() onEditBook: EventEmitter<Book> = new EventEmitter();
-  @Output() onAddBook: EventEmitter<Book> = new EventEmitter();
+  @Output() onView: EventEmitter<Book> = new EventEmitter();
+  @Output() onEdit: EventEmitter<Book> = new EventEmitter();
+  @Output() onAdd: EventEmitter<Book> = new EventEmitter();
 
   constructor(private service:SharedService){}
 
   ngOnInit(): void{}
 
   //continue to pass this to grandparent of book-card
-  editBook(book: Book) {
-    this.onEditBook.emit(book);
+  edit(book: Book) {
+    this.onEdit.emit(book);
   }
 
   //continue to pass this to grandparent of book-card
-  viewBook(book: any) {
-    this.onViewBook.emit(book);
+  view(book: any) {
+    this.onView.emit(book);
   }
 
-  deleteBook(book: Book) {
+  delete(book: Book) {
     if(confirm('Are you sure?')){
       //TODO: filter the deleted book out so you don't have to refresh
       this.service.deleteBook(book).subscribe()

@@ -27,17 +27,17 @@ export class BookComponent {
     this.refreshBookList();
   }
 
-  editBook(book:Book) {
+  edit(book:Book) {
     this.selectedBook = book;
     this.mode=EDIT;
   }
 
-  // TODO: make view-book component (this is not connected to anything
-  viewBook(book: Book) {
+  view(book: Book) {
     this.selectedBook = book;
     this.mode=VIEW;
   }
 
+  // TODO: make add-book component
   addBook() {
     this.selectedBook = new Book;
     this.mode=ADD;
