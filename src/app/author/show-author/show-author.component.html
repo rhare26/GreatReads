@@ -1,16 +1,16 @@
-<!-- List of books -->
-<!--<mat-list *ngFor="let author of authorList | search:filterFor">-->
-<!--  <app-card-->
-<!--    [item]="author"-->
-<!--    [title]="author.firstName + ' ' + author.lastName"-->
-<!--    [subtitle]=""-->
-<!--    [contentPrefix]=""-->
-<!--    [content]=""-->
-<!--    (onView)="view(author)"-->
-<!--    (onEdit)="edit(author)"-->
-<!--    (onDelete)="delete(author)"-->
-<!--  ></app-card>-->
-<!--</mat-list>-->
+
+<mat-list *ngFor="let author of list | searchAuthors:filterFor">
+  <app-card
+    [item]="author"
+    [title]="author.firstName + ' ' + author.lastName"
+    [subtitle]=""
+    [contentPrefix]=""
+    [content]=""
+    (onView)="view(author)"
+    (onEdit)="edit(author)"
+    (onDelete)="delete(author)"
+  ></app-card>
+</mat-list>
 
 
 

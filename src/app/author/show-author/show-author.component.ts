@@ -1,6 +1,6 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {Component, EventEmitter, Input, Output} from '@angular/core';
 import { SharedService } from 'src/app/shared.service'
-import {Book} from "../../models/book";
+import {Author} from "../../models/author";
 
 
 @Component({
@@ -10,38 +10,35 @@ import {Book} from "../../models/book";
 })
 export class ShowAuthorComponent {
 
-  selectedBook: Book = new Book;
   editMode:boolean = false;
   addMode:boolean = false;
 
-
-  @Input() bookList!:Book[];
+  @Input() list!:Author[];
   @Input() filterFor!:string;
 
-  @Output() onViewBook: EventEmitter<Book> = new EventEmitter();
-  @Output() onEditBook: EventEmitter<Book> = new EventEmitter();
-  @Output() onAddBook: EventEmitter<Book> = new EventEmitter();
+  @Output() onView: EventEmitter<Author> = new EventEmitter();
+  @Output() onEdit: EventEmitter<Author> = new EventEmitter();
+  @Output() onAdd: EventEmitter<Author> = new EventEmitter();
 
   constructor(private service:SharedService){}
 
   ngOnInit(): void{}
 
   //continue to pass this to grandparent of book-card
-  editBook(book: Book) {
-    this.onEditBook.emit(book);
+  edit(author: Author) {
+    this.onEdit.emit(author);
   }
 
   //continue to pass this to grandparent of book-card
-  viewBook(book: any) {
-    this.onViewBook.emit(book);
+  view(author: any) {
+    this.onView.emit(author);
   }
 
-  deleteBook(book: Book) {
+  delete(author: Author) {
     if(confirm('Are you sure?')){
       //TODO: filter the deleted book out so you don't have to refresh
-      this.service.deleteBook(book).subscribe()
+      this.service.deleteAuthor(author).subscribe()
     }
   }
-
 
 }

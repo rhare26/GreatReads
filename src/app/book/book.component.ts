@@ -16,8 +16,9 @@ export class BookComponent {
   readonly VIEW:number=1;
   readonly EDIT:number=2;
   readonly ADD:number=3;
-  selectedBook: Book= new Book;
-  bookList: Book[] = [];
+
+  selected: Book= new Book;
+  list: Book[] = [];
   mode:number = 0;
   searchInput:string = ""
 
@@ -28,24 +29,24 @@ export class BookComponent {
   }
 
   edit(book:Book) {
-    this.selectedBook = book;
+    this.selected = book;
     this.mode=EDIT;
   }
 
   view(book: Book) {
-    this.selectedBook = book;
+    this.selected = book;
     this.mode=VIEW;
   }
 
   // TODO: make add-book component
-  addBook() {
-    this.selectedBook = new Book;
+  add() {
+    this.selected = new Book;
     this.mode=ADD;
   }
 
   refreshBookList(){
     this.service.getBookList().subscribe(data=>{
-      this.bookList=data;
+      this.list=data;
     });
   }
 

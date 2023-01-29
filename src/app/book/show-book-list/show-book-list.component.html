@@ -1,5 +1,5 @@
 <!-- List of books -->
-<mat-list *ngFor="let book of bookList | search:filterFor">
+<mat-list *ngFor="let book of list | searchBooks:filterFor">
   <app-book-card [book]="book"
                  (onView)="view(book)"
                  (onEdit)="edit(book)"

@@ -9,12 +9,11 @@ import { Book } from "../../models/book";
 })
 export class ShowBookListComponent {
 
-  selectedBook: Book = new Book;
   editMode:boolean = false;
   addMode:boolean = false;
 
 
-  @Input() bookList!:Book[];
+  @Input() list!:Book[];
   @Input() filterFor!:string;
 
   @Output() onView: EventEmitter<Book> = new EventEmitter();

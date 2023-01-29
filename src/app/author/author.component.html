@@ -1,0 +1,45 @@
+
+
+<div class="left-panel">
+  <!-- Button to add a new book -->
+  <button mat-fab color="primary" (click)="add()">
+    <mat-icon>add</mat-icon>
+  </button>
+
+  <!-- Search bar -->
+  <mat-form-field [style.width.px]=450>
+    <input  type="string"  matInput
+            placeholder="Enter title or author"
+            name= "search" [(ngModel)]= "searchInput">
+    <button matPrefix mat-button ><mat-icon >search</mat-icon></button>
+  </mat-form-field>
+
+  <!-- List all books -->
+  <div class="scroll-list">
+    <app-show-author
+      [list]="list"
+      [filterFor]="searchInput"
+      (onEdit)="edit($event)"
+      (onView)="view($event)">
+    </app-show-author>
+  </div>
+
+</div>
+
+<!-- Add, edit, or view a book -->
+<div class="right-panel">
+  <app-add-edit-author  *ngIf="mode==EDIT" [author]="selected" [mode]="'Update'"></app-add-edit-author>
+  <app-add-edit-author   *ngIf="mode==ADD" [author]="selected" [mode]="'Add'"></app-add-edit-author>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+

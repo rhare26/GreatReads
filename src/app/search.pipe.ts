@@ -2,12 +2,13 @@
 
 import { Pipe, PipeTransform } from '@angular/core';
 import { Book } from "./models/book";
+import {Author} from "./models/author";
 
 @Pipe({
-  name:'search'
+  name:'searchBooks'
 })
 
-export class SearchPipe implements PipeTransform {
+export class SearchBooks implements PipeTransform {
   transform(books: Book[], searchInput: string): any[]{
     if(!searchInput) {
       return books;
@@ -18,6 +19,25 @@ export class SearchPipe implements PipeTransform {
       b => b.title.toLowerCase().includes(searchInput) ||
         b.author.firstName.toLowerCase().includes(searchInput) ||
         b.author.lastName.toLowerCase().includes(searchInput)
+    )
+
+  }
+}
+
+@Pipe({
+  name:'searchAuthors'
+})
+
+export class SearchAuthors implements PipeTransform {
+  transform(authors: Author[], searchInput: string): any[]{
+    if(!searchInput) {
+      return authors;
+    }
+
+    searchInput = searchInput.toLowerCase();
+    return authors.filter(
+      a =>a.firstName.toLowerCase().includes(searchInput) ||
+        a.lastName.toLowerCase().includes(searchInput)
     )
 
   }

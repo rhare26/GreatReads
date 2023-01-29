@@ -11,7 +11,8 @@ import { ShowAuthorComponent } from './author/show-author/show-author.component'
 import { MyReadComponent } from "./my-read/my-read.component";
 import { AddEditMyReadComponent } from './my-read/add-edit-my-read/add-edit-my-read.component';
 import { SharedService } from './shared.service';
-import { SearchPipe } from './search.pipe'
+import { SearchBooks } from './search.pipe'
+import { SearchAuthors } from './search.pipe'
 
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -47,7 +48,8 @@ import { BookCardComponent } from './book/book-card/book-card.component';
     MyReadComponent,
     AddEditMyReadComponent,
     ShowMyReadComponent,
-    SearchPipe,
+    SearchBooks,
+    SearchAuthors,
     CardComponent,
     BookCardComponent
   ],

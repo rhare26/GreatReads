@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { SharedService } from 'src/app/shared.service';
 
 @Component({
@@ -8,6 +8,7 @@ import { SharedService } from 'src/app/shared.service';
 })
 export class AddEditAuthorComponent {
   @Input() author:any
+  @Input() mode:any
   id:string="";
   firstName:string="";
   lastName:string="";
