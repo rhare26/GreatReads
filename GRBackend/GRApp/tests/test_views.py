@@ -17,10 +17,10 @@ class AuthorTest(TestCase):
     Author.objects.create(firstName='Lemony', lastName='Snicket')
     Author.objects.create(firstName='JK', lastName='Rowling')
 
-    self.base_name = 'book'
+    self.base_name = 'author'
 
   def test_get_list_ok(self):
-    response = client.get(reverse(self.base_name + 'list'))
+    response = client.get(reverse(self.base_name + '-list'))
     items = Author.objects.all()
     serializer = AuthorSerializer(items, many=True)
     self.assertEqual(response.data, serializer.data)
@@ -34,6 +34,6 @@ class AuthorTest(TestCase):
     self.assertEqual(response.status_code, status.HTTP_200_OK)
 
   def test_get_detail_dne(self):
-    response = client.get(reverse(self.base_name + 'detail', args=[4]))
+    response = client.get(reverse(self.base_name + '-detail', args=[4]))
     self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
 
