@@ -5,7 +5,7 @@ from GRApp import views
 
 # Create a router and register our viewsets with it.
 router = DefaultRouter()
-router.register(r'books', views.BookViewSet)
+router.register(r'books', views.BookViewSet, basename='books')
 router.register(r'authors', views.AuthorViewSet)
 router.register(r'myreads', views.MyReadViewSet)
 

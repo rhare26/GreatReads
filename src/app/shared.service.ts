@@ -13,38 +13,35 @@ export class SharedService {
   constructor(private http:HttpClient) { }
 
   getBookList():Observable<any[]>{
-    return this.http.get<any[]>(this.APIUrl + '/book/');
+    return this.http.get<any[]>(this.APIUrl + '/books/');
   }
 
   addBook(newBook:any){
-    return this.http.post<any[]>(this.APIUrl + '/book/', newBook);
+    return this.http.post<any[]>(this.APIUrl + '/books/', newBook);
   }
 
   updateBook(updatedBook:any){
-    return this.http.put<any[]>(this.APIUrl + '/book/' + updatedBook.id, updatedBook);
+    return this.http.put<any[]>(this.APIUrl + '/books/' + updatedBook.id, updatedBook);
   }
 
   deleteBook(bookToDelete:any){
-    return this.http.delete<any[]>(this.APIUrl + '/book/' + bookToDelete.id, bookToDelete);
+    return this.http.delete<any[]>(this.APIUrl + '/books/' + bookToDelete.id, bookToDelete);
   }
 
   getAuthorList():Observable<any[]>{
-    return this.http.get<any[]>(this.APIUrl + '/author/');
+    return this.http.get<any[]>(this.APIUrl + '/authors/');
   }
 
   addAuthor(newAuthor:any){
-    return this.http.post<any[]>(this.APIUrl + '/author/', newAuthor);
+    return this.http.post<any[]>(this.APIUrl + '/authors/', newAuthor);
   }
 
   updateAuthor(editedAuthor:any){
-    return this.http.put<any[]>(this.APIUrl + '/author/' + editedAuthor.id, editedAuthor);
+    return this.http.put<any[]>(this.APIUrl + '/authors/' + editedAuthor.id, editedAuthor);
   }
 
   deleteAuthor(authorToDelete:any){
-    return this.http.delete<any[]>(this.APIUrl + '/author/' + authorToDelete.id, authorToDelete);
+    return this.http.delete<any[]>(this.APIUrl + '/authors/' + authorToDelete.id, authorToDelete);
   }
 
-  UploadPhoto(val:any){
-    return this.http.post(this.APIUrl + '/SaveFile', val)
-  }
 }
