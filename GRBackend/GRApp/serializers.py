@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from GRApp.models import Book, Author, MyBook
+from GRApp.models import Book, Author, MyRead
 
 
 class BookSerializer(serializers.ModelSerializer):
@@ -17,9 +17,9 @@ class BookSerializer(serializers.ModelSerializer):
         return data
 
 
-class MyBookSerializer(serializers.ModelSerializer):
+class MyReadSerializer(serializers.ModelSerializer):
   class Meta:
-    model = MyBook
+    model = MyRead
     fields = '__all__'
 
   def to_representation(self, instance):

@@ -1,16 +1,15 @@
-from django.conf import settings
-from django.urls import re_path as url
+from django.urls import path, include
+from rest_framework.routers import DefaultRouter
+
 from GRApp import views
-from django.conf.urls.static import static
 
-urlpatterns=[
-    url(r'^book/$', views.book_api),
-    url(r'^book/([0-9]+)$', views.book_api),
+# Create a router and register our viewsets with it.
+router = DefaultRouter()
+router.register(r'books', views.BookViewSet)
+router.register(r'authors', views.AuthorViewSet)
+router.register(r'myreads', views.MyReadViewSet)
 
-    url(r'^author/$', views.author_api),
-    url(r'^author/([0-9]+)$', views.author_api),
-
-    url(r'^myBook/$', views.my_book_api),
-    url(r'^myBook/([0-9]+)$', views.my_book_api),
-
-            ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+# The API URLs are now determined automatically by the router.
+urlpatterns = [
+    path('', include(router.urls)),
+]

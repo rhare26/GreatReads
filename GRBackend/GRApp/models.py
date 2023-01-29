@@ -30,8 +30,8 @@ class Book(models.Model):
     def __str__(self):
         return self.title
 
-#todo: rename to MyRead
-class MyBook(models.Model):
+
+class MyRead(models.Model):
   WANT = 'WANT'
   CURRENTLY = 'CURRENTLY'
   ALREADY = 'ALREADY'
