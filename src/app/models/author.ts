@@ -5,4 +5,8 @@ export class Author{
   firstName: string=""
   lastName:string=""
   books:Book[]=[]
+
+  toString(){
+    return this.firstName + ' ' + this.lastName
+  }
 }

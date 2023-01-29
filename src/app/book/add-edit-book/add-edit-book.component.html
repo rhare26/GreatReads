@@ -11,12 +11,11 @@
   <mat-form-field appearance="fill" >
     <mat-label>Author</mat-label>
     <mat-select [(ngModel)]="tempBook.author">
-      <mat-option *ngFor="let author of authorList" >
+      <mat-option *ngFor="let author of authorList" [value]="tempBook.author">
         {{author.firstName}} {{author.lastName}}
       </mat-option>
     </mat-select>
   </mat-form-field>
-
 
   <!-- Genre -->
   <mat-form-field appearance="fill">
@@ -26,6 +25,11 @@
 
 </div>
 
+<!-- Rating -->
+<mat-form-field appearance="fill">
+  <mat-label>Rating</mat-label>
+  <input matInput [(ngModel)]="tempBook.averageRating">
+</mat-form-field>
 
 <!-- Synopsis -->
 <mat-form-field appearance="fill">

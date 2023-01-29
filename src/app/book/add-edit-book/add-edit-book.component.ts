@@ -19,7 +19,6 @@ export class AddEditBookComponent {
 
   ngOnInit(): void{
     this.loadAuthorList();
-
   }
 
   ngOnChanges(): void{

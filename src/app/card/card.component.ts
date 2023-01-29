@@ -11,6 +11,8 @@ export class CardComponent {
   @Input() title!: any;
   @Input() subtitle!: any;
   @Input() content!: any;
+  @Input() contentPrefix?: any;
+
   @Output() onView: EventEmitter<any> = new EventEmitter();
   @Output() onEdit: EventEmitter<any> = new EventEmitter();
   @Output() onDelete: EventEmitter<any> = new EventEmitter();

@@ -10,7 +10,6 @@ import { AddEditAuthorComponent } from './author/add-edit-author/add-edit-author
 import { ShowAuthorComponent } from './author/show-author/show-author.component';
 import { MyReadComponent } from "./my-read/my-read.component";
 import { AddEditMyReadComponent } from './my-read/add-edit-my-read/add-edit-my-read.component';
-import { BookCardComponent } from './book/book-card/book-card.component';
 import { SharedService } from './shared.service';
 import { SearchPipe } from './search.pipe'
 
@@ -47,7 +46,6 @@ import { CardComponent } from './card/card.component';
     MyReadComponent,
     AddEditMyReadComponent,
     ShowMyReadComponent,
-    BookCardComponent,
     SearchPipe,
     CardComponent
   ],

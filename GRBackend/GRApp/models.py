@@ -1,6 +1,6 @@
 from django.db import models
 from django.core.validators import MaxValueValidator, MinValueValidator
-
+import json
 
 class Author(models.Model):
     firstName = models.CharField(max_length=50)
@@ -13,6 +13,7 @@ class Author(models.Model):
 
 class Book(models.Model):
     title = models.CharField(max_length=250)
+
     author = models.ForeignKey(Author, related_name="books", on_delete=models.SET_NULL, null=True)
     genre = models.CharField(max_length=50, null=True)
     synopsis = models.CharField(max_length=350, null=True)

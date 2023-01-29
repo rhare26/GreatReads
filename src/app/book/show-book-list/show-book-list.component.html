@@ -1,11 +1,15 @@
 <!-- List of books -->
 <mat-list *ngFor="let book of bookList | search:filterFor">
-  <app-book-card
-    [book]="book"
-    (onViewBook)="viewBook(book)"
-    (onEditBook)="editBook(book)"
-    (onDeleteBook)="deleteBook(book)"
-  ></app-book-card>
+  <app-card
+    [item]="book"
+    [title]="book.title"
+    [subtitle]="book.author.firstName + ' ' + book.author.lastName"
+    [contentPrefix]="book.genre"
+    [content]="book.synopsis"
+    (onView)="viewBook(book)"
+    (onEdit)="editBook(book)"
+    (onDelete)="deleteBook(book)"
+  ></app-card>
 </mat-list>
 
 

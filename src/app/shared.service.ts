@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import {Book} from "./models/book";
 
 @Injectable({
   providedIn: 'root'
@@ -23,11 +24,13 @@ export class SharedService {
   }
 
   updateBook(updatedBook:any){
-    return this.http.put<any[]>(this.APIUrl + this.bookUrl + updatedBook.id, updatedBook);
+    let bookWithAuthorAsInt:any = Book.copy(updatedBook)
+    bookWithAuthorAsInt.author = bookWithAuthorAsInt.author.id
+    return this.http.patch<any[]>(this.APIUrl + this.bookUrl + bookWithAuthorAsInt.id + '/', bookWithAuthorAsInt);
   }
 
   deleteBook(bookToDelete:any){
-    return this.http.delete<any[]>(this.APIUrl + this.bookUrl + bookToDelete.id, bookToDelete);
+    return this.http.delete<any[]>(this.APIUrl + this.bookUrl + bookToDelete.id + '/', bookToDelete);
   }
 
   getAuthorList():Observable<any[]>{
@@ -35,15 +38,15 @@ export class SharedService {
   }
 
   addAuthor(newAuthor:any){
-    return this.http.post<any[]>(this.APIUrl + this.authorUrl, newAuthor);
+    return this.http.post<any[]>(this.APIUrl + this.authorUrl + '/', newAuthor);
   }
 
   updateAuthor(editedAuthor:any){
-    return this.http.put<any[]>(this.APIUrl + this.authorUrl + editedAuthor.id, editedAuthor);
+    return this.http.patch<any[]>(this.APIUrl + this.authorUrl + editedAuthor.id + '/', editedAuthor);
   }
 
   deleteAuthor(authorToDelete:any){
-    return this.http.delete<any[]>(this.APIUrl + this.authorUrl + authorToDelete.id, authorToDelete);
+    return this.http.delete<any[]>(this.APIUrl + this.authorUrl + authorToDelete.id + '/', authorToDelete);
   }
 
 }
