@@ -8,39 +8,42 @@ import { Observable } from 'rxjs';
 
 export class SharedService {
   readonly APIUrl = 'http://127.0.0.1:8000';
+  readonly bookUrl = '/book/'
+  readonly authorUrl = '/author/'
+  readonly myReadUrl = '/myRead/'
 
   constructor(private http:HttpClient) { }
 
   getBookList():Observable<any[]>{
-    return this.http.get<any[]>(this.APIUrl + '/book/');
+    return this.http.get<any[]>(this.APIUrl + this.bookUrl);
   }
 
   addBook(newBook:any){
-    return this.http.post<any[]>(this.APIUrl + '/book/', newBook);
+    return this.http.post<any[]>(this.APIUrl + this.bookUrl, newBook);
   }
 
   updateBook(updatedBook:any){
-    return this.http.put<any[]>(this.APIUrl + '/book/' + updatedBook.id, updatedBook);
+    return this.http.put<any[]>(this.APIUrl + this.bookUrl + updatedBook.id, updatedBook);
   }
 
   deleteBook(bookToDelete:any){
-    return this.http.delete<any[]>(this.APIUrl + '/book/' + bookToDelete.id, bookToDelete);
+    return this.http.delete<any[]>(this.APIUrl + this.bookUrl + bookToDelete.id, bookToDelete);
   }
 
   getAuthorList():Observable<any[]>{
-    return this.http.get<any[]>(this.APIUrl + '/author/');
+    return this.http.get<any[]>(this.APIUrl + this.authorUrl);
   }
 
   addAuthor(newAuthor:any){
-    return this.http.post<any[]>(this.APIUrl + '/author/', newAuthor);
+    return this.http.post<any[]>(this.APIUrl + this.authorUrl, newAuthor);
   }
 
   updateAuthor(editedAuthor:any){
-    return this.http.put<any[]>(this.APIUrl + '/author/' + editedAuthor.id, editedAuthor);
+    return this.http.put<any[]>(this.APIUrl + this.authorUrl + editedAuthor.id, editedAuthor);
   }
 
   deleteAuthor(authorToDelete:any){
-    return this.http.delete<any[]>(this.APIUrl + '/author/' + authorToDelete.id, authorToDelete);
+    return this.http.delete<any[]>(this.APIUrl + this.authorUrl + authorToDelete.id, authorToDelete);
   }
 
 }

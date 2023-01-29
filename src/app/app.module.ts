@@ -33,6 +33,7 @@ import {MatTableModule} from "@angular/material/table";
 import {MatDialogModule} from "@angular/material/dialog";
 import {MatSidenavModule} from "@angular/material/sidenav";
 import {MatExpansionModule} from "@angular/material/expansion";
+import { CardComponent } from './card/card.component';
 
 @NgModule({
   declarations: [
@@ -47,7 +48,8 @@ import {MatExpansionModule} from "@angular/material/expansion";
     AddEditMyReadComponent,
     ShowMyReadComponent,
     BookCardComponent,
-    SearchPipe
+    SearchPipe,
+    CardComponent
   ],
     imports: [
         BrowserModule,

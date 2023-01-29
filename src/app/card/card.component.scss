@@ -1,0 +1,10 @@
+.container {
+  min-width: 300px;
+  max-width: 450px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.fill {
+  flex:1;
+}
