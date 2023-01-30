@@ -16,11 +16,9 @@
 
   <!-- List all books -->
   <div class="scroll-list">
-    <app-book-list
-      [list]="list"
-      [filterFor]="searchInput"
-      (onView)="view($event)">
-    </app-book-list>
+    <mat-list *ngFor="let book of list | SearchBooksByTitleAuthor:searchInput">
+      <app-book-card [book]="book"></app-book-card>
+    </mat-list>
   </div>
 
 </div>

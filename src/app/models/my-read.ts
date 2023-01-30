@@ -1,6 +1,7 @@
 import {Book} from "./book";
 
-export class MyRad{
+// Has default values to create new objects easily
+export class MyRead{
   id: number=0;
   book: Book = new Book;
   status: string=""

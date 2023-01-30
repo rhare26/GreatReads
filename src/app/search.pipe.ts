@@ -5,10 +5,10 @@ import { Book } from "./models/book";
 import {Author} from "./models/author";
 
 @Pipe({
-  name:'searchBooks'
+  name:'SearchBooksByTitleAuthor'
 })
 
-export class SearchBooks implements PipeTransform {
+export class SearchBooksByTitleAuthor implements PipeTransform {
   transform(books: Book[], searchInput: string): any[]{
     if(!searchInput) {
       return books;

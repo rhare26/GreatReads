@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import {map, Observable, Subject} from 'rxjs';
-import {Book} from "./models/book";
 
 @Injectable({
   providedIn: 'root'
@@ -25,22 +24,28 @@ export class SharedService {
     return this.booksSubject.asObservable();
   }
 
+  sendUpdatedAuthorListNotification(value:any){
+    this.booksSubject.next({text:value})
+  }
+
+  getUpdatedAuthorListNotification(){
+    return this.booksSubject.asObservable();
+  }
+
   getBookList():Observable<any[]>{
     return this.http.get<any[]>(this.APIUrl + this.bookUrl);
   }
 
-  addBook(newBook:any){
-    return this.http.post<any[]>(this.APIUrl + this.bookUrl, newBook).pipe(
+  addBook(book:any){
+    return this.http.post<any[]>(this.APIUrl + this.bookUrl, book).pipe(
       map((data=>{
         this.sendUpdatedBookListNotification(true);
       }))
     );
   }
 
-  updateBook(updatedBook:any){
-    let bookWithAuthorAsInt:any = Book.copy(updatedBook)
-    bookWithAuthorAsInt.author = bookWithAuthorAsInt.author.id
-    return this.http.patch<any[]>(this.APIUrl + this.bookUrl + bookWithAuthorAsInt.id + '/', bookWithAuthorAsInt).pipe(
+  updateBook(book:any){
+    return this.http.patch<any[]>(this.APIUrl + this.bookUrl + book.id + '/', book).pipe(
       map((data=>{
         this.sendUpdatedBookListNotification(true);
       }))
@@ -59,16 +64,28 @@ export class SharedService {
     return this.http.get<any[]>(this.APIUrl + this.authorUrl);
   }
 
-  addAuthor(newAuthor:any){
-    return this.http.post<any[]>(this.APIUrl + this.authorUrl + '/', newAuthor);
+  addAuthor(author:any){
+    return this.http.post<any[]>(this.APIUrl + this.authorUrl + '/', author).pipe(
+      map((data=>{
+        this.sendUpdatedAuthorListNotification(true);
+      }))
+    );
   }
 
-  updateAuthor(editedAuthor:any){
-    return this.http.patch<any[]>(this.APIUrl + this.authorUrl + editedAuthor.id + '/', editedAuthor);
+  updateAuthor(author:any){
+    return this.http.patch<any[]>(this.APIUrl + this.authorUrl + author.id + '/', author).pipe(
+      map((data=>{
+        this.sendUpdatedAuthorListNotification(true);
+      }))
+    );
   }
 
-  deleteAuthor(authorToDelete:any){
-    return this.http.delete<any[]>(this.APIUrl + this.authorUrl + authorToDelete.id + '/', authorToDelete);
+  deleteAuthor(author:any){
+    return this.http.delete<any[]>(this.APIUrl + this.authorUrl + author.id + '/', author).pipe(
+      map((data=>{
+        this.sendUpdatedAuthorListNotification(true);
+      }))
+    );
   }
 
 }

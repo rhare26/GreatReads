@@ -12,11 +12,6 @@ import {Subscription} from "rxjs";
 })
 
 export class BooksPageComponent {
-  readonly VIEW:number=1;
-  readonly EDIT:number=2;
-  readonly ADD:number=3;
-
-  selected: Book= new Book;
   list: Book[] = []
   subscription: Subscription;
   searchInput:string = ""
@@ -42,8 +37,7 @@ export class BooksPageComponent {
     this.subscription.unsubscribe();
   }
 
-  view(book: Book) {
-    this.selected = book;
+  view() {
     // TODO: view book page
   }
 

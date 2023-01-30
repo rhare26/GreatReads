@@ -1,6 +1,6 @@
-
 <h1 mat-dialog-title>{{data.mode}} Book</h1>
 <mat-dialog-content>
+
   <!-- Title -->
   <mat-form-field appearance="fill">
     <mat-label>Title</mat-label>
@@ -10,8 +10,8 @@
   <!-- Author -->
   <mat-form-field appearance="fill" >
     <mat-label>Author</mat-label>
-    <mat-select [(ngModel)]="tempBook.author">
-      <mat-option *ngFor="let author of authorList" [value]="tempBook.author">
+    <mat-select [(value)]="tempBook.author.id">
+      <mat-option *ngFor="let author of authorList" [value]="author.id">
         {{author.firstName}} {{author.lastName}}
       </mat-option>
     </mat-select>
@@ -23,22 +23,21 @@
     <input matInput [(ngModel)]="tempBook.genre">
   </mat-form-field>
 
+  <!-- Rating -->
+  <mat-form-field appearance="fill">
+    <mat-label>Rating</mat-label>
+    <input matInput [(ngModel)]="tempBook.averageRating">
+  </mat-form-field>
 
+  <!-- Synopsis -->
+  <mat-form-field appearance="fill">
+    <mat-label>Synopsis</mat-label>
+    <textarea matInput [(ngModel)]="tempBook.synopsis"></textarea>
+  </mat-form-field>
 
-<!-- Rating -->
-<mat-form-field appearance="fill">
-  <mat-label>Rating</mat-label>
-  <input matInput [(ngModel)]="tempBook.averageRating">
-</mat-form-field>
-
-<!-- Synopsis -->
-<mat-form-field appearance="fill">
-  <mat-label>Synopsis</mat-label>
-  <textarea matInput [(ngModel)]="tempBook.synopsis"></textarea>
-</mat-form-field>
+</mat-dialog-content>
 
 <!-- Cancel and Add/Update Button -->
-</mat-dialog-content>
 <mat-dialog-actions align="end">
   <button mat-button [mat-dialog-close]="true">Cancel</button>
   <button mat-button (click)="addOrUpdate()" [mat-dialog-close]="true">Submit</button>

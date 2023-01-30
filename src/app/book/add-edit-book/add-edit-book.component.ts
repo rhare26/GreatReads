@@ -12,15 +12,14 @@ import {MAT_DIALOG_DATA} from "@angular/material/dialog";
 
 export class AddEditBookComponent {
   authorList: Author[]=[];
-  tempBook: Book = new Book;
-
+  tempBook?:any;
 
   constructor(private service:SharedService, @Inject(MAT_DIALOG_DATA) public data: {book: Book, mode:string}){}
 
   ngOnInit(): void{
     this.loadAuthorList();
     //makes a copy of the inputted book (for add mode, this will be empty)
-    this.tempBook = Book.copy(this.data.book);
+    this.tempBook = JSON.parse(JSON.stringify(this.data.book));
   }
 
   loadAuthorList(){
@@ -31,7 +30,10 @@ export class AddEditBookComponent {
   }
 
   addOrUpdate() {
-    // Primary key will be zero if a blank, new book was injected
+    //patch and post requests need author as a primary key instead of entire object
+    this.tempBook.author = this.tempBook.author.id
+
+    // Primary key will be zero if a blank/new book was injected
     if(this.data.book.id==0){
       this.service.addBook(this.tempBook).subscribe()
     }
