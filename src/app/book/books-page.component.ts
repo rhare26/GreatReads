@@ -33,12 +33,12 @@ export class BooksPageComponent {
     this.mode=EDIT;
   }
 
+  // TODO: view book page
   view(book: Book) {
     this.selected = book;
     this.mode=VIEW;
   }
 
-  // TODO: make add-book component
   add() {
     this.selected = new Book;
     this.mode=ADD;
