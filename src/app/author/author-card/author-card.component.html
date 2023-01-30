@@ -1,0 +1,11 @@
+<app-card
+  [item]="author"
+  [title]="author.firstName + ' ' + author.lastName"
+  [subtitle]=""
+  [contentPrefix]=""
+  [content]=""
+  (onView)="view(author)"
+  (onEdit)="openEditAuthorDialog()"
+  (onDelete)="delete(author)"
+></app-card>
+

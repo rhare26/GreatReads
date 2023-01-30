@@ -1,0 +1,35 @@
+<h1 mat-dialog-title>{{data.mode}} Author</h1>
+<mat-dialog-content>
+
+  <!-- First Name -->
+  <mat-form-field appearance="fill">
+    <mat-label>First Name</mat-label>
+    <input matInput [(ngModel)]="tempAuthor.firstName">
+  </mat-form-field>
+
+  <!-- Last Name -->
+  <mat-form-field appearance="fill">
+    <mat-label>Last Name</mat-label>
+    <input matInput [(ngModel)]="tempAuthor.lastName">
+  </mat-form-field>
+
+  <!-- Bio -->
+  <mat-form-field appearance="fill">
+    <mat-label>Bio</mat-label>
+    <textarea matInput [(ngModel)]="tempAuthor.bio"></textarea>
+  </mat-form-field>
+
+
+</mat-dialog-content>
+
+<!-- Cancel and Add/Update Button -->
+<mat-dialog-actions align="end">
+  <button mat-button [mat-dialog-close]="true">Cancel</button>
+  <button mat-button (click)="addOrUpdate()" [mat-dialog-close]="true">Submit</button>
+</mat-dialog-actions>
+
+
+
+
+
+
