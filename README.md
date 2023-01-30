@@ -3,7 +3,7 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 ## Acknowledgments
 For setting up the project structure                      https://www.youtube.com/watch?v=1Hc7KlLiU9w
-For frontend components, @Input, @Output, & EventEmitter  https://www.youtube.com/watch?v=3dHNOWTI7H8
+
 For search function on frontend                           https://plainenglish.io/blog/how-to-implement-an-instant-search-functionality-in-angular-e0c0a1e97502
 
 
