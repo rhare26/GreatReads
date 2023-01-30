@@ -14,15 +14,15 @@ export class AppComponent {
     this.navLinks = [
       {
         label: 'Browse Books',
-        link: './book',
+        link: './browse-books',
         index: 0
       }, {
         label: 'Browse Authors',
-        link: './author',
+        link: './browse-authors',
         index: 1
       }, {
         label: 'My Profile',
-        link: './myread',
+        link: './my-profile',
         index: 2
       },
     ];

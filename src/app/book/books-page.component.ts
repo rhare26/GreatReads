@@ -1,12 +1,12 @@
 import { Component } from '@angular/core';
-import { Book } from "../models/book";
+import { Book } from "../utility/models/book";
 import { SharedService } from "../shared.service";
 import {AddEditBookComponent} from "./add-edit-book/add-edit-book.component";
 import {MatDialog} from "@angular/material/dialog";
 import {Subscription} from "rxjs";
 
 @Component({
-  selector: 'app-book',
+  selector: 'app-books-page',
   templateUrl: './books-page.component.html',
   styleUrls: ['./books-page.component.css']
 })

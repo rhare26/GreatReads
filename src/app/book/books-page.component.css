@@ -1,6 +1,4 @@
 .search {
-  min-width: 300px;
-  max-width: 450px;
   display: flex;
   justify-content: space-between;
 }
@@ -12,9 +10,8 @@
   height: 100%;
   padding-left:20px;
   padding-right:20px;
+  overflow-y:scroll;
 }
-
-
 
 .scroll-list{
   height: 100%;

@@ -3,8 +3,8 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { SharedService } from './shared.service';
-import { SearchBooksByTitleAuthor } from './search.pipe'
-import { SearchAuthors } from './search.pipe'
+import { SearchBooksByTitleAuthor } from './utility/search.pipe'
+import { SearchAuthors } from './utility/search.pipe'
 
 import { BooksPageComponent } from './book/books-page.component';
 import { AddEditBookComponent } from './book/add-edit-book/add-edit-book.component';
@@ -31,8 +31,11 @@ import { MatTableModule } from "@angular/material/table";
 import { MatDialogModule } from "@angular/material/dialog";
 import { MatSidenavModule } from "@angular/material/sidenav";
 import { MatExpansionModule } from "@angular/material/expansion";
-import { CardComponent } from './card/card.component';
+import { CardComponent } from './utility/card/card.component';
 import { BookCardComponent } from './book/book-card/book-card.component';
+import { AuthorsPageComponent } from './author/authors-page.component';
+import { AuthorCardComponent } from './author/author-card/author-card.component';
+import { AddEditAuthorComponent } from './author/add-edit-author/add-edit-author.component';
 
 @NgModule({
   declarations: [
@@ -45,7 +48,10 @@ import { BookCardComponent } from './book/book-card/book-card.component';
     SearchBooksByTitleAuthor,
     SearchAuthors,
     CardComponent,
-    BookCardComponent
+    BookCardComponent,
+    AuthorsPageComponent,
+    AuthorCardComponent,
+    AddEditAuthorComponent
   ],
     imports: [
         BrowserModule,

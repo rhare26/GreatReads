@@ -1,5 +1,5 @@
 import {Component, EventEmitter, Input, Output} from '@angular/core';
-import {Book} from "../../models/book";
+import {Book} from "../../utility/models/book";
 import {AddEditBookComponent} from "../add-edit-book/add-edit-book.component";
 import {MatDialog} from "@angular/material/dialog";
 import {SharedService} from "../../shared.service";
@@ -16,8 +16,8 @@ export class BookCardComponent {
 
   constructor(private service: SharedService, public dialog: MatDialog) {}
 
-  view(book: any) {
-    this.onView.emit(book);
+  view() {
+    // TODO: view book
   }
 
   openEditBookDialog(){
@@ -26,7 +26,6 @@ export class BookCardComponent {
 
   delete(book: Book) {
     if(confirm('Are you sure?')){
-      //TODO: filter the deleted book out so you don't have to refresh
       this.service.deleteBook(book).subscribe()
     }
   }

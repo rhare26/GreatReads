@@ -1,7 +1,7 @@
 <div class="panel">
 
-  <!-- Button to add a new book -->
-  <button mat-fab color="primary" (click)="openAddBookDialog()">
+  <!-- Button to add a new author -->
+  <button mat-fab color="primary" (click)="openAddAuthorDialog()">
     <mat-icon>add</mat-icon>
   </button>
 
@@ -13,25 +13,11 @@
     <button matPrefix mat-button ><mat-icon >search</mat-icon></button>
   </mat-form-field>
 
-  <!-- List all books -->
+  <!-- List all author -->
   <div class="scroll-list">
-    <mat-list *ngFor="let book of list | SearchBooksByTitleAuthor:searchInput">
-      <app-book-card [book]="book"></app-book-card>
+    <mat-list *ngFor="let author of list | SearchAuthors:searchInput">
+      <app-author-card [author]="author"></app-author-card>
     </mat-list>
   </div>
 
 </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-

@@ -25,7 +25,7 @@ export class SearchBooksByTitleAuthor implements PipeTransform {
 }
 
 @Pipe({
-  name:'searchAuthors'
+  name:'SearchAuthors'
 })
 
 export class SearchAuthors implements PipeTransform {

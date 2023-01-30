@@ -1,7 +1,7 @@
 import {Component, Inject} from '@angular/core';
 import { SharedService } from 'src/app/shared.service';
-import {Book} from "../../models/book";
-import {Author} from "../../models/author";
+import {Book} from "../../utility/models/book";
+import {Author} from "../../utility/models/author";
 import {MAT_DIALOG_DATA} from "@angular/material/dialog";
 
 @Component({
@@ -41,6 +41,5 @@ export class AddEditBookComponent {
     else{
       this.service.updateBook(this.tempBook).subscribe()
     }
-
   }
 }
