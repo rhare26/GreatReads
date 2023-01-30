@@ -1,11 +1,11 @@
 
 <mat-toolbar color="primary" style="padding-top: 15px;padding-bottom: 5px;">
-  <span style="font-size:50px;">
+  <span style="font-size:50px;padding-bottom:15px;padding-top:15px">
     {{title}}
   </span>
 </mat-toolbar>
 
-<nav mat-tab-nav-bar [tabPanel]="tabPanel" color="primary">
+<nav mat-tab-nav-bar [tabPanel]="tabPanel"  style="width:700px;">
   <a mat-tab-link
      *ngFor="let link of navLinks"
      [routerLink]="link.link"
@@ -17,7 +17,10 @@
 
 <div class="left-panel">
   News feed here.
+  <mat-divider [vertical]="true"></mat-divider>
 </div>
+
+
 
 <mat-tab-nav-panel #tabPanel>
   <router-outlet></router-outlet>

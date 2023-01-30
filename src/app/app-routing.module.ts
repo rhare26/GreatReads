@@ -4,13 +4,12 @@ import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
 
 import { BooksPageComponent } from './book/books-page.component'
-import { MyReadComponent } from "./my-read/my-read.component";
 import { AuthorsPageComponent } from "./author/authors-page.component";
 
 const routes: Routes = [
   {path:'browse-books', component:BooksPageComponent},
   {path:'browse-authors', component:AuthorsPageComponent},
-  {path:'my-profile', component:MyReadComponent}
+  //{path:'my-profile', component:MyReadComponent}
 ]
 
 @NgModule({

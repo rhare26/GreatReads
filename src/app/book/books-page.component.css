@@ -12,6 +12,11 @@
   padding-right:20px;
   overflow-y:scroll;
 }
+.add-button{
+  position:absolute;
+  right:30px;
+  bottom:30px;
+}
 
 .scroll-list{
   height: 100%;
