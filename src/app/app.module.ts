@@ -2,9 +2,9 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
-import { BookComponent } from './book/book.component';
+import { BooksPageComponent } from './book/books-page.component';
 import { AuthorComponent } from './author/author.component';
-import { ShowBookListComponent } from './book/show-book-list/show-book-list.component';
+import { BookListComponent } from './book/book-list/book-list.component';
 import { AddEditBookComponent } from './book/add-edit-book/add-edit-book.component';
 import { AddEditAuthorComponent } from './author/add-edit-author/add-edit-author.component';
 import { ShowAuthorComponent } from './author/show-author/show-author.component';
@@ -39,9 +39,9 @@ import { BookCardComponent } from './book/book-card/book-card.component';
 @NgModule({
   declarations: [
     AppComponent,
-    BookComponent,
+    BooksPageComponent,
     AuthorComponent,
-    ShowBookListComponent,
+    BookListComponent,
     AddEditBookComponent,
     AddEditAuthorComponent,
     ShowAuthorComponent,

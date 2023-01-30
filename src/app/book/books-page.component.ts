@@ -8,11 +8,11 @@ const ADD:number=3;
 
 @Component({
   selector: 'app-book',
-  templateUrl: './book.component.html',
-  styleUrls: ['./book.component.css']
+  templateUrl: './books-page.component.html',
+  styleUrls: ['./books-page.component.css']
 })
 
-export class BookComponent {
+export class BooksPageComponent {
   readonly VIEW:number=1;
   readonly EDIT:number=2;
   readonly ADD:number=3;

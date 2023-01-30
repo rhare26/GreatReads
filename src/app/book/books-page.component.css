@@ -5,14 +5,16 @@
   justify-content: space-between;
 }
 
-.left-panel{
+.panel{
+  min-width: 300px;
+  max-width: 450px;
   float:left;
   height: 100%;
   padding-left:20px;
   padding-right:20px;
 }
 
-.right-panel{
+.side-panel{
 
   height: 100%;
   display: flex;

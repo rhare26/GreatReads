@@ -3,11 +3,11 @@ import { SharedService } from 'src/app/shared.service'
 import { Book } from "../../models/book";
 
 @Component({
-  selector: 'app-show-book-list',
-  templateUrl: './show-book-list.component.html',
-  styleUrls: ['./show-book-list.component.css']
+  selector: 'app-book-list',
+  templateUrl: './book-list.component.html',
+  styleUrls: ['./book-list.component.css']
 })
-export class ShowBookListComponent {
+export class BookListComponent {
 
   editMode:boolean = false;
   addMode:boolean = false;
