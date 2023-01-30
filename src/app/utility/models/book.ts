@@ -3,6 +3,7 @@ import {Author} from "./author";
 // Has default values to create new objects easily
 export class Book{
   id: number=0;
+  image:string="";
   title: string="";
   author: Author = new Author;
   genre:string="";

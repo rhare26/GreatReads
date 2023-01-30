@@ -1,8 +1,6 @@
 import {Component, EventEmitter, Input, Output} from '@angular/core';
-import {Book} from "../../utility/models/book";
 import {SharedService} from "../../shared.service";
 import {MatDialog} from "@angular/material/dialog";
-import {AddEditBookComponent} from "../../book/add-edit-book/add-edit-book.component";
 import {Author} from "../../utility/models/author";
 import {AddEditAuthorComponent} from "../add-edit-author/add-edit-author.component";
 
@@ -18,7 +16,7 @@ export class AuthorCardComponent {
 
   constructor(private service: SharedService, public dialog: MatDialog) {}
 
-  view(author: any) {
+  view() {
     // TODO: view author
   }
 
@@ -26,9 +24,9 @@ export class AuthorCardComponent {
     this.dialog.open(AddEditAuthorComponent, {data:{author:this.author, mode:"Edit"}});
   }
 
-  delete(author: Author) {
+  delete() {
     if(confirm('Are you sure?')){
-      this.service.deleteAuthor(author).subscribe()
+      this.service.deleteAuthor(this.author).subscribe()
     }
   }
 }

@@ -7,7 +7,7 @@ import {Component, EventEmitter, Input, Output} from '@angular/core';
 })
 export class CardComponent {
 
-  @Input() item!: any;
+  @Input() image!: any;
   @Input() title!: any;
   @Input() subtitle!: any;
   @Input() content!: any;
@@ -23,14 +23,14 @@ export class CardComponent {
   ngOnInit(): void{}
 
   editClick() {
-    this.onEdit.emit(this.item);
+    this.onEdit.emit();
   }
 
   deleteClick() {
-    this.onDelete.emit(this.item);
+    this.onDelete.emit();
   }
 
   viewClick() {
-    this.onView.emit(this.item);
+    this.onView.emit();
   }
 }

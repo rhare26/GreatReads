@@ -24,9 +24,9 @@ export class BookCardComponent {
     this.dialog.open(AddEditBookComponent, {data:{book:this.book, mode:"Edit"}});
   }
 
-  delete(book: Book) {
+  delete() {
     if(confirm('Are you sure?')){
-      this.service.deleteBook(book).subscribe()
+      this.service.deleteBook(this.book).subscribe()
     }
   }
 }

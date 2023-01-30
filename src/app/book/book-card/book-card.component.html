@@ -1,11 +1,11 @@
 <app-card
-  [item]="book"
   [title]="book.title"
+  [image]="book.image"
   [subtitle]="book.author.firstName + ' ' + book.author.lastName"
   [contentPrefix]="book.genre"
   [content]="book.synopsis"
   (onView)="view()"
   (onEdit)="openEditBookDialog()"
-  (onDelete)="delete(book)"
+  (onDelete)="delete()"
 ></app-card>
 
