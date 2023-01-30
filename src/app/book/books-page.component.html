@@ -2,7 +2,7 @@
 
 <div class="panel">
   <!-- Button to add a new book -->
-  <button mat-fab color="primary" (click)="add()">
+  <button mat-fab color="primary" (click)="openAddBookDialog()">
     <mat-icon>add</mat-icon>
   </button>
 
@@ -19,7 +19,6 @@
     <app-book-list
       [list]="list"
       [filterFor]="searchInput"
-      (onEdit)="edit($event)"
       (onView)="view($event)">
     </app-book-list>
   </div>
@@ -27,10 +26,6 @@
 </div>
 
 
-<!--<div class="side-panel">-->
-<!--  <app-add-edit-book  *ngIf="mode==EDIT" [book]="selected" [mode]="'Update'"></app-add-edit-book>-->
-<!--  <app-add-edit-book  *ngIf="mode==ADD" [book]="selected" [mode]="'Add'"></app-add-edit-book>-->
-<!--</div>-->
 
 
 

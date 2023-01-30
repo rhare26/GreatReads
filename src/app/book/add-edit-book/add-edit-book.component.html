@@ -1,6 +1,6 @@
 
-<mat-header-row>{{mode}}</mat-header-row>
-<div>
+<h1 mat-dialog-title>{{data.mode}} Book</h1>
+<mat-dialog-content>
   <!-- Title -->
   <mat-form-field appearance="fill">
     <mat-label>Title</mat-label>
@@ -23,7 +23,7 @@
     <input matInput [(ngModel)]="tempBook.genre">
   </mat-form-field>
 
-</div>
+
 
 <!-- Rating -->
 <mat-form-field appearance="fill">
@@ -37,14 +37,15 @@
   <textarea matInput [(ngModel)]="tempBook.synopsis"></textarea>
 </mat-form-field>
 
-<!-- Add Button -->
-<button mat-button (click)="add()" *ngIf="book.id==0" class="btn btn-primary">
-  Add
-</button>
+<!-- Cancel and Add/Update Button -->
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button [mat-dialog-close]="true">Cancel</button>
+  <button mat-button (click)="addOrUpdate()" [mat-dialog-close]="true">Submit</button>
+</mat-dialog-actions>
 
-<button mat-button (click)="edit()" *ngIf="book.id!=0" class="btn btn-primary">
-  Update
-</button>
+
+
 
 
 

@@ -1,10 +1,9 @@
 import { Component } from '@angular/core';
 import { Book } from "../models/book";
 import { SharedService } from "../shared.service";
-
-const VIEW:number=1;
-const EDIT:number=2;
-const ADD:number=3;
+import {AddEditBookComponent} from "./add-edit-book/add-edit-book.component";
+import {MatDialog} from "@angular/material/dialog";
+import {Subscription} from "rxjs";
 
 @Component({
   selector: 'app-book',
@@ -18,36 +17,45 @@ export class BooksPageComponent {
   readonly ADD:number=3;
 
   selected: Book= new Book;
-  list: Book[] = [];
-  mode:number = 0;
+  list: Book[] = []
+  subscription: Subscription;
   searchInput:string = ""
 
-  constructor(private service:SharedService){}
+  constructor(private service:SharedService, public dialog: MatDialog){
+    this.subscription=this.service.getUpdatedBookListNotification().subscribe(list=>{
+      if(list)
+      {
+        this.refreshBookList();
+      }
+    });
+  }
 
   ngOnInit(): void{
     this.refreshBookList();
   }
 
-  edit(book:Book) {
-    this.selected = book;
-    this.mode=EDIT;
+  ngOnChanges(): void{
+    this.refreshBookList();
   }
 
-  // TODO: view book page
+  ngOnDestroy(){
+    this.subscription.unsubscribe();
+  }
+
   view(book: Book) {
     this.selected = book;
-    this.mode=VIEW;
-  }
-
-  add() {
-    this.selected = new Book;
-    this.mode=ADD;
+    // TODO: view book page
   }
 
   refreshBookList(){
     this.service.getBookList().subscribe(data=>{
       this.list=data;
     });
+  }
+
+  openAddBookDialog() {
+    // Dialog requires a book for data, create a new one for it to update
+    this.dialog.open(AddEditBookComponent, {data:{book:new Book, mode:"Add"}});
   }
 
 }

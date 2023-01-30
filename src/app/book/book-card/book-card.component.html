@@ -5,6 +5,7 @@
   [contentPrefix]="book.genre"
   [content]="book.synopsis"
   (onView)="view(book)"
-  (onEdit)="edit(book)"
+  (onEdit)="openEditBookDialog()"
   (onDelete)="delete(book)"
 ></app-card>
+
