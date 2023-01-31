@@ -75,7 +75,7 @@ import {AuthService} from "./auth.service";
         MatSidenavModule,
         MatExpansionModule,
         MatDividerModule,
-        MatRadioModule
+        MatRadioModule,
     ],
   providers: [SharedService, AuthService],
   bootstrap: [AppComponent]
