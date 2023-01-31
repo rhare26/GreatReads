@@ -16,7 +16,7 @@ import { BooksPageComponent } from './book/books-page.component';
 import { BookCardComponent } from './book/book-card/book-card.component';
 import { AddEditBookComponent } from './book/add-edit-book/add-edit-book.component';
 
-import { HttpClientModule } from '@angular/common/http';
+import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { RouterModule } from '@angular/router';
@@ -38,6 +38,7 @@ import { MatDividerModule } from "@angular/material/divider";
 import { LoginComponent } from './login/login.component';
 import {MatRadioModule} from "@angular/material/radio";
 import {AuthService} from "./auth.service";
+import { TokenInterceptor } from './TokenInterceptor';
 
 @NgModule({
   declarations: [
@@ -77,7 +78,11 @@ import {AuthService} from "./auth.service";
         MatDividerModule,
         MatRadioModule,
     ],
-  providers: [SharedService, AuthService],
+  providers: [SharedService, AuthService, {
+    provide: HTTP_INTERCEPTORS,
+    useClass: TokenInterceptor,
+    multi: true
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

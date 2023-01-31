@@ -1,6 +1,6 @@
 from django.contrib.auth import authenticate
 from rest_framework.decorators import permission_classes
-from rest_framework.permissions import AllowAny
+from rest_framework.permissions import AllowAny, IsAuthenticated
 from rest_framework.request import Request
 from rest_framework.response import Response
 from rest_framework.views import APIView
@@ -11,21 +11,21 @@ from GRApp.serializers import BookSerializer, AuthorSerializer, MyReadSerializer
 from .tokens import create_jwt_pair_for_user
 
 
-@permission_classes([AllowAny])
+@permission_classes([IsAuthenticated])
 class GetBookViewSet(viewsets.ModelViewSet):
   http_method_names=['get']
 
   queryset = Book.objects.all()
   serializer_class = BookSerializer
 
-@permission_classes([AllowAny])
+@permission_classes([IsAuthenticated])
 class GetAuthorViewSet(viewsets.ModelViewSet):
   http_method_names = ['get']
 
   queryset = Author.objects.all()
   serializer_class = AuthorSerializer
 
-
+@permission_classes([IsAuthenticated])
 class GetMyReadViewSet(viewsets.ModelViewSet):
   http_method_names = ['get']
 
@@ -33,14 +33,14 @@ class GetMyReadViewSet(viewsets.ModelViewSet):
   serializer_class = MyReadSerializer
 
 
-@permission_classes([AllowAny])
+@permission_classes([IsAuthenticated])
 class EditBookViewSet(viewsets.ModelViewSet):
   http_method_names = ['get', 'post', 'patch', 'put', 'delete']
   queryset = Book.objects.all()
   serializer_class = BookSerializer
 
 
-@permission_classes([AllowAny])
+@permission_classes([IsAuthenticated])
 class EditAuthorViewSet(viewsets.ModelViewSet):
   http_method_names = ['get', 'post', 'patch', 'put', 'delete']
 
@@ -49,10 +49,9 @@ class EditAuthorViewSet(viewsets.ModelViewSet):
 
 
 
-@permission_classes([AllowAny])
+@permission_classes([IsAuthenticated])
 class EditMyReadViewSet(viewsets.ModelViewSet):
   http_method_names = ['get', 'post', 'patch', 'put', 'delete']
-
   queryset = MyRead.objects.all()
   serializer_class = MyReadSerializer
 
