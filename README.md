@@ -8,7 +8,9 @@ For setting up the project structure - https://www.youtube.com/watch?v=1Hc7KlLiU
 
 For search function on frontend - https://plainenglish.io/blog/how-to-implement-an-instant-search-functionality-in-angular-e0c0a1e97502
 
-For authentication on backend - https://www.youtube.com/watch?v=8iiDWPXleIc&list=PLEt8Tae2spYlosWRH9JDpKNxzb3bSOJGx&index=7
+For authentication on backend (series) - https://www.youtube.com/watch?v=8iiDWPXleIc&list=PLEt8Tae2spYlosWRH9JDpKNxzb3bSOJGx&index=7
+
+For authentication on frontend - https://www.youtube.com/watch?v=7G7qzlblJcI
 
 # Frontend Setup
 ## Development server

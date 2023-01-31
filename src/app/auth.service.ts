@@ -12,14 +12,20 @@ export class AuthService {
 
   private _isLoggedIn$ = new BehaviorSubject<boolean>(false)
   isLoggedIn$ = this._isLoggedIn$.asObservable()
-  constructor(private http:HttpClient) { }
+  constructor(private http:HttpClient) {
+    const token = localStorage.getItem('auth')
+    this._isLoggedIn$.next(!!token);
+  }
 
 
   login(form:any){
     return this.http.post<any[]>(this.APIUrl + this.loginUrl, form).pipe(
       tap((response:any)=>{
-        this._isLoggedIn$.next(true)
-        localStorage.setItem('auth', response.tokens.access)
+        if (response.tokens.access){ //if there is a 200 OK response from server
+          this._isLoggedIn$.next(true) //update log in status
+          localStorage.setItem('auth', response.tokens.access) //store token in local storage
+        }
+
       })
     )
   }
