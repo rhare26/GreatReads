@@ -37,6 +37,7 @@ import { MatExpansionModule } from "@angular/material/expansion";
 import { MatDividerModule } from "@angular/material/divider";
 import { LoginComponent } from './login/login.component';
 import {MatRadioModule} from "@angular/material/radio";
+import {AuthService} from "./auth.service";
 
 @NgModule({
   declarations: [
@@ -76,7 +77,7 @@ import {MatRadioModule} from "@angular/material/radio";
         MatDividerModule,
         MatRadioModule
     ],
-  providers: [SharedService],
+  providers: [SharedService, AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
