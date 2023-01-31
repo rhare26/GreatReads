@@ -12,15 +12,24 @@ import {MAT_DIALOG_DATA} from "@angular/material/dialog";
 
 export class AddEditBookComponent {
   authorList: Author[]=[];
-  tempBook?:any;
+  tempBook!:  any
 
-  constructor(private service:SharedService, @Inject(MAT_DIALOG_DATA) public data: {book: Book, mode:string}){}
-
-  ngOnInit(): void{
+  constructor(private service:SharedService, @Inject(MAT_DIALOG_DATA) public data: {book: Book, mode:string}){
     this.loadAuthorList();
+
     //makes a copy of the inputted book (for add mode, this will be empty)
-    this.tempBook = JSON.parse(JSON.stringify(this.data.book));
+    this.tempBook ={
+      id : this.data.book.id,
+      title : this.data.book.title,
+      author : this.data.book.author,
+      averageRating : this.data.book.averageRating,
+      synopsis : this.data.book.synopsis,
+      genre : this.data.book.genre
+    }
+
+
   }
+
 
   loadAuthorList(){
     this.service.getAuthorList().subscribe(data=>{

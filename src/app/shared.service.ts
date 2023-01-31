@@ -8,9 +8,12 @@ import {map, Observable, Subject} from 'rxjs';
 
 export class SharedService {
   readonly APIUrl = 'http://127.0.0.1:8000';
-  readonly bookUrl = '/book/'
-  readonly authorUrl = '/author/'
-  readonly myReadUrl = '/myRead/'
+  readonly getBookUrl = '/get-book/'
+  readonly getAuthorUrl = '/get-author/'
+  readonly getMyReadUrl = '/get-myRead/'
+  readonly editBookUrl = '/edit-book/'
+  readonly editAuthorUrl = '/edit-author/'
+  readonly editMyReadUrl = '/edit-myRead/'
 
   private booksSubject = new Subject<any>();
 
@@ -33,11 +36,11 @@ export class SharedService {
   }
 
   getBookList():Observable<any[]>{
-    return this.http.get<any[]>(this.APIUrl + this.bookUrl);
+    return this.http.get<any[]>(this.APIUrl + this.getBookUrl);
   }
 
   addBook(book:any){
-    return this.http.post<any[]>(this.APIUrl + this.bookUrl, book).pipe(
+    return this.http.post<any[]>(this.APIUrl + this.editBookUrl, book).pipe(
       map((()=>{
         this.sendUpdatedBookListNotification(true);
       }))
@@ -45,7 +48,7 @@ export class SharedService {
   }
 
   updateBook(book:any){
-    return this.http.patch<any[]>(this.APIUrl + this.bookUrl + book.id + '/', book).pipe(
+    return this.http.patch<any[]>(this.APIUrl + this.editBookUrl + book.id + '/', book).pipe(
       map((()=>{
         this.sendUpdatedBookListNotification(true);
       }))
@@ -53,7 +56,7 @@ export class SharedService {
   }
 
   deleteBook(bookToDelete:any){
-    return this.http.delete<any[]>(this.APIUrl + this.bookUrl + bookToDelete.id + '/', bookToDelete).pipe(
+    return this.http.delete<any[]>(this.APIUrl + this.editBookUrl + bookToDelete.id + '/', bookToDelete).pipe(
       map((()=>{
         this.sendUpdatedBookListNotification(true);
       }))
@@ -61,11 +64,11 @@ export class SharedService {
   }
 
   getAuthorList():Observable<any[]>{
-    return this.http.get<any[]>(this.APIUrl + this.authorUrl);
+    return this.http.get<any[]>(this.APIUrl + this.getAuthorUrl);
   }
 
   addAuthor(author:any){
-    return this.http.post<any[]>(this.APIUrl + this.authorUrl, author).pipe(
+    return this.http.post<any[]>(this.APIUrl + this.editAuthorUrl, author).pipe(
       map((()=>{
         this.sendUpdatedAuthorListNotification(true);
       }))
@@ -73,7 +76,7 @@ export class SharedService {
   }
 
   updateAuthor(author:any){
-    return this.http.patch<any[]>(this.APIUrl + this.authorUrl + author.id + '/', author).pipe(
+    return this.http.patch<any[]>(this.APIUrl + this.editAuthorUrl + author.id + '/', author).pipe(
       map((()=>{
         this.sendUpdatedAuthorListNotification(true);
       }))
@@ -81,7 +84,7 @@ export class SharedService {
   }
 
   deleteAuthor(author:any){
-    return this.http.delete<any[]>(this.APIUrl + this.authorUrl + author.id + '/', author).pipe(
+    return this.http.delete<any[]>(this.APIUrl + this.editAuthorUrl + author.id + '/', author).pipe(
       map((()=>{
         this.sendUpdatedAuthorListNotification(true);
       }))

@@ -7,6 +7,7 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'GreatReads';
+  logo ="/assets/images/book.png"
   navLinks:any[]= [];
 
   constructor() {}

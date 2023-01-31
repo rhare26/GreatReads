@@ -35,6 +35,7 @@ import { MatDialogModule } from "@angular/material/dialog";
 import { MatSidenavModule } from "@angular/material/sidenav";
 import { MatExpansionModule } from "@angular/material/expansion";
 import { MatDividerModule } from "@angular/material/divider";
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
   declarations: [
@@ -47,7 +48,8 @@ import { MatDividerModule } from "@angular/material/divider";
     BookCardComponent,
     AuthorsPageComponent,
     AuthorCardComponent,
-    AddEditAuthorComponent
+    AddEditAuthorComponent,
+    LoginComponent
   ],
     imports: [
         BrowserModule,

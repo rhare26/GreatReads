@@ -2,7 +2,6 @@ import {Component, Inject} from '@angular/core';
 import {Author} from "../../utility/models/author";
 import {SharedService} from "../../shared.service";
 import {MAT_DIALOG_DATA} from "@angular/material/dialog";
-import {Book} from "../../utility/models/book";
 
 @Component({
   selector: 'app-add-edit-author',
@@ -16,7 +15,12 @@ export class AddEditAuthorComponent {
 
   ngOnInit(): void{
     //makes a copy of the inputted book (for add mode, this will be empty)
-    this.tempAuthor = JSON.parse(JSON.stringify(this.data.author));
+    this.tempAuthor = {
+      id: this.data.author.id,
+      firstName: this.data.author.firstName,
+      lastName: this.data.author.lastName,
+      bio: this.data.author.bio
+    }
 
   }
 
