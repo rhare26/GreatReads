@@ -5,27 +5,16 @@ import { Component } from '@angular/core';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
+
 export class AppComponent {
+  readonly BOOKS = "Books"
+  readonly AUTHORS = "Authors"
+
   title = 'GreatReads';
   logo ="/assets/images/book.png"
-  navLinks:any[]= [];
+  mode = this.BOOKS
+  searchInput: string ="";
 
   constructor() {}
-  ngOnInit(): void{
-    this.navLinks = [
-      {
-        label: 'Browse Books',
-        link: './browse-books',
-        index: 0
-      }, {
-        label: 'Browse Authors',
-        link: './browse-authors',
-        index: 1
-      }, {
-        label: 'My Profile',
-        link: './my-profile',
-        index: 2
-      },
-    ];
-  }
+  ngOnInit(){}
 }

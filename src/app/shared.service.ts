@@ -55,8 +55,8 @@ export class SharedService {
     );
   }
 
-  deleteBook(bookToDelete:any){
-    return this.http.delete<any[]>(this.APIUrl + this.editBookUrl + bookToDelete.id + '/', bookToDelete).pipe(
+  deleteBook(book:any){
+    return this.http.delete<any[]>(this.APIUrl + this.editBookUrl + book.id + '/', book).pipe(
       map((()=>{
         this.sendUpdatedBookListNotification(true);
       }))

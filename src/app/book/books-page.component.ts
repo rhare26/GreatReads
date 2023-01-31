@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, Input} from '@angular/core';
 import { Book } from "../utility/models/book";
 import { SharedService } from "../shared.service";
 import {AddEditBookComponent} from "./add-edit-book/add-edit-book.component";
@@ -8,13 +8,14 @@ import {Subscription} from "rxjs";
 @Component({
   selector: 'app-books-page',
   templateUrl: './books-page.component.html',
-  styleUrls: ['./books-page.component.css']
+  styleUrls: ['./books-page.component.scss']
 })
 
 export class BooksPageComponent {
   list: Book[] = []
   subscription: Subscription;
-  searchInput:string = ""
+
+  @Input() searchInput!:string
 
   constructor(private service:SharedService, public dialog: MatDialog){
     this.subscription=this.service.getUpdatedBookListNotification().subscribe(list=>{

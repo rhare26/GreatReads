@@ -36,6 +36,7 @@ import { MatSidenavModule } from "@angular/material/sidenav";
 import { MatExpansionModule } from "@angular/material/expansion";
 import { MatDividerModule } from "@angular/material/divider";
 import { LoginComponent } from './login/login.component';
+import {MatRadioModule} from "@angular/material/radio";
 
 @NgModule({
   declarations: [
@@ -72,7 +73,8 @@ import { LoginComponent } from './login/login.component';
         MatDialogModule,
         MatSidenavModule,
         MatExpansionModule,
-        MatDividerModule
+        MatDividerModule,
+        MatRadioModule
     ],
   providers: [SharedService],
   bootstrap: [AppComponent]

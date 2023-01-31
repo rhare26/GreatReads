@@ -4,7 +4,7 @@ import {FormGroup, Validators, FormControl} from '@angular/forms';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  styleUrls: ['./login.component.scss']
 })
 export class LoginComponent {
   loginForm: FormGroup;
@@ -12,7 +12,7 @@ export class LoginComponent {
   constructor(){
     this.loginForm = new FormGroup({
       username: new FormControl('', [Validators.required, Validators.maxLength(20)]),
-      passsword: new FormControl('', [Validators.required, Validators.maxLength(50)]),
+      password: new FormControl('', [Validators.required, Validators.maxLength(50)]),
     });
   }
 

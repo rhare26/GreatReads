@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, Input} from '@angular/core';
 import {Author} from "../utility/models/author";
 import {Subscription} from "rxjs";
 import {SharedService} from "../shared.service";
@@ -13,7 +13,8 @@ import {AddEditAuthorComponent} from "./add-edit-author/add-edit-author.componen
 export class AuthorsPageComponent {
   list: Author[] = []
   subscription: Subscription;
-  searchInput:string = ""
+
+  @Input() searchInput!:string
 
   constructor(private service:SharedService, public dialog: MatDialog){
     this.subscription=this.service.getUpdatedAuthorListNotification().subscribe(list=>{

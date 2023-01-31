@@ -9,7 +9,6 @@ import { AuthorsPageComponent } from "./author/authors-page.component";
 const routes: Routes = [
   {path:'browse-books', component:BooksPageComponent},
   {path:'browse-authors', component:AuthorsPageComponent},
-  //{path:'my-profile', component:MyReadComponent}
 ]
 
 @NgModule({

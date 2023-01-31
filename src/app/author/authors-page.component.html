@@ -2,15 +2,6 @@
 
 <div class="panel">
 
-
-  <!-- Search bar -->
-  <mat-form-field [style.width.px]=450>
-    <input  type="string"  matInput
-            placeholder="Enter title or author"
-            name= "search" [(ngModel)]= "searchInput">
-    <button matPrefix mat-button ><mat-icon >search</mat-icon></button>
-  </mat-form-field>
-
   <!-- List all author -->
   <div class="scroll-list">
     <mat-list *ngFor="let author of list | SearchAuthors:searchInput">
