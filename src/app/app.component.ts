@@ -1,6 +1,5 @@
-import {Component, NgModule} from '@angular/core';
+import {Component} from '@angular/core';
 import {AuthService} from "./auth.service";
-import {CommonModule} from "@angular/common";
 
 @Component({
   selector: 'app-root',
@@ -11,11 +10,8 @@ import {CommonModule} from "@angular/common";
 
 export class AppComponent {
 
-
   title = 'GreatReads';
   logo ="/assets/images/book.png"
-
-
   constructor(public authService:AuthService) {}
   ngOnInit(){}
 }

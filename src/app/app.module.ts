@@ -44,6 +44,7 @@ import {environment} from "../environments/environment";
 import { LogoutComponent } from './logout/logout.component';
 import { NavigationComponent } from './navigation/navigation.component';
 import { BrowseComponent } from './browse/browse.component';
+import { MyReadComponent } from './my-read/my-read.component';
 
 @NgModule({
   declarations: [
@@ -60,7 +61,8 @@ import { BrowseComponent } from './browse/browse.component';
     LoginComponent,
     LogoutComponent,
     NavigationComponent,
-    BrowseComponent
+    BrowseComponent,
+    MyReadComponent
   ],
     imports: [
         BrowserModule,

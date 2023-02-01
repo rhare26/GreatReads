@@ -8,16 +8,6 @@
 </mat-toolbar>
 
 
-<!-- News feed -->
-<div class="left-panel" >
-  <app-login ></app-login>
-  News feed here.
-  <mat-divider [vertical]="true"></mat-divider>
-</div>
-
-<div class="main">
-  <app-browse *ngIf="authService.isLoggedIn$ | async"></app-browse>
-</div>
-
+<app-navigation></app-navigation>
 
 
