@@ -1,9 +1,14 @@
 # GreatReads
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.1.1.
+
+
+
+## About
+This is a personal project to that I'm using to teach myself Django and Angular. The goal is to create a web application to track your reading habits. The project is still in progress.
+
+
 
 ## Acknowledgments
 Below are resources and tutorials that were heavily borrowed from:
-
 For setting up the project structure - https://www.youtube.com/watch?v=1Hc7KlLiU9w
 
 For search function on frontend - https://plainenglish.io/blog/how-to-implement-an-instant-search-functionality-in-angular-e0c0a1e97502
@@ -13,6 +18,8 @@ For authentication on backend (series) - https://www.youtube.com/watch?v=8iiDWPX
 For authentication on frontend - https://www.youtube.com/watch?v=7G7qzlblJcI
 
 # Frontend Setup
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.1.1.
+
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
