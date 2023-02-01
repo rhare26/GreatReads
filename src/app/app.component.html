@@ -1,41 +1,23 @@
-<app-login></app-login>
-
 
 <mat-toolbar color="primary" >
   <img [src]="logo" alt="book icon" width="50" height="50" style="padding-right:15px;">
   <span style="font-size:50px;padding-bottom:15px;padding-top:15px">
     {{title}}
   </span>
+  <app-logout style="float:right" *ngIf="authService.isLoggedIn$ | async"></app-logout>
 </mat-toolbar>
 
-<div *ngIf="authService.isLoggedIn$ | async">
-  <!-- News feed -->
-  <div class="left-panel">
-    News feed here.
-    <mat-divider [vertical]="true"></mat-divider>
-  </div>
 
-  <!-- Search bar -->
-  <mat-form-field [style.width.px]=450>
-    <input  type="string"  matInput
-            placeholder="Search for {{mode}}"
-            name= "search" [(ngModel)]= "searchInput">
-    <button matPrefix mat-button ><mat-icon >search</mat-icon></button>
-  </mat-form-field>
-
-  <!-- Choose search by book or title -->
-  <div>
-    <mat-radio-group aria-label="Select an option to search for" [(ngModel)]="mode">
-      <mat-radio-button value={{BOOKS}}>{{BOOKS}}</mat-radio-button>
-      <mat-radio-button value={{AUTHORS}}>{{AUTHORS}}</mat-radio-button>
-    </mat-radio-group>
-  </div>
-
-  <!-- Show list of books or authors based on mode -->
-  <app-books-page *ngIf="mode==BOOKS" [searchInput]="searchInput"></app-books-page>
-  <app-authors-page *ngIf="mode==AUTHORS" ></app-authors-page>
-
-
+<!-- News feed -->
+<div class="left-panel" *ngIf="authService.isLoggedIn$ | async">
+  <app-login ></app-login>
+  News feed here.
+  <mat-divider [vertical]="true"></mat-divider>
 </div>
+
+<div class="main">
+  <app-browse *ngIf="authService.isLoggedIn$ | async"></app-browse>
+</div>
+
 
 

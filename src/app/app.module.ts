@@ -41,6 +41,9 @@ import {AuthService, tokenGetter} from "./auth.service";
 import {TokenInterceptor} from "./TokenInterceptor";
 import {JwtModule} from "@auth0/angular-jwt";
 import {environment} from "../environments/environment";
+import { LogoutComponent } from './logout/logout.component';
+import { NavigationComponent } from './navigation/navigation.component';
+import { BrowseComponent } from './browse/browse.component';
 
 @NgModule({
   declarations: [
@@ -54,7 +57,10 @@ import {environment} from "../environments/environment";
     AuthorsPageComponent,
     AuthorCardComponent,
     AddEditAuthorComponent,
-    LoginComponent
+    LoginComponent,
+    LogoutComponent,
+    NavigationComponent,
+    BrowseComponent
   ],
     imports: [
         BrowserModule,

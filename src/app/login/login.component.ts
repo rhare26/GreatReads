@@ -25,7 +25,5 @@ export class LoginComponent {
     this.authService.login(email, password).subscribe()
   }
 
-  logout() {
-    this.authService.logout()
-  }
+
 }
