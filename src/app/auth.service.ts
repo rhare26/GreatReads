@@ -13,7 +13,8 @@ export class AuthService {
   private _isLoggedIn$ = new BehaviorSubject<boolean>(false)
   isLoggedIn$ = this._isLoggedIn$.asObservable()
   constructor(private http:HttpClient) {
-
+    const token = localStorage.getItem('auth')
+    this._isLoggedIn$.next(!!token);
   }
 
 
@@ -27,10 +28,6 @@ export class AuthService {
 
       })
     )
-  }
-
-  getToken(){
-    return localStorage.getItem('auth')
   }
 
 
