@@ -81,7 +81,6 @@ class SignUpView(generics.GenericAPIView):
 
 @permission_classes([AllowAny])
 class LoginView(APIView):
-  permission_classes = []
 
   def post(self, request: Request):
     email = request.data.get("email")
@@ -97,7 +96,7 @@ class LoginView(APIView):
       return Response(data=response, status=status.HTTP_200_OK)
 
     else:
-      return Response(data={"message": "Invalid email or password"})
+      return Response(data={"message": "Invalid email or password"}, status=status.HTTP_400_BAD_REQUEST)
 
   def get(self, request: Request):
     content = {"user": str(request.user), "auth": str(request.auth)}

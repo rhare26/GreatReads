@@ -20,7 +20,12 @@ export class LoginComponent {
   ngOnInit(){}
 
   submit(){
-    this.authService.login(this.loginForm.value).subscribe((response)=>{
-    })
+    const email = this.loginForm.controls['email'].value
+    const password = this.loginForm.controls['password'].value
+    this.authService.login(email, password).subscribe()
+  }
+
+  logout() {
+    this.authService.logout()
   }
 }
