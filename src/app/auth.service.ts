@@ -21,10 +21,11 @@ export class AuthService {
   login(form:any){
     return this.http.post<any[]>(this.APIUrl + this.loginUrl, form).pipe(
       tap((response:any)=>{
-        if (response.tokens.access){ //if there is a 200 OK response from server
+        if(!!response.tokens){
           this._isLoggedIn$.next(true) //update log in status
           localStorage.setItem('auth', response.tokens.access) //store token in local storage
         }
+
 
       })
     )

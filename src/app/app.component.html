@@ -1,17 +1,15 @@
 <app-login></app-login>
 
-<div *ngIf="authService.isLoggedIn$ | async">
 
-
-</div>
 <mat-toolbar color="primary" >
   <img [src]="logo" alt="book icon" width="50" height="50" style="padding-right:15px;">
   <span style="font-size:50px;padding-bottom:15px;padding-top:15px">
     {{title}}
   </span>
 </mat-toolbar>
+
 <div *ngIf="authService.isLoggedIn$ | async">
-<!-- News feed -->
+  <!-- News feed -->
   <div class="left-panel">
     News feed here.
     <mat-divider [vertical]="true"></mat-divider>
@@ -39,6 +37,5 @@
 
 
 </div>
-
 
 
