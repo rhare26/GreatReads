@@ -44,7 +44,7 @@ import {environment} from "../environments/environment";
 import { LogoutComponent } from './logout/logout.component';
 import { NavigationComponent } from './navigation/navigation.component';
 import { BrowseComponent } from './browse/browse.component';
-import { MyReadComponent } from './my-read/my-read.component';
+import { MyReadListComponent } from './my-read/my-read-list/my-read-list.component';
 import { BookDetailComponent } from './book/book-detail/book-detail.component';
 
 @NgModule({
@@ -63,7 +63,7 @@ import { BookDetailComponent } from './book/book-detail/book-detail.component';
     LogoutComponent,
     NavigationComponent,
     BrowseComponent,
-    MyReadComponent,
+    MyReadListComponent,
     BookDetailComponent
   ],
     imports: [
