@@ -8,11 +8,11 @@ import { SearchAuthors } from './utility/search.pipe'
 import { CardComponent } from './utility/card/card.component';
 
 
-import { AuthorsPageComponent } from './author/authors-page.component';
+import { AuthorsListComponent } from './author/authors-list/authors-list.component';
 import { AuthorCardComponent } from './author/author-card/author-card.component';
 import { AddEditAuthorComponent } from './author/add-edit-author/add-edit-author.component';
 
-import { BooksPageComponent } from './book/books-page.component';
+import { BooksListComponent } from './book/books-list/books-list.component';
 import { BookCardComponent } from './book/book-card/book-card.component';
 import { AddEditBookComponent } from './book/add-edit-book/add-edit-book.component';
 
@@ -45,24 +45,26 @@ import { LogoutComponent } from './logout/logout.component';
 import { NavigationComponent } from './navigation/navigation.component';
 import { BrowseComponent } from './browse/browse.component';
 import { MyReadComponent } from './my-read/my-read.component';
+import { BookDetailComponent } from './book/book-detail/book-detail.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    BooksPageComponent,
+    BooksListComponent,
     AddEditBookComponent,
     SearchBooksByTitleAuthor,
     SearchAuthors,
     CardComponent,
     BookCardComponent,
-    AuthorsPageComponent,
+    AuthorsListComponent,
     AuthorCardComponent,
     AddEditAuthorComponent,
     LoginComponent,
     LogoutComponent,
     NavigationComponent,
     BrowseComponent,
-    MyReadComponent
+    MyReadComponent,
+    BookDetailComponent
   ],
     imports: [
         BrowserModule,

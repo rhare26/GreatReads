@@ -17,7 +17,7 @@
 
   <!-- Show list of books or authors based on mode -->
   <app-books-page *ngIf="mode==BOOKS" [searchInput]="searchInput"></app-books-page>
-  <app-authors-page *ngIf="mode==AUTHORS" ></app-authors-page>
+  <app-authors-page *ngIf="mode==AUTHORS" [searchInput]="searchInput"></app-authors-page>
 
 
 </div>

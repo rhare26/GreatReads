@@ -1,16 +1,16 @@
 import {Component, Input} from '@angular/core';
-import {Author} from "../utility/models/author";
+import {Author} from "../../utility/models/author";
 import {Subscription} from "rxjs";
-import {SharedService} from "../shared.service";
+import {SharedService} from "../../shared.service";
 import {MatDialog} from "@angular/material/dialog";
-import {AddEditAuthorComponent} from "./add-edit-author/add-edit-author.component";
+import {AddEditAuthorComponent} from "../add-edit-author/add-edit-author.component";
 
 @Component({
   selector: 'app-authors-page',
-  templateUrl: './authors-page.component.html',
-  styleUrls: ['./authors-page.component.scss']
+  templateUrl: './authors-list.component.html',
+  styleUrls: ['./authors-list.component.scss']
 })
-export class AuthorsPageComponent {
+export class AuthorsListComponent {
   list: Author[] = []
   subscription: Subscription;
 

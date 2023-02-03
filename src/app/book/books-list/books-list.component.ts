@@ -1,17 +1,17 @@
 import {Component, Input} from '@angular/core';
-import { Book } from "../utility/models/book";
-import { SharedService } from "../shared.service";
-import {AddEditBookComponent} from "./add-edit-book/add-edit-book.component";
+import { Book } from "../../utility/models/book";
+import { SharedService } from "../../shared.service";
+import {AddEditBookComponent} from "../add-edit-book/add-edit-book.component";
 import {MatDialog} from "@angular/material/dialog";
 import {Subscription} from "rxjs";
 
 @Component({
   selector: 'app-books-page',
-  templateUrl: './books-page.component.html',
-  styleUrls: ['./books-page.component.scss']
+  templateUrl: './books-list.component.html',
+  styleUrls: ['./books-list.component.scss']
 })
 
-export class BooksPageComponent {
+export class BooksListComponent {
   list: Book[] = []
   subscription: Subscription;
 

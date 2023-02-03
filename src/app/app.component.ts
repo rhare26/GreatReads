@@ -12,6 +12,7 @@ export class AppComponent {
 
   title = 'GreatReads';
   logo ="/assets/images/book.png"
+
   constructor(public authService:AuthService) {}
   ngOnInit(){}
 }
