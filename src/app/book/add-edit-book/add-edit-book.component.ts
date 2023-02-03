@@ -1,5 +1,5 @@
 import {Component, Inject} from '@angular/core';
-import { SharedService } from 'src/app/shared.service';
+import { SharedService } from 'src/app/services/shared.service';
 import {Book} from "../../utility/models/book";
 import {Author} from "../../utility/models/author";
 import {MAT_DIALOG_DATA} from "@angular/material/dialog";

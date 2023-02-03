@@ -1,6 +1,6 @@
 import {Component, Input} from '@angular/core';
 import { Book } from "../../utility/models/book";
-import { SharedService } from "../../shared.service";
+import { SharedService } from "../../services/shared.service";
 import {AddEditBookComponent} from "../add-edit-book/add-edit-book.component";
 import {MatDialog} from "@angular/material/dialog";
 import {Subscription} from "rxjs";

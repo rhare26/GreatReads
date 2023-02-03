@@ -1,7 +1,7 @@
 import {Component, Input} from '@angular/core';
 import {Author} from "../../utility/models/author";
 import {Subscription} from "rxjs";
-import {SharedService} from "../../shared.service";
+import {SharedService} from "../../services/shared.service";
 import {MatDialog} from "@angular/material/dialog";
 import {AddEditAuthorComponent} from "../add-edit-author/add-edit-author.component";
 

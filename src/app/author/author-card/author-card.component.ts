@@ -1,5 +1,5 @@
 import {Component, EventEmitter, Input, Output} from '@angular/core';
-import {SharedService} from "../../shared.service";
+import {SharedService} from "../../services/shared.service";
 import {MatDialog} from "@angular/material/dialog";
 import {Author} from "../../utility/models/author";
 import {AddEditAuthorComponent} from "../add-edit-author/add-edit-author.component";

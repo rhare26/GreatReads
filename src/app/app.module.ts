@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
-import { SharedService } from './shared.service';
+import { SharedService } from './services/shared.service';
 import { SearchBooksByTitleAuthor } from './utility/search.pipe'
 import { SearchAuthors } from './utility/search.pipe'
 import { CardComponent } from './utility/card/card.component';
@@ -37,8 +37,8 @@ import { MatExpansionModule } from "@angular/material/expansion";
 import { MatDividerModule } from "@angular/material/divider";
 import { LoginComponent } from './login/login.component';
 import {MatRadioModule} from "@angular/material/radio";
-import {AuthService, tokenGetter} from "./auth.service";
-import {TokenInterceptor} from "./TokenInterceptor";
+import {AuthService, tokenGetter} from "./services/auth.service";
+import {TokenInterceptor} from "./services/TokenInterceptor";
 import {JwtModule} from "@auth0/angular-jwt";
 import {environment} from "../environments/environment";
 import { LogoutComponent } from './logout/logout.component';
