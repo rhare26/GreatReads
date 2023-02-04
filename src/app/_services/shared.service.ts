@@ -20,6 +20,7 @@ export class SharedService {
 
   constructor(private http:HttpClient) { }
 
+  /************************SUBJECTS************************/
   sendUpdatedBookListNotification(value:any){
     this.booksSubject.next({text:value})
   }
@@ -36,6 +37,7 @@ export class SharedService {
     return this.booksSubject.asObservable();
   }
 
+  /************************BOOKS************************/
   getBookList():Observable<any[]>{
 
     return this.http.get<any[]>(this.APIUrl + this.getBookUrl);
@@ -44,6 +46,7 @@ export class SharedService {
   getBook(id:any):Observable<any[]>{
     return this.http.get<any[]>(this.APIUrl + this.getBookUrl + id);
   }
+
   addBook(book:any){
     return this.http.post<any[]>(this.APIUrl + this.editBookUrl, book).pipe(
       map((()=>{
@@ -68,8 +71,13 @@ export class SharedService {
     );
   }
 
+  /************************AUTHORS************************/
   getAuthorList():Observable<any[]>{
     return this.http.get<any[]>(this.APIUrl + this.getAuthorUrl);
+  }
+
+  getAuthor(id:any):Observable<any[]>{
+    return this.http.get<any[]>(this.APIUrl + this.getAuthorUrl + id);
   }
 
   addAuthor(author:any){

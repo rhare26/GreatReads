@@ -15,13 +15,13 @@ export class BookDetailComponent {
     const routeParams = this.route.snapshot.paramMap;
     const bookIdFromRoute = Number(routeParams.get('bookId'));
 
-    //this.fetchBook(bookIdFromRoute)
+    this.fetchBook(bookIdFromRoute)
   }
 
-  // fetchBook(id:number){
-  //   this.service.getBook(id).subscribe(data=>{
-  //     this.book=data;
-  //   });
-  //
-  // }
+  fetchBook(id:number){
+    this.service.getBook(id).subscribe(data=>{
+      this.book=data;
+    });
+
+  }
 }
