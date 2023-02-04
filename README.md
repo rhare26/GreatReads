@@ -11,7 +11,11 @@
 
 ![SearchBooks](https://user-images.githubusercontent.com/85655946/216779282-7e6f02db-0c0e-48ab-b628-50716369d079.png)
 
+![BookDetail](https://user-images.githubusercontent.com/85655946/216780698-395083ea-888c-485d-8795-727d259d78a6.png)
+
 ![BrowseAuthors](https://user-images.githubusercontent.com/85655946/216779284-198a4d25-f130-46b8-a685-002f413352c8.png)
+
+![AuthorDetail](https://user-images.githubusercontent.com/85655946/216780691-0efe62ce-8735-4114-909b-3140710449d5.png)
 
 
 ### Backend 
