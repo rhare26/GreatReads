@@ -9,16 +9,15 @@
   </a>
 </nav>
 
-<!-- News feed -->
-<div class="left-panel" >
-  News feed here.
-  <mat-divider [vertical]="true"></mat-divider>
-</div>
 
 <!-- Content determined by nav bar -->
 <mat-tab-nav-panel #tabPanel>
   <router-outlet></router-outlet>
+  <mat-divider [vertical]="true"></mat-divider>
 </mat-tab-nav-panel>
+
+
+
 
 
 
