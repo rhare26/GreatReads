@@ -1,6 +1,18 @@
 <ng-container *ngIf="book">
-  <h1><strong>{{book.title}}</strong></h1>
-  <a [routerLink]="['/authors', book.author.id]">{{book.author.firstName}} {{book.author.lastName}}</a>
-
+  <mat-list class = panel>
+    <!-- Book info -->
+    <h2>{{book.title}}</h2>
+    <img [src]=book.image [alt]="'book photo'" height=100 width=100>
+    <br><strong>Author: </strong><a [routerLink]="['/authors', book.author.id]">{{book.author.firstName}} {{book.author.lastName}}</a>
+    <br><strong>Genre: </strong> {{book.genre}}
+    <br><strong>Average Rating: </strong> {{book.averageRating}}
+    <br><p>
+      {{book.synopsis}}
+    </p>
+    <br><h2>Reviews</h2>
+  </mat-list>
 
 </ng-container>
+
+
+
