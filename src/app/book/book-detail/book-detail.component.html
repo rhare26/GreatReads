@@ -1,1 +1,6 @@
-<h1><strong>{{book.title}}</strong></h1>
+<ng-container *ngIf="book">
+  <h1><strong>{{book.title}}</strong></h1>
+  <a [routerLink]="['/authors', book.author.id]">{{book.author.firstName}} {{book.author.lastName}}</a>
+
+
+</ng-container>

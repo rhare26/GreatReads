@@ -1,10 +1,17 @@
-
 <ng-container *ngIf="author">
-  {{author.firstName}} {{author.lastName}}
+  <mat-list class = panel>
+    <!-- Author info -->
+    <h2>{{author.firstName}} {{author.lastName}}</h2>
+    <img [src]=author.image [alt]="'author photo'" height=100 width=100>
+    <p>
+      {{author.bio}}
+    </p>
 
-  <!-- List all books -->
-  <app-books-list [searchInput]="author.id" [searchType]="'AUTHOR_ID'"></app-books-list>
+    <!-- Books by this Author -->
+    <h3>Books by this Author</h3>
+    <app-books-list [searchInput]="author.id" [searchType]="'AUTHOR_ID'"></app-books-list>
 
+  </mat-list>
 </ng-container>
 
 

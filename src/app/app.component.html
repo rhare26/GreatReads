@@ -17,7 +17,7 @@
   <app-navigation *ngIf="authService.isLoggedIn$ | async"></app-navigation>
 
   <!-- Login -->
-  <app-login *ngIf="(authService.isLoggedIn$ | async) == false"></app-login>
+  <app-login class="login" *ngIf="(authService.isLoggedIn$ | async) == false"></app-login>
 </ng-container>
 
 
