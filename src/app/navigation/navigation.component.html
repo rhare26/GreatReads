@@ -1,27 +1,27 @@
-<!--<nav mat-tab-nav-bar [tabPanel]="tabPanel" S>-->
-<!--  <a mat-tab-link  color="primary"-->
-<!--     *ngFor="let link of navLinks"-->
-<!--     [routerLink]="link.link"-->
-<!--     routerLinkActive #rla="routerLinkActive"-->
-<!--     [active]="rla.isActive">-->
-<!--    {{link.label}}-->
-<!--  </a>-->
-<!--</nav>-->
-<!--<mat-tab-nav-panel #tabPanel>-->
-<!--  <router-outlet></router-outlet>-->
-<!--</mat-tab-nav-panel>-->
-
+<!-- Nav Bar -->
+<nav mat-tab-nav-bar [tabPanel]="tabPanel">
+  <a mat-tab-link
+     *ngFor="let link of navLinks"
+     [routerLink]="link.link"
+     routerLinkActive #rla="routerLinkActive"
+     [active]="rla.isActive">
+    {{link.label}}
+  </a>
+</nav>
 
 <!-- News feed -->
 <div class="left-panel" >
-  <app-login ></app-login>
   News feed here.
   <mat-divider [vertical]="true"></mat-divider>
 </div>
 
-<div class="main">
-  <app-browse *ngIf="authService.isLoggedIn$ | async"></app-browse>
-</div>
+<!-- Content determined by nav bar -->
+<mat-tab-nav-panel #tabPanel>
+  <router-outlet></router-outlet>
+</mat-tab-nav-panel>
+
+
+
 
 
 

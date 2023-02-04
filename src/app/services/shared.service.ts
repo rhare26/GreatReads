@@ -1,13 +1,14 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import {map, Observable, Subject} from 'rxjs';
+import {environment} from "../../environments/environment";
 
 @Injectable({
   providedIn: 'root'
 })
 
 export class SharedService {
-  readonly APIUrl = 'http://127.0.0.1:8000';
+  readonly APIUrl = environment.apiUrl;
   readonly getBookUrl = '/get-book/'
   readonly getAuthorUrl = '/get-author/'
   readonly getMyReadUrl = '/get-myRead/'
@@ -36,6 +37,7 @@ export class SharedService {
   }
 
   getBookList():Observable<any[]>{
+
     return this.http.get<any[]>(this.APIUrl + this.getBookUrl);
   }
 

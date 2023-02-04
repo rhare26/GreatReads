@@ -20,8 +20,8 @@ export class NavigationComponent {
         index: 0
       },  {
         label: 'My Reads',
-        link: './my-read',
-        index: 2
+        link: './my-reads',
+        index: 1
       },
     ];
   }

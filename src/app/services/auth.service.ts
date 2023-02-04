@@ -2,13 +2,15 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import {BehaviorSubject, delay, of, Subscription, tap} from "rxjs";
 import { JwtHelperService } from "@auth0/angular-jwt";
-
+import {environment} from "../../environments/environment";
+import { Router } from '@angular/router'
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-  readonly APIUrl = 'http://127.0.0.1:8000/login/';
-  readonly loginUrl = '/login/'
+  readonly APIUrl = environment.apiUrl;
+  readonly loginUrl = environment.apiUrl + '/login/'
+  readonly registerUrl = '/register/'
 
   tokenSubscription = new Subscription()
   authToken: any;
@@ -17,7 +19,7 @@ export class AuthService {
   private _isLoggedIn$ = new BehaviorSubject<boolean>(false)
   isLoggedIn$ = this._isLoggedIn$.asObservable()
 
-  constructor(private http:HttpClient,  private jwtHelper: JwtHelperService) {
+  constructor(private http:HttpClient,  private jwtHelper: JwtHelperService, private router:Router) {
     const token = sessionStorage.getItem('auth')
     this._isLoggedIn$.next(!!token);
   }
@@ -25,7 +27,7 @@ export class AuthService {
 
   login(email:string,password:string){
 
-    return this.http.post<any[]>(this.APIUrl, {email, password}).
+    return this.http.post<any[]>(this.loginUrl, {email, password}).
     pipe(
       tap((response:any)=>{
         console.log("Logging in...")
@@ -43,8 +45,9 @@ export class AuthService {
     console.log("Logging in. Token: " + token)
     this._isLoggedIn$.next(true) //update log in status
     console.log(this._isLoggedIn$)
-    // @ts-ignore
-    this.timeout = this.jwtHelper.getTokenExpirationDate(token).valueOf() - new Date().valueOf();
+    // if (token){
+    //   this.timeout = this.jwtHelper.getTokenExpirationDate(token).valueOf() - new Date().valueOf();
+    // }
     sessionStorage.setItem("auth", token);
     this.authToken = token;
     //this.emit({ username: this.user.username });
@@ -52,14 +55,21 @@ export class AuthService {
   }
 
   expirationCounter(timeout:any) {
-    this.tokenSubscription.unsubscribe();
-    this.tokenSubscription = of(null).pipe(delay(timeout)).subscribe((expired) => {
-      console.log('EXPIRED!!');
+    const helper = new JwtHelperService();
 
-      this.logout();
+//     const decodedToken = helper.decodeToken(myRawToken);
+//
+// // Other functions
+//     const expirationDate = helper.getTokenExpirationDate(myRawToken);
+//     const isExpired = helper.isTokenExpired(myRawToken);
+
+    // this.tokenSubscription = of(null).pipe(delay(timeout)).subscribe((expired) => {
+    //   console.log('EXPIRED!!');
+
+      // this.logout();
       //this.router.navigate(["/login"]);
 
-    });
+    //});
   }
 
   logout() {
@@ -69,11 +79,15 @@ export class AuthService {
     this.user = null;
     sessionStorage.clear();
     console.log("Current token: ")
-    //this._isLoggedIn$.next(false) //update log in status
+    this._isLoggedIn$.next(false) //update log in status
+    this.router.navigate([''])
   }
-
-
-
+  public isAuthenticated(): boolean {
+    const token = sessionStorage.getItem('auth');
+    // Check whether the token is expired and return
+    // true or false
+    return !this.jwtHelper.isTokenExpired(token);
+  }
 
 }
 

@@ -38,7 +38,7 @@ import { MatDividerModule } from "@angular/material/divider";
 import { LoginComponent } from './login/login.component';
 import {MatRadioModule} from "@angular/material/radio";
 import {AuthService, tokenGetter} from "./services/auth.service";
-import {TokenInterceptor} from "./services/TokenInterceptor";
+import {TokenInterceptor} from "./services/token-interceptor";
 import {JwtModule} from "@auth0/angular-jwt";
 import {environment} from "../environments/environment";
 import { LogoutComponent } from './logout/logout.component';

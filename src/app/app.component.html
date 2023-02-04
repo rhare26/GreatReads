@@ -1,13 +1,20 @@
-
-<mat-toolbar color="primary" >
-  <img [src]="logo" alt="book icon" width="50" height="50" style="padding-right:15px;">
-  <span style="font-size:50px;padding-bottom:15px;padding-top:15px">
+<ng-container>
+  <!-- Logo, title, logout !-->
+  <mat-toolbar color="primary" >
+    <img [src]="logo" alt="book icon" width="50" height="50" style="padding-right:15px;">
+    <span style="font-size:50px;padding-bottom:15px;padding-top:15px">
     {{title}}
   </span>
-  <app-logout style="float:right" *ngIf="authService.isLoggedIn$ | async"></app-logout>
-</mat-toolbar>
+    <span class="right-options"></span>
+    <app-logout *ngIf="authService.isLoggedIn$ | async"></app-logout>
+  </mat-toolbar>
 
+  <!-- Navigation -->
+  <app-navigation *ngIf="authService.isLoggedIn$ | async"></app-navigation>
 
-<app-navigation></app-navigation>
+  <!-- Login -->
+  <app-login *ngIf="(authService.isLoggedIn$ | async) == false"></app-login>
+</ng-container>
+
 
 
