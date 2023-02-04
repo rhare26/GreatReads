@@ -41,6 +41,9 @@ export class SharedService {
     return this.http.get<any[]>(this.APIUrl + this.getBookUrl);
   }
 
+  getBook(id:any):Observable<any[]>{
+    return this.http.get<any[]>(this.APIUrl + this.getBookUrl + id);
+  }
   addBook(book:any){
     return this.http.post<any[]>(this.APIUrl + this.editBookUrl, book).pipe(
       map((()=>{

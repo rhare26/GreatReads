@@ -1,4 +1,5 @@
 <app-card
+  [link]="['/books', book.id]"
   [title]="book.title"
   [image]="book.image"
   [subtitle]="book.author.firstName + ' ' + book.author.lastName"

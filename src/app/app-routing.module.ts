@@ -6,6 +6,7 @@ import {BrowseComponent} from "./browse/browse.component";
 import { MyReadListComponent } from "./my-read/my-read-list/my-read-list.component";
 import { LoginComponent} from "./login/login.component";
 import { AuthGuardService} from 'src/app/_services/auth-guard.service'
+import {BookDetailComponent} from "./book/book-detail/book-detail.component";
 
 export const ROUTES: Routes = [
   {path:'login', component:LoginComponent},
@@ -13,7 +14,10 @@ export const ROUTES: Routes = [
     canActivate: [AuthGuardService]},
   {path:'my-reads', component:MyReadListComponent,
     canActivate: [AuthGuardService]},
-  { path: '**', redirectTo: '' },
+  {path: 'books/:bookId', component: BookDetailComponent,
+    canActivate: [AuthGuardService]},
+  {path: '**', redirectTo: '' },
+
 ]
 
 

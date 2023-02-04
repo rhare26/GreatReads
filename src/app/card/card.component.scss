@@ -8,3 +8,11 @@
 .fill {
   flex:1;
 }
+a:link{
+  text-decoration: none;
+  color:black;
+}
+a:hover {
+  font-size:105%;
+  text-decoration: underline;
+}

@@ -8,6 +8,7 @@ import {Component, EventEmitter, Input, Output} from '@angular/core';
 export class CardComponent {
 
   @Input() image!: any;
+  @Input() link!: any;
   @Input() title!: any;
   @Input() subtitle!: any;
   @Input() content!: any;

@@ -9,7 +9,10 @@
       {{subtitle}}
     </mat-card-subtitle>
     <mat-card-title>
-      {{title}}
+      <a [routerLink]=link>
+        {{title}}
+      </a>
+
     </mat-card-title>
 
     <mat-card-actions align="end" class="fill">
