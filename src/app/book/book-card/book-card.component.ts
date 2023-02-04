@@ -1,8 +1,8 @@
 import {Component, EventEmitter, Input, Output} from '@angular/core';
-import {Book} from "../../utility/models/book";
+import {Book} from "../../_models/book";
 import {AddEditBookComponent} from "../add-edit-book/add-edit-book.component";
 import {MatDialog} from "@angular/material/dialog";
-import {SharedService} from "../../services/shared.service";
+import {SharedService} from "../../_services/shared.service";
 
 @Component({
   selector: 'app-book-card',

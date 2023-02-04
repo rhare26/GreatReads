@@ -1,6 +1,6 @@
 import {Component, Inject} from '@angular/core';
-import {Author} from "../../utility/models/author";
-import {SharedService} from "../../services/shared.service";
+import {Author} from "../../_models/author";
+import {SharedService} from "../../_services/shared.service";
 import {MAT_DIALOG_DATA} from "@angular/material/dialog";
 
 @Component({

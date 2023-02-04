@@ -5,7 +5,7 @@ import { RouterModule, Routes } from '@angular/router';
 import {BrowseComponent} from "./browse/browse.component";
 import { MyReadListComponent } from "./my-read/my-read-list/my-read-list.component";
 import { LoginComponent} from "./login/login.component";
-import { AuthGuardService} from 'src/app/services/auth-guard.service'
+import { AuthGuardService} from 'src/app/_services/auth-guard.service'
 
 export const ROUTES: Routes = [
   {path:'login', component:LoginComponent},

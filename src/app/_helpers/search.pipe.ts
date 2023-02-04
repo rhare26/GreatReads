@@ -1,8 +1,8 @@
 //adapted from https://plainenglish.io/blog/how-to-implement-an-instant-search-functionality-in-angular-e0c0a1e97502
 
 import { Pipe, PipeTransform } from '@angular/core';
-import { Book } from "./models/book";
-import {Author} from "./models/author";
+import { Book } from "src/app/_models/book";
+import { Author } from "src/app/_models/author";
 
 @Pipe({
   name:'SearchBooksByTitleAuthor'
