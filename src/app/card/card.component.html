@@ -1,13 +1,18 @@
 <br>
 <mat-card class="container">
   <mat-card-header>
+
+    <!--Avatar-->
     <div mat-card-avatar>
       <img [src]=image [alt]="'avatar'" height=50 width=50>
     </div>
 
+    <!--Subtitle-->
     <mat-card-subtitle>
       {{subtitle}}
     </mat-card-subtitle>
+
+    <!--Title-->
     <mat-card-title>
       <a [routerLink]=link>
         {{title}}
@@ -15,12 +20,8 @@
 
     </mat-card-title>
 
-    <mat-card-actions align="end" class="fill">
-      <button mat-icon-button (click)="viewClick()">
-        <mat-icon aria-hidden="false" aria-label="View" fontIcon="launch" >
-        </mat-icon>
-      </button>
-
+    <!--Buttons-->
+    <mat-card-actions>
       <button mat-icon-button (click)="editClick()" >
         <mat-icon aria-hidden="false" aria-label="Edit" fontIcon="edit">
         </mat-icon>
@@ -34,6 +35,7 @@
 
   </mat-card-header>
 
+  <!--Content-->
   <mat-card-content>
     <strong>{{contentPrefix}}</strong> {{content}}
   </mat-card-content>

@@ -1,12 +1,16 @@
 <ng-container>
-  <!-- Logo, title, logout !-->
   <mat-toolbar color="primary" >
+
+    <!-- Logo & title-->
     <img [src]="logo" alt="book icon" width="50" height="50" style="padding-right:15px;">
     <span style="font-size:50px;padding-bottom:15px;padding-top:15px">
-    {{title}}
-  </span>
+      {{title}}
+    </span>
+
+    <!-- Logout-->
     <span class="right-options"></span>
     <app-logout *ngIf="authService.isLoggedIn$ | async"></app-logout>
+
   </mat-toolbar>
 
   <!-- Navigation -->

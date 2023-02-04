@@ -25,10 +25,10 @@ export class SearchBooksByTitleAuthor implements PipeTransform {
 }
 
 @Pipe({
-  name:'SearchAuthors'
+  name:'SearchAuthorsByName'
 })
 
-export class SearchAuthors implements PipeTransform {
+export class SearchAuthorsByName implements PipeTransform {
   transform(authors: Author[], searchInput: string): any[]{
     if(!searchInput) {
       return authors;
@@ -38,6 +38,22 @@ export class SearchAuthors implements PipeTransform {
     return authors.filter(
       a =>a.firstName.toLowerCase().includes(searchInput) ||
         a.lastName.toLowerCase().includes(searchInput)
+    )
+
+  }
+}
+
+@Pipe({
+  name:'SearchBooksByAuthorId'
+})
+export class SearchBooksByAuthorId implements PipeTransform {
+  transform(books: Book[], searchInput: string): any[]{
+    if(!searchInput) {
+      return books;
+    }
+
+    return books.filter(
+      b =>b.author.id == Number(searchInput)
     )
 
   }

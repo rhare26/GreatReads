@@ -6,7 +6,7 @@ import {MatDialog} from "@angular/material/dialog";
 import {AddEditAuthorComponent} from "../add-edit-author/add-edit-author.component";
 
 @Component({
-  selector: 'app-authors-page',
+  selector: 'app-authors-list',
   templateUrl: './authors-list.component.html',
   styleUrls: ['./authors-list.component.scss']
 })

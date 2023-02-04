@@ -1,8 +1,15 @@
 <div class="panel">
 
-  <!-- List all books -->
-  <div class="scroll-list">
+  <!-- Book list (search by title or author)-->
+  <div class="scroll-list" *ngIf="searchType==TITLE_OR_AUTHOR">
     <mat-list *ngFor="let book of list | SearchBooksByTitleAuthor:searchInput">
+      <app-book-card [book]="book"></app-book-card>
+    </mat-list>
+  </div>
+
+  <!-- Book list (search by author id)-->
+  <div class="scroll-list" *ngIf="searchType==AUTHOR_ID">
+    <mat-list *ngFor="let book of list | SearchBooksByAuthorId:searchInput">
       <app-book-card [book]="book"></app-book-card>
     </mat-list>
   </div>

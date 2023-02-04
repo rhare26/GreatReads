@@ -10,6 +10,7 @@ export class BrowseComponent {
   readonly AUTHORS = "Authors"
   mode = this.BOOKS
   searchInput: string ="";
+  TITLE_OR_AUTHOR: any;
 
   ngOnInit(){}
 }

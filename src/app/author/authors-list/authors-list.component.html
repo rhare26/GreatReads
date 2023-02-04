@@ -4,7 +4,7 @@
 
   <!-- List all author -->
   <div class="scroll-list">
-    <mat-list *ngFor="let author of list | SearchAuthors:searchInput">
+    <mat-list *ngFor="let author of list | SearchAuthorsByName:searchInput">
       <app-author-card [author]="author"></app-author-card>
     </mat-list>
   </div>

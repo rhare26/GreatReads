@@ -6,16 +6,22 @@ import {MatDialog} from "@angular/material/dialog";
 import {Subscription} from "rxjs";
 
 @Component({
-  selector: 'app-books-page',
+  selector: 'app-books-list',
   templateUrl: './books-list.component.html',
   styleUrls: ['./books-list.component.scss']
 })
 
 export class BooksListComponent {
+  //TODO: find best way to make these useable by multiple classes
+  readonly TITLE_OR_AUTHOR = 'TITLE_OR_AUTHOR';
+  readonly AUTHOR_ID = 'AUTHOR_ID';
+
   list: Book[] = []
   subscription: Subscription;
 
   @Input() searchInput!:string
+  @Input() searchType!:string
+
 
   constructor(private service:SharedService, public dialog: MatDialog){
     this.subscription=this.service.getUpdatedBookListNotification().subscribe(list=>{

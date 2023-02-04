@@ -1,4 +1,5 @@
 <div class="main-panel" style="overflow:hidden;">
+
   <!-- Search bar -->
   <mat-form-field [style.width.px]=450 style="overflow:hidden;">
     <input  type="string"  matInput
@@ -7,7 +8,7 @@
     <button matPrefix mat-button ><mat-icon >search</mat-icon></button>
   </mat-form-field>
 
-  <!-- Choose search by book or title -->
+  <!-- Select mode -->
   <div>
     <mat-radio-group aria-label="Select an option to search for" [(ngModel)]="mode">
       <mat-radio-button value={{BOOKS}}>{{BOOKS}}</mat-radio-button>
@@ -15,9 +16,9 @@
     </mat-radio-group>
   </div>
 
-  <!-- Show list of books or authors based on mode -->
-  <app-books-page *ngIf="mode==BOOKS" [searchInput]="searchInput"></app-books-page>
-  <app-authors-page *ngIf="mode==AUTHORS" [searchInput]="searchInput"></app-authors-page>
+  <!-- List (books or authors) -->
+  <app-books-list *ngIf="mode==BOOKS" [searchInput]="searchInput" [searchType]="'TITLE_OR_AUTHOR'"></app-books-list>
+  <app-authors-list *ngIf="mode==AUTHORS" [searchInput]="searchInput"></app-authors-list>
 
 
 </div>

@@ -1,1 +1,10 @@
-{{author.lastName}}
+
+<ng-container *ngIf="author">
+  {{author.firstName}} {{author.lastName}}
+
+  <!-- List all books -->
+  <app-books-list [searchInput]="author.id" [searchType]="'AUTHOR_ID'"></app-books-list>
+
+</ng-container>
+
+
