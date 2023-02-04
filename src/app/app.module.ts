@@ -46,6 +46,7 @@ import { NavigationComponent } from './navigation/navigation.component';
 import { BrowseComponent } from './browse/browse.component';
 import { MyReadListComponent } from './my-read/my-read-list/my-read-list.component';
 import { BookDetailComponent } from './book/book-detail/book-detail.component';
+import { AuthorDetailComponent } from './author/author-detail/author-detail.component';
 
 @NgModule({
   declarations: [
@@ -64,7 +65,8 @@ import { BookDetailComponent } from './book/book-detail/book-detail.component';
     NavigationComponent,
     BrowseComponent,
     MyReadListComponent,
-    BookDetailComponent
+    BookDetailComponent,
+    AuthorDetailComponent
   ],
     imports: [
         BrowserModule,
