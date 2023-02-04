@@ -2,6 +2,18 @@
 [In progress] A web application using Django and Angular to manage book and reading lists, modelled after GoodReads. This is a personal project to teach myself these frameworks.
 
 ## Features
+### Screenshots (as of 2/4/23)
+![Login](https://user-images.githubusercontent.com/85655946/216779262-0caf4035-5db1-454b-9fb8-86aa1509e317.png)
+
+![BrowseBooks](https://user-images.githubusercontent.com/85655946/216779269-65675f21-8585-47dd-b0d5-618915e0e813.png)
+
+![AddBook](https://user-images.githubusercontent.com/85655946/216779276-9167f336-d20f-402c-afa8-e6fc4abec7d6.png)
+
+![SearchBooks](https://user-images.githubusercontent.com/85655946/216779282-7e6f02db-0c0e-48ab-b628-50716369d079.png)
+
+![BrowseAuthors](https://user-images.githubusercontent.com/85655946/216779284-198a4d25-f130-46b8-a685-002f413352c8.png)
+
+
 ### Backend 
 Completed: Models with foreign keys, serializers, views with ModelViewSet and permission classes, login & authentication with JWT 
 
