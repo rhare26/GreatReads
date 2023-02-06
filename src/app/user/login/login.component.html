@@ -7,20 +7,21 @@
   <mat-card-content>
     <form [formGroup]="loginForm" (ngSubmit)="submit()" >
       <mat-form-field>
-        <input matInput type="email" formControlName="email" id="email">
+        <input matInput class="field" type="email"  formControlName="email" id="email">
       </mat-form-field>
       <mat-form-field>
         <input matInput type="password" formControlName="password" id="password">
       </mat-form-field>
-
-      <button mat-raised-button class="submit" type="submit" color="primary">SUBMIT</button>
-
+      <br>
+      <button mat-raised-button class="button" type="submit" color="primary">
+        LOGIN
+      </button>
+      <br>
+      <button mat-button class="button" (click)="openRegisterDialog()" color="secondary" style="font-size:12px;">
+        No account? Register here
+      </button>
     </form>
-
-
   </mat-card-content>
-
-
 </mat-card>
 
 
