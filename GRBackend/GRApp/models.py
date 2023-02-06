@@ -4,7 +4,13 @@ from django.db import models
 
 from django.core.validators import MaxValueValidator, MinValueValidator
 
+WANT = 'Want to read'
+CURRENTLY = 'Currently reading'
+ALREADY = 'Already read'
+DNF = 'Did not finish'
 
+STATUS_CHOICES = [(WANT, 'Want to read'), (CURRENTLY, 'Currently reading'), (ALREADY, 'Already read'),
+                  (DNF, 'Did not finish')]
 class CustomUserManager(BaseUserManager):
   def create_user(self, email, password, **extra_fields):
     email = self.normalize_email(email)
@@ -70,21 +76,17 @@ class Book(models.Model):
 
 
 class MyRead(models.Model):
-  WANT = 'WANT'
-  CURRENTLY = 'CURRENTLY'
-  ALREADY = 'ALREADY'
-  DNF = 'DNF'
 
-  STATUS_CHOICES = [(WANT, 'Want to read'), (CURRENTLY, 'Currently reading'), (ALREADY, 'Already read'),
-                    (DNF, 'Did not finish')]
   book = models.ForeignKey(Book, related_name="ratings", on_delete=models.CASCADE)
-  status = models.CharField(max_length=10, choices=STATUS_CHOICES)
-  note = models.CharField(max_length=350, null=True)
-  dateRead = models.DateField()
+  user = models.ForeignKey(User, related_name="myreads", on_delete=models.CASCADE, null=True)
+  status = models.CharField(max_length=50, choices=STATUS_CHOICES)
+  note = models.CharField(max_length=350, null=True, blank=True)
+  dateRead = models.DateField(null=True, blank=True)
   owned = models.BooleanField(default=False)
   rating = models.DecimalField(
     default=None,
     null=True,
+    blank = True,
     max_digits=2,
     decimal_places=1,
     validators=[
@@ -94,4 +96,4 @@ class MyRead(models.Model):
   )
 
   def __str__(self):
-    return self.status + ' ' + self.book.title
+    return self.user.username + ' ' + self.status + ' ' + self.book.title
