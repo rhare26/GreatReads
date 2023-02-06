@@ -7,7 +7,7 @@ from rest_framework.views import APIView
 from rest_framework import viewsets, generics, status
 
 from GRApp.models import Book, Author, MyRead
-from GRApp.serializers import BookSerializer, AuthorSerializer, MyReadSerializer, SignUpSerializer
+from GRApp.serializers import BookSerializer, AuthorSerializer, MyReadSerializer, RegisterSerializer
 from .tokens import create_jwt_pair_for_user
 
 
@@ -59,8 +59,8 @@ class EditMyReadViewSet(viewsets.ModelViewSet):
 
 
 @permission_classes([AllowAny])
-class SignUpView(generics.GenericAPIView):
-  serializer_class = SignUpSerializer
+class RegisterView(generics.GenericAPIView):
+  serializer_class = RegisterSerializer
   permission_classes = []
 
   def post(self, request: Request):

@@ -16,6 +16,6 @@ router.register(r'edit-myread', EditMyReadViewSet, basename='edit-myread')
 
 urlpatterns = [
     path('', include(router.urls)),
-    path('signup/', views.SignUpView.as_view(), name='signup'),
+    path('register/', views.RegisterView.as_view(), name='register'),
     path('login/', views.LoginView.as_view(), name='login'),
 ]

@@ -37,14 +37,13 @@ class AuthorSerializer(serializers.ModelSerializer):
         model = Author
         fields = '__all__'
 
-class SignUpSerializer(serializers.ModelSerializer):
+class RegisterSerializer(serializers.ModelSerializer):
   email = serializers.CharField(max_length=80)
-  username = serializers.CharField(max_length=45)
   password = serializers.CharField(min_length=8, write_only=True)
 
   class Meta:
     model = User
-    fields = ["email", "username", "password"]
+    fields = ["email", "password"]
 
   def validate(self, attrs):
     email_exists = User.objects.filter(email=attrs["email"]).exists()
