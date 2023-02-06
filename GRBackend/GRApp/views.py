@@ -86,14 +86,13 @@ class LoginView(APIView):
 
     email = request.data.get("email")
     password = request.data.get("password")
-    print(email + password)
-    user = authenticate(email=email, password=password)
 
+    user = authenticate(email=email, password=password)
     if user is not None:
 
       tokens = create_jwt_pair_for_user(user)
 
-      response = {"message": "Login Successful", "tokens": tokens}
+      response = {"message": "Login Successful", "tokens": tokens, "userId":user.id}
       return Response(data=response, status=status.HTTP_200_OK)
 
     else:

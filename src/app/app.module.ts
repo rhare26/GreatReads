@@ -7,7 +7,9 @@ import {
   SearchBooksByTitleAuthor,
   SearchMyReadsByBookId,
   SearchAuthorsByName,
-  SearchBooksByAuthorId} from './_helpers/search.pipe'
+  SearchBooksByAuthorId,
+  SearchMyReadsByUserId
+} from './_helpers/search.pipe'
 import { CardComponent } from './card/card.component';
 
 
@@ -77,7 +79,8 @@ import {MatPaginatorModule} from "@angular/material/paginator";
     AuthorDetailComponent,
     RegisterComponent,
     ProfileComponent,
-    SearchMyReadsByBookId
+    SearchMyReadsByBookId,
+    SearchMyReadsByUserId
   ],
   imports: [
     BrowserModule,

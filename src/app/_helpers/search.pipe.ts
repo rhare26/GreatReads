@@ -75,3 +75,19 @@ export class SearchMyReadsByBookId implements PipeTransform {
 
   }
 }
+
+@Pipe({
+  name:'SearchMyReadsByUserId'
+})
+export class SearchMyReadsByUserId implements PipeTransform {
+  transform(myReads: MyRead[], searchInput: string): any[]{
+    if(!searchInput) {
+      return myReads;
+    }
+
+    return myReads.filter(
+      myRead =>myRead.user.id == Number(searchInput)
+    )
+
+  }
+}

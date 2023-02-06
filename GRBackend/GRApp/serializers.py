@@ -41,10 +41,10 @@ class AuthorSerializer(serializers.ModelSerializer):
 
 class UsernameSerializer(serializers.ModelSerializer):
   username = serializers.CharField(max_length=45)
-
+  id = serializers.IntegerField()
   class Meta:
     model = User
-    fields = ["username"]
+    fields = ['username', 'id']
 
 class RegisterSerializer(serializers.ModelSerializer):
   email = serializers.CharField(max_length=80)

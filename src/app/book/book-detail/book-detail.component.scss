@@ -10,3 +10,15 @@
   height: 75%;
   overflow-y: scroll;
 }
+
+a:link{
+  text-decoration: none;
+  color:black;
+}
+a:hover {
+  font-size:105%;
+  text-decoration: underline;
+}
+a, a:visited, a:active {
+  color: inherit;
+}

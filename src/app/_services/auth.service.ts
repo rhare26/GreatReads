@@ -18,9 +18,15 @@ export class AuthService {
   private _isLoggedIn$ = new BehaviorSubject<boolean>(false)
   isLoggedIn$ = this._isLoggedIn$.asObservable()
 
+  private _currentUserId$ = new BehaviorSubject<number>(0)
+  currentUserId$ = this._currentUserId$.asObservable()
+
   constructor(private http:HttpClient,  private jwtHelper: JwtHelperService, private router:Router) {
     const token = sessionStorage.getItem('token')
     this._isLoggedIn$.next(!!token);
+
+    const userId = Number(sessionStorage.getItem('userId'))
+    this._currentUserId$.next(userId);
   }
 
   register(email:string, username:string, password:string){
@@ -31,24 +37,31 @@ export class AuthService {
     return this.http.post<any[]>(this.loginUrl, {email, password}).
     pipe(tap((response:any)=>{
         if(response.tokens.access !== undefined){
-          this.storeUserData(response.tokens.access)
+          this.storeUserData(response)
         }
       })
     )
   }
 
-  storeUserData(token:any) {
-    this._isLoggedIn$.next(true) //update log in status
-    sessionStorage.setItem('token', token);
-    this.token = token;
+  storeUserData(response:any) {
+    this.token = response.tokens.access
+    sessionStorage.setItem('token', this.token);
+
+    const id = response.userId
+    sessionStorage.setItem('userId', id)
+    this._currentUserId$.next(id)
+
+    this._isLoggedIn$.next(true)
   }
+
 
   logout() {
     this.tokenSubscription.unsubscribe();
     this.token = null;
     this.user = null;
     sessionStorage.clear();
-    this._isLoggedIn$.next(false) //update log in status
+    this._isLoggedIn$.next(false)
+    this._currentUserId$.next(0)
     this.router.navigate([''])
   }
 
@@ -56,6 +69,7 @@ export class AuthService {
     const token = sessionStorage.getItem('token');
     return !this.jwtHelper.isTokenExpired(token);
   }
+
 
 }
 

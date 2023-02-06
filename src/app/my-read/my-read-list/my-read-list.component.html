@@ -1,5 +1,8 @@
 <div>
-  <table mat-table [dataSource]="myReadList">
+  <ng-container *ngIf="myReadList !== undefined">
+
+  <table mat-table [dataSource]="myReadList | SearchMyReadsByUserId:(authService.currentUserId$ | async)+''">
+
     <!-- Status -->
     <ng-container matColumnDef="status">
       <th mat-header-cell *matHeaderCellDef> Status </th>
@@ -9,7 +12,11 @@
     <!-- Title -->
     <ng-container matColumnDef="title">
       <th mat-header-cell *matHeaderCellDef> Title </th>
-      <td mat-cell *matCellDef="let myRead"> {{myRead.book.title}} </td>
+      <td mat-cell *matCellDef="let myRead">
+        <a [routerLink]="['/books', myRead.book.id]">
+          {{myRead.book.title}}
+      </a>
+      </td>
     </ng-container>
 
     <!-- Date Read -->
@@ -38,9 +45,8 @@
 
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-
-
   </table>
+  </ng-container>
 </div>
 
 
