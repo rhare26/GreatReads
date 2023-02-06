@@ -3,15 +3,31 @@
 
 }
 .left-panel{
-  width: 300px;
+  width: 200px;
   float:left;
   height: 100%;
   padding-left:20px;
   padding-right:20px;
+  margin-top:25px;
+
+}
+.content{
+  margin-top:25px;
+  position:relative;
+  left:50px;
 }
 .mat-divider-vertical{
   height: 100%;
   float: right;
   width: 1px;
   position: inherit;
+}
+a:link{
+  text-decoration: none;
+}
+a:hover {
+  font-size:105%;
+}
+a, a:visited, a:active {
+  color: inherit;
 }

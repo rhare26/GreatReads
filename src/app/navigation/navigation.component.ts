@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import {AuthService} from "../_services/auth.service";
+import {SharedService} from "../_services/shared.service";
 
 @Component({
   selector: 'app-navigation',
@@ -8,11 +9,12 @@ import {AuthService} from "../_services/auth.service";
 })
 export class NavigationComponent {
   navLinks:any[]= [];
+  myReadList:any[]=[];
 
-  constructor(public authService:AuthService){}
+  constructor(public authService:AuthService, private service:SharedService){}
 
   ngOnInit(): void{
-
+    this.refreshMyReadList()
     this.navLinks = [
       {
         label: 'Browse',
@@ -24,5 +26,11 @@ export class NavigationComponent {
         index: 1
       },
     ];
+  }
+
+  refreshMyReadList(){
+    this.service.getMyReadList().subscribe(data=>{
+      this.myReadList=data;
+    });
   }
 }

@@ -3,11 +3,11 @@ import {SharedService} from "../../_services/shared.service";
 import {AuthService} from "../../_services/auth.service";
 
 @Component({
-  selector: 'app-my-read-list',
-  templateUrl: './my-read-list.component.html',
-  styleUrls: ['./my-read-list.component.scss']
+  selector: 'app-my-read-table',
+  templateUrl: './my-read-table.component.html',
+  styleUrls: ['./my-read-table.component.scss']
 })
-export class MyReadListComponent {
+export class MyReadTableComponent {
   myReadList:any=[]
   displayedColumns: string[] = ['status', 'title', 'dateRead', 'rating', 'note', 'owned']
 
@@ -18,12 +18,10 @@ export class MyReadListComponent {
     this.refreshMyReadList();
   }
 
-
   refreshMyReadList(){
     this.service.getMyReadList().subscribe(data=>{
       this.myReadList=data;
     });
   }
-
 
 }

@@ -9,11 +9,26 @@
   </a>
 </nav>
 
+<!-- News feed on left -->
+<mat-list>
+<div class="left-panel" >
+  <h2>Latest Reads</h2>
+  <mat-list  *ngFor="let myRead of myReadList">
+    <a [routerLink]="['/books', myRead.book.id]" style="font-size:18px;" >
+      <strong>{{myRead.book.title}}</strong>
+    </a>
+    <br>
+    <app-my-read-blurb [myRead]="myRead"></app-my-read-blurb>
+  </mat-list>
+</div>
+
+</mat-list>
+
+<mat-divider [vertical]="true"></mat-divider>
 
 <!-- Content determined by nav bar -->
-<mat-tab-nav-panel #tabPanel>
+<mat-tab-nav-panel #tabPanel class="content">
   <router-outlet></router-outlet>
-  <mat-divider [vertical]="true"></mat-divider>
 </mat-tab-nav-panel>
 
 

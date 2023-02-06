@@ -1,0 +1,12 @@
+<strong>
+  {{myRead.user.username}}
+</strong>
+<br>
+[{{myRead.status}}]
+<ng-container *ngIf="myRead.rating">
+  {{myRead.rating}} stars
+</ng-container>
+
+<br>
+{{myRead.note}}
+<mat-divider></mat-divider>

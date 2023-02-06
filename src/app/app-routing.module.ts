@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { RouterModule, Routes } from '@angular/router';
 import {BrowseComponent} from "./browse/browse.component";
-import { MyReadListComponent } from "./my-read/my-read-list/my-read-list.component";
+import { MyReadTableComponent } from "./my-read/my-read-table/my-read-table.component";
 import { LoginComponent} from "./user/login/login.component";
 import { AuthGuardService} from 'src/app/_services/auth-guard.service'
 import {BookDetailComponent} from "./book/book-detail/book-detail.component";

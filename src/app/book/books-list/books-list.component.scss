@@ -1,19 +1,13 @@
 .panel{
   width: 100%;
-  position: absolute;
-  left: 10%;
   height: 100%;
-  padding-left:20px;
-  padding-right:20px;
-  overflow-y:scroll;
 }
 .add-button{
   position:absolute;
   right:30px;
   bottom:30px;
 }
-
 .scroll-list{
-  height: 75%;
-  overflow-y: scroll;
+  height:75%;
 }
+

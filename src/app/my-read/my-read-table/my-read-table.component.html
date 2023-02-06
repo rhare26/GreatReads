@@ -1,5 +1,6 @@
 <div>
-  <ng-container *ngIf="myReadList !== undefined">
+  {{myReadList[0]}}
+  <ng-container>
 
   <table mat-table [dataSource]="myReadList | SearchMyReadsByUserId:(authService.currentUserId$ | async)+''">
 
