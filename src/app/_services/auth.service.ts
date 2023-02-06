@@ -10,7 +10,7 @@ import { Router } from '@angular/router'
 export class AuthService {
   readonly APIUrl = environment.apiUrl;
   readonly loginUrl = environment.apiUrl + '/login/'
-  readonly registerUrl = '/register/'
+  readonly registerUrl = environment.apiUrl + '/register/'
 
   tokenSubscription = new Subscription()
   token: any;
@@ -21,6 +21,10 @@ export class AuthService {
   constructor(private http:HttpClient,  private jwtHelper: JwtHelperService, private router:Router) {
     const token = sessionStorage.getItem('token')
     this._isLoggedIn$.next(!!token);
+  }
+
+  register(email:string, username:string, password:string){
+    return this.http.post<any[]>(this.registerUrl, {email, username,password})
   }
 
   login(email:string,password:string){
