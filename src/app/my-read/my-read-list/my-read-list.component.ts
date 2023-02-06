@@ -11,7 +11,9 @@ import {MatDialog} from "@angular/material/dialog";
 })
 export class MyReadListComponent {
   myReadList:any
+  displayedColumns: string[] = ['status', 'title']
   constructor(private service:SharedService){}
+
 
   ngOnInit(): void{
     this.refreshMyReadList();
