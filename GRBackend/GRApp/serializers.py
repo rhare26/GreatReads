@@ -27,6 +27,7 @@ class MyReadSerializer(serializers.ModelSerializer):
     data = super().to_representation(instance)
     try:
       data['book'] = BookSerializer(Book.objects.get(pk=data['book'])).data
+      data['user'] = UsernameSerializer(User.objects.get(pk=data['user'])).data
     except Author.DoesNotExist:
       data['book'] = None
     return data
@@ -36,6 +37,14 @@ class AuthorSerializer(serializers.ModelSerializer):
     class Meta:
         model = Author
         fields = '__all__'
+
+
+class UsernameSerializer(serializers.ModelSerializer):
+  username = serializers.CharField(max_length=45)
+
+  class Meta:
+    model = User
+    fields = ["username"]
 
 class RegisterSerializer(serializers.ModelSerializer):
   email = serializers.CharField(max_length=80)
