@@ -49,6 +49,8 @@ import {environment} from "../environments/environment";
 import { LogoutComponent } from './user/logout/logout.component';
 import { NavigationComponent } from './navigation/navigation.component';
 import { RegisterComponent } from './user/register/register.component';
+import { ProfileComponent } from './profile/profile.component';
+import { MyReadCardComponent } from './my-read/my-read-card/my-read-card.component';
 
 
 @NgModule({
@@ -71,7 +73,9 @@ import { RegisterComponent } from './user/register/register.component';
     MyReadListComponent,
     BookDetailComponent,
     AuthorDetailComponent,
-    RegisterComponent
+    RegisterComponent,
+    ProfileComponent,
+    MyReadCardComponent
   ],
     imports: [
         BrowserModule,

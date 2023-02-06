@@ -19,8 +19,8 @@ export class NavigationComponent {
         link: './browse',
         index: 0
       },  {
-        label: 'My Reads',
-        link: './my-reads',
+        label: 'My Profile',
+        link: './profile',
         index: 1
       },
     ];

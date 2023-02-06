@@ -1,1 +1,24 @@
-<p>my-read works!</p>
+<div class="panel">
+  <!-- List of all read books-->
+  <div class="scroll-list">
+    <mat-list *ngFor="let myRead of myReadList">
+      <app-my-read-card [myRead]="myRead"></app-my-read-card>
+    </mat-list>
+  </div>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

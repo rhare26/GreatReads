@@ -12,11 +12,11 @@ export class SharedService {
 
   readonly getBookUrl = this.APIUrl + '/get-book/'
   readonly getAuthorUrl = this.APIUrl + '/get-author/'
-  readonly getMyReadUrl = this.APIUrl + '/get-myRead/'
+  readonly getMyReadUrl = this.APIUrl + '/get-myread/'
 
   readonly editBookUrl = this.APIUrl + '/edit-book/'
   readonly editAuthorUrl = this.APIUrl + '/edit-author/'
-  readonly editMyReadUrl = this.APIUrl + '/edit-myRead/'
+  readonly editMyReadUrl = this.APIUrl + '/edit-myread/'
 
   private booksSubject = new Subject<any>();
 

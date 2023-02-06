@@ -8,12 +8,13 @@ import { LoginComponent} from "./user/login/login.component";
 import { AuthGuardService} from 'src/app/_services/auth-guard.service'
 import {BookDetailComponent} from "./book/book-detail/book-detail.component";
 import {AuthorDetailComponent} from "./author/author-detail/author-detail.component";
+import {ProfileComponent} from "./profile/profile.component";
 
 export const ROUTES: Routes = [
   {path:'login', component:LoginComponent},
   {path:'browse', component:BrowseComponent,
     canActivate: [AuthGuardService]},
-  {path:'my-reads', component:MyReadListComponent,
+  {path:'profile', component:ProfileComponent,
     canActivate: [AuthGuardService]},
   {path: 'books/:bookId', component: BookDetailComponent,
     canActivate: [AuthGuardService]},
