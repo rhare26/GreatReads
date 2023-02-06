@@ -9,12 +9,14 @@ import {environment} from "../../environments/environment";
 
 export class SharedService {
   readonly APIUrl = environment.apiUrl;
-  readonly getBookUrl = '/get-book/'
-  readonly getAuthorUrl = '/get-author/'
-  readonly getMyReadUrl = '/get-myRead/'
-  readonly editBookUrl = '/edit-book/'
-  readonly editAuthorUrl = '/edit-author/'
-  readonly editMyReadUrl = '/edit-myRead/'
+
+  readonly getBookUrl = this.APIUrl + '/get-book/'
+  readonly getAuthorUrl = this.APIUrl + '/get-author/'
+  readonly getMyReadUrl = this.APIUrl + '/get-myRead/'
+
+  readonly editBookUrl = this.APIUrl + '/edit-book/'
+  readonly editAuthorUrl = this.APIUrl + '/edit-author/'
+  readonly editMyReadUrl = this.APIUrl + '/edit-myRead/'
 
   private booksSubject = new Subject<any>();
 
@@ -40,15 +42,15 @@ export class SharedService {
   /************************BOOKS************************/
   getBookList():Observable<any[]>{
 
-    return this.http.get<any[]>(this.APIUrl + this.getBookUrl);
+    return this.http.get<any[]>(this.getBookUrl);
   }
 
   getBook(id:any):Observable<any[]>{
-    return this.http.get<any[]>(this.APIUrl + this.getBookUrl + id);
+    return this.http.get<any[]>(this.getBookUrl + id);
   }
 
   addBook(book:any){
-    return this.http.post<any[]>(this.APIUrl + this.editBookUrl, book).pipe(
+    return this.http.post<any[]>(this.editBookUrl, book).pipe(
       map((()=>{
         this.sendUpdatedBookListNotification(true);
       }))
@@ -56,7 +58,7 @@ export class SharedService {
   }
 
   updateBook(book:any){
-    return this.http.patch<any[]>(this.APIUrl + this.editBookUrl + book.id + '/', book).pipe(
+    return this.http.patch<any[]>(this.editBookUrl + book.id + '/', book).pipe(
       map((()=>{
         this.sendUpdatedBookListNotification(true);
       }))
@@ -64,7 +66,7 @@ export class SharedService {
   }
 
   deleteBook(book:any){
-    return this.http.delete<any[]>(this.APIUrl + this.editBookUrl + book.id + '/', book).pipe(
+    return this.http.delete<any[]>(this.editBookUrl + book.id + '/', book).pipe(
       map((()=>{
         this.sendUpdatedBookListNotification(true);
       }))
@@ -73,15 +75,15 @@ export class SharedService {
 
   /************************AUTHORS************************/
   getAuthorList():Observable<any[]>{
-    return this.http.get<any[]>(this.APIUrl + this.getAuthorUrl);
+    return this.http.get<any[]>(this.getAuthorUrl);
   }
 
   getAuthor(id:any):Observable<any[]>{
-    return this.http.get<any[]>(this.APIUrl + this.getAuthorUrl + id);
+    return this.http.get<any[]>(this.getAuthorUrl + id);
   }
 
   addAuthor(author:any){
-    return this.http.post<any[]>(this.APIUrl + this.editAuthorUrl, author).pipe(
+    return this.http.post<any[]>(this.editAuthorUrl, author).pipe(
       map((()=>{
         this.sendUpdatedAuthorListNotification(true);
       }))
@@ -89,7 +91,7 @@ export class SharedService {
   }
 
   updateAuthor(author:any){
-    return this.http.patch<any[]>(this.APIUrl + this.editAuthorUrl + author.id + '/', author).pipe(
+    return this.http.patch<any[]>(this.editAuthorUrl + author.id + '/', author).pipe(
       map((()=>{
         this.sendUpdatedAuthorListNotification(true);
       }))
@@ -97,10 +99,31 @@ export class SharedService {
   }
 
   deleteAuthor(author:any){
-    return this.http.delete<any[]>(this.APIUrl + this.editAuthorUrl + author.id + '/', author).pipe(
+    return this.http.delete<any[]>(this.editAuthorUrl + author.id + '/', author).pipe(
       map((()=>{
         this.sendUpdatedAuthorListNotification(true);
       }))
     );
+  }
+
+  /************************MY READS************************/
+  getMyReadList():Observable<any[]>{
+    return this.http.get<any[]>(this.getMyReadUrl);
+  }
+
+  getMyRead(id:any):Observable<any[]>{
+    return this.http.get<any[]>(this.getMyReadUrl + id);
+  }
+
+  addMyRead(myRead:any){
+    return this.http.post<any[]>(this.editMyReadUrl, myRead)
+  }
+
+  updateMyRead(myRead:any){
+    return this.http.patch<any[]>(this.editMyReadUrl + myRead.id + '/', myRead)
+  }
+
+  deleteMyRead(myRead:any){
+    return this.http.delete<any[]>(this.editMyReadUrl + myRead.id + '/', myRead)
   }
 }

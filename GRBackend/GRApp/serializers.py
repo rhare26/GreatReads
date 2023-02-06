@@ -26,7 +26,7 @@ class MyReadSerializer(serializers.ModelSerializer):
   def to_representation(self, instance):
     data = super().to_representation(instance)
     try:
-      data['book'] = BookSerializer(Author.objects.get(pk=data['book'])).data
+      data['book'] = BookSerializer(Book.objects.get(pk=data['book'])).data
     except Author.DoesNotExist:
       data['book'] = None
     return data
