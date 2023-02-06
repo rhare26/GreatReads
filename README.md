@@ -1,5 +1,5 @@
 # GreatReads
-[In progress] A web application using Django and Angular to manage book and reading lists, modelled after GoodReads. This is a personal project to teach myself these frameworks.
+[In progress] A web application using Django and Angular to manage book and reading lists, modelled after GoodReads. This is a personal project to teach myself these frameworks. The project is still in progress and some features have not been implemented yet.
 
 ## Features
 ### Screenshots (as of 2/6/23)
