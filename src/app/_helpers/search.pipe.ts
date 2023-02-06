@@ -3,6 +3,7 @@
 import { Pipe, PipeTransform } from '@angular/core';
 import { Book } from "src/app/_models/book";
 import { Author } from "src/app/_models/author";
+import {MyRead} from "../_models/my-read";
 
 @Pipe({
   name:'SearchBooksByTitleAuthor'
@@ -16,9 +17,9 @@ export class SearchBooksByTitleAuthor implements PipeTransform {
 
     searchInput = searchInput.toLowerCase();
     return books.filter(
-      b => b.title.toLowerCase().includes(searchInput) ||
-        b.author.firstName.toLowerCase().includes(searchInput) ||
-        b.author.lastName.toLowerCase().includes(searchInput)
+      book => book.title.toLowerCase().includes(searchInput) ||
+        book.author.firstName.toLowerCase().includes(searchInput) ||
+        book.author.lastName.toLowerCase().includes(searchInput)
     )
 
   }
@@ -36,8 +37,8 @@ export class SearchAuthorsByName implements PipeTransform {
 
     searchInput = searchInput.toLowerCase();
     return authors.filter(
-      a =>a.firstName.toLowerCase().includes(searchInput) ||
-        a.lastName.toLowerCase().includes(searchInput)
+      author =>author.firstName.toLowerCase().includes(searchInput) ||
+        author.lastName.toLowerCase().includes(searchInput)
     )
 
   }
@@ -53,7 +54,23 @@ export class SearchBooksByAuthorId implements PipeTransform {
     }
 
     return books.filter(
-      b =>b.author.id == Number(searchInput)
+      book =>book.author.id == Number(searchInput)
+    )
+
+  }
+}
+
+@Pipe({
+  name:'SearchMyReadsByBookId'
+})
+export class SearchMyReadsByBookId implements PipeTransform {
+  transform(myReads: MyRead[], searchInput: string): any[]{
+    if(!searchInput) {
+      return myReads;
+    }
+
+    return myReads.filter(
+      myRead =>myRead.book.id == Number(searchInput)
     )
 
   }

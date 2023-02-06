@@ -3,9 +3,11 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { SharedService } from './_services/shared.service';
-import { SearchBooksByTitleAuthor } from './_helpers/search.pipe'
-import { SearchAuthorsByName } from './_helpers/search.pipe'
-import { SearchBooksByAuthorId } from './_helpers/search.pipe'
+import {
+  SearchBooksByTitleAuthor,
+  SearchMyReadsByBookId,
+  SearchAuthorsByName,
+  SearchBooksByAuthorId} from './_helpers/search.pipe'
 import { CardComponent } from './card/card.component';
 
 
@@ -50,6 +52,7 @@ import { LogoutComponent } from './user/logout/logout.component';
 import { NavigationComponent } from './navigation/navigation.component';
 import { RegisterComponent } from './user/register/register.component';
 import { ProfileComponent } from './profile/profile.component';
+import {MatPaginatorModule} from "@angular/material/paginator";
 
 
 @NgModule({
@@ -73,39 +76,41 @@ import { ProfileComponent } from './profile/profile.component';
     BookDetailComponent,
     AuthorDetailComponent,
     RegisterComponent,
-    ProfileComponent
+    ProfileComponent,
+    SearchMyReadsByBookId
   ],
-    imports: [
-        BrowserModule,
-        FormsModule,
-        ReactiveFormsModule,
-        AppRoutingModule,
-        RouterModule,
-        HttpClientModule,
-        MatToolbarModule,
-        MatTabsModule,
-        BrowserAnimationsModule,
-        MatButtonModule,
-        MatCardModule,
-        MatIconModule,
-        MatListModule,
-        MatInputModule,
-        MatSelectModule,
-        MatAutocompleteModule,
-        MatTableModule,
-        MatDialogModule,
-        MatSidenavModule,
-        MatExpansionModule,
-        MatDividerModule,
-        MatRadioModule,
-        JwtModule.forRoot({
-          config: {
-            tokenGetter: tokenGetter,
-            allowedDomains: [environment.apiUrl],
-            disallowedRoutes: [],
-          }
-        })
-    ],
+  imports: [
+    BrowserModule,
+    FormsModule,
+    ReactiveFormsModule,
+    AppRoutingModule,
+    RouterModule,
+    HttpClientModule,
+    MatToolbarModule,
+    MatTabsModule,
+    BrowserAnimationsModule,
+    MatButtonModule,
+    MatCardModule,
+    MatIconModule,
+    MatListModule,
+    MatInputModule,
+    MatSelectModule,
+    MatAutocompleteModule,
+    MatTableModule,
+    MatDialogModule,
+    MatSidenavModule,
+    MatExpansionModule,
+    MatDividerModule,
+    MatRadioModule,
+    JwtModule.forRoot({
+      config: {
+        tokenGetter: tokenGetter,
+        allowedDomains: [environment.apiUrl],
+        disallowedRoutes: [],
+      }
+    }),
+    MatPaginatorModule,
+  ],
   providers: [
     SharedService,
     AuthService,

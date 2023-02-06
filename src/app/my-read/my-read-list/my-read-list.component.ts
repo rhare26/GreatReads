@@ -11,7 +11,7 @@ import {MatDialog} from "@angular/material/dialog";
 })
 export class MyReadListComponent {
   myReadList:any
-  displayedColumns: string[] = ['status', 'title']
+  displayedColumns: string[] = ['status', 'title', 'dateRead', 'rating', 'note', 'owned']
   constructor(private service:SharedService){}
 
 
