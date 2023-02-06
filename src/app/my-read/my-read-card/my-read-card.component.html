@@ -1,0 +1,13 @@
+{{myRead.book.image}}
+
+<app-card
+  [link]="['/books', myRead.book.id]"
+  [title]="myRead.book.title"
+  [image]="myRead.book.image"
+  [subtitle]="myRead.status"
+  [contentPrefix]="myRead.rating"
+  [content]="myRead.note"
+  (onView)="view()"
+  (onEdit)="openEditMyReadDialog()"
+  (onDelete)="delete()"
+></app-card>
