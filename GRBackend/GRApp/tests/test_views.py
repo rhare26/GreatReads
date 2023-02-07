@@ -8,9 +8,26 @@ from ..serializers import AuthorSerializer, BookSerializer
 from rest_framework.authtoken.models import Token
 from rest_framework.test import APIClient, APITestCase
 
-#TODO: look into better way with less repetition
 
-settings.MEDIA_URL = 'http://testserver/media/'
+settings.MEDIA_URL = 'http://testserver/media/' #needed for image urls to match
+
+def addDummyAuthorsToDB():
+  Author.objects.create(firstName='Alexandre', lastName='Dumas')
+  Author.objects.create(firstName='Lemony', lastName='Snicket')
+
+  return Author.objects.all
+
+
+def addDummyBooksToDB():
+  addDummyAuthorsToDB() # need author before creating books
+  author = Author.objects.get(pk=1) # arbitrarily use first one
+
+  Book.objects.create(title="The Three Musketeers", genre="Classic", averageRating=4.0, author=author,
+                      synopsis="In this book...")
+  Book.objects.create(title="The Count of Monte Cristo", genre="Classic", averageRating=2.0, author=author,
+                      synopsis="In this book...")
+
+
 class RemoteAuthenticatedTest(APITestCase):
   client_class = APIClient
   def setUp(self):
@@ -28,12 +45,7 @@ class RemoteAuthenticatedTest(APITestCase):
 class BookTest(RemoteAuthenticatedTest):
 
   def setUp(self):
-    author = Author.objects.create(firstName='Alexandre', lastName='Dumas') #books need authors first
-
-    Book.objects.create(title="The Three Musketeers", genre="Classic", averageRating=4.0, author=author,
-                        synopsis="In this book...")
-    Book.objects.create(title="The Count of Monte Cristo", genre="Classic", averageRating=2.0, author=author,
-                        synopsis="In this book...")
+    addDummyBooksToDB()
 
     self.get_detail_url = 'get-book-detail'
     self.get_list_url = 'get-book-list'
@@ -64,9 +76,7 @@ class BookTest(RemoteAuthenticatedTest):
 
 class AuthorTest(RemoteAuthenticatedTest):
   def setUp(self):
-    Author.objects.create(firstName='Alexandre', lastName='Dumas')
-    Author.objects.create(firstName='Lemony', lastName='Snicket')
-    Author.objects.create(firstName='JK', lastName='Rowling')
+    addDummyAuthorsToDB()
 
     self.get_detail_url = 'get-author-detail'
     self.get_list_url = 'get-author-list'
