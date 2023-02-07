@@ -63,6 +63,8 @@ class BookTest(RemoteAuthenticatedTest):
     self.edit_detail_url = 'edit-book-detail'
     self.edit_list_url = 'edit-book-list'
 
+    self.dataToPost = {"title":"The Three Musketeers", "genre":"Classic", "averageRating":4.0, "author":1, "synopsis":"In this book..."}
+    self.dataToPatch = {"title":"The Count of Monte Cristo", "averageRating":5.0}
     super(BookTest, self).setUp()
 
   def test_get_list_ok(self):
@@ -85,7 +87,7 @@ class BookTest(RemoteAuthenticatedTest):
     self.assertEqual(response.data, serializer.data)
 
   def test_post_detail_ok(self):
-    data ={"title":"The Three Musketeers", "genre":"Classic", "averageRating":4.0, "author":1, "synopsis":"In this book..."}
+    data = self.dataToPost
     url = reverse(self.edit_list_url)
     response = super().postAuthenticated(url, data)
     self.assertEqual(response.status_code, status.HTTP_201_CREATED)
@@ -101,9 +103,41 @@ class BookTest(RemoteAuthenticatedTest):
     response = super().postAuthenticated(url, data)
     self.assertEqual(response.status_code, status.HTTP_400_BAD_REQUEST)
 
+  def test_patch_detail_ok(self):
+    itemId = 2
+    data = self.dataToPatch
+    url = reverse(self.edit_detail_url, args=(itemId,))
+    response = super().patchAuthenticated(url, data)
+    self.assertEqual(response.status_code, status.HTTP_200_OK)
+
+    item = Book.objects.get(pk=itemId)
+    serializer = BookSerializer(item)
+    self.assertEqual(response.data, serializer.data)
+
+  def test_delete_detail_ok(self):
+    #create new
+    data = self.dataToPost
+    url = reverse(self.edit_list_url)
+    response = super().postAuthenticated(url, data)
+    self.assertEqual(response.status_code, status.HTTP_201_CREATED)
+
+    #delete
+    itemId = response.data['id']
+    url = reverse(self.edit_detail_url, args=(itemId,))
+    response = super().deleteAuthenticated(url)
+    self.assertEqual(response.status_code, status.HTTP_204_NO_CONTENT)
+
+    #try to get
+    url = reverse(self.edit_detail_url, args=(itemId,))
+    response = super().getAuthenticated(url)
+    self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
+
 class AuthorTest(RemoteAuthenticatedTest):
   def setUp(self):
     addDummyAuthorsToDB()
+
+    self.dataToPost = {"firstName": "Agatha", "lastName": "Christie"}
+    self.dataToPatch = {"lastName": "Harkness"}
 
     self.get_detail_url = 'get-author-detail'
     self.get_list_url = 'get-author-list'
@@ -131,7 +165,6 @@ class AuthorTest(RemoteAuthenticatedTest):
     serializer = AuthorSerializer(item)
     self.assertEqual(response.data, serializer.data)
 
-
   def test_get_detail_dne(self):
     nonexistantItemId = 99
     url = reverse(self.get_detail_url, args=(nonexistantItemId,))
@@ -140,7 +173,7 @@ class AuthorTest(RemoteAuthenticatedTest):
     self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
 
   def test_post_detail_ok(self):
-    data ={"firstName":"Agatha", "lastName":"Christie"}
+    data = self.dataToPost
     url = reverse(self.edit_list_url)
     response = super().postAuthenticated(url, data)
     self.assertEqual(response.status_code, status.HTTP_201_CREATED)
@@ -151,14 +184,14 @@ class AuthorTest(RemoteAuthenticatedTest):
     self.assertEqual(response.data, serializer.data)
 
   def test_post_detail_no_data(self):
-    data ={}
+    data = {}
     url = reverse(self.edit_list_url)
     response = super().postAuthenticated(url, data)
     self.assertEqual(response.status_code, status.HTTP_400_BAD_REQUEST)
 
   def test_patch_detail_ok(self):
     itemId = 2
-    data = {"lastName": "Harkness"}
+    data = self.dataToPatch
     url = reverse(self.edit_detail_url, args=(itemId,))
     response = super().patchAuthenticated(url, data)
     self.assertEqual(response.status_code, status.HTTP_200_OK)
@@ -166,5 +199,23 @@ class AuthorTest(RemoteAuthenticatedTest):
     item = Author.objects.get(pk=itemId)
     serializer = AuthorSerializer(item)
     self.assertEqual(response.data, serializer.data)
+
+  def test_delete_detail_ok(self):
+    #create new
+    data = self.dataToPost
+    url = reverse(self.edit_list_url)
+    response = super().postAuthenticated(url, data)
+    self.assertEqual(response.status_code, status.HTTP_201_CREATED)
+
+    #delete
+    itemId = response.data['id']
+    url = reverse(self.edit_detail_url, args=(itemId,))
+    response = super().deleteAuthenticated(url)
+    self.assertEqual(response.status_code, status.HTTP_204_NO_CONTENT)
+
+    #try to get
+    url = reverse(self.edit_detail_url, args=(itemId,))
+    response = super().getAuthenticated(url)
+    self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
 
 
