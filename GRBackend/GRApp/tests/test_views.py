@@ -12,13 +12,11 @@ from rest_framework.test import APITestCase
 
 settings.MEDIA_URL = 'http://testserver/media/'  # needed for image urls to match
 
-
 def addDummyAuthorsToDB():
   Author.objects.create(firstName='Alexandre', lastName='Dumas')
   Author.objects.create(firstName='Lemony', lastName='Snicket')
 
   return Author.objects.all
-
 
 def addDummyBooksToDB():
   addDummyAuthorsToDB()  # need author before creating books
