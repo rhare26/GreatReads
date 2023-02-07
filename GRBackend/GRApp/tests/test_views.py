@@ -1,6 +1,7 @@
 from django.conf import settings
 from rest_framework import status
 from django.urls import reverse
+from rest_framework.request import Request
 
 from ..models import Author, Book, User
 from ..serializers import AuthorSerializer, BookSerializer
@@ -20,7 +21,9 @@ class RemoteAuthenticatedTest(APITestCase):
     Token.objects.create(user=self.user)
     super(RemoteAuthenticatedTest, self).setUp()
 
-
+  def getAuthenticated(self, url) -> Request:
+    self.client.credentials(HTTP_AUTHORIZATION='Token ' + self.user.auth_token.key)
+    return self.client.get(url, format='json', REMOTE_USER=self.username)
 
 class BookTest(RemoteAuthenticatedTest):
 
@@ -41,8 +44,7 @@ class BookTest(RemoteAuthenticatedTest):
 
   def test_get_list_ok(self):
     url = reverse(self.get_list_url)
-    self.client.credentials(HTTP_AUTHORIZATION='Token ' + self.user.auth_token.key)
-    response = self.client.get(url, format='json', REMOTE_USER=self.username)
+    response = super().getAuthenticated(url)
     self.assertEqual(response.status_code, status.HTTP_200_OK)
 
     books = Book.objects.all()
@@ -51,12 +53,12 @@ class BookTest(RemoteAuthenticatedTest):
 
 
   def test_get_detail_ok(self):
-    url = reverse(self.get_detail_url, args=[1])
-    self.client.credentials(HTTP_AUTHORIZATION='Token ' + self.user.auth_token.key)
-    response = self.client.get(url, format='json', REMOTE_USER=self.username)
+    itemId=1
+    url = reverse(self.get_detail_url, args=(itemId,))
+    response = super().getAuthenticated(url)
     self.assertEqual(response.status_code, status.HTTP_200_OK)
 
-    item = Book.objects.get(pk=1)
+    item = Book.objects.get(pk=itemId)
     serializer = BookSerializer(item)
     self.assertEqual(response.data, serializer.data)
 
@@ -75,28 +77,23 @@ class AuthorTest(RemoteAuthenticatedTest):
 
   def test_get_list_ok(self):
     url = reverse(self.get_list_url)
-
-    self.client.credentials(HTTP_AUTHORIZATION='Token ' + self.user.auth_token.key)
-    response = self.client.get(url, format='json', REMOTE_USER=self.username)
-    self.assertEqual(response.status_code, status.HTTP_200_OK)
+    response = super().getAuthenticated(url)
 
     items = Author.objects.all()
     serializer = AuthorSerializer(items, many=True)
     self.assertEqual(response.data, serializer.data)
 
   def test_get_detail_ok(self):
-    url = reverse(self.get_detail_url, args=[1])
+    itemId = 1
+    url = reverse(self.get_detail_url, args=(itemId,))
+    response = super().getAuthenticated(url)
 
-    self.client.credentials(HTTP_AUTHORIZATION='Token ' + self.user.auth_token.key)
-    response = self.client.get(url, format='json', REMOTE_USER=self.username)
-    self.assertEqual(response.status_code, status.HTTP_200_OK)
-
-    item = Author.objects.get(pk=1)
+    item = Author.objects.get(pk=itemId)
     serializer = AuthorSerializer(item)
     self.assertEqual(response.data, serializer.data)
 
 
   def test_get_detail_dne(self):
-    response = self.client.get(reverse(self.edit_detail_url, args=[1]))
-    self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
+    response = super().getAuthenticated(self.get_detail_url)
+    self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
 
