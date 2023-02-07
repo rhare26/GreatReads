@@ -28,7 +28,7 @@ class MyReadSerializer(serializers.ModelSerializer):
     try:
       data['book'] = BookSerializer(Book.objects.get(pk=data['book'])).data
       data['user'] = UsernameSerializer(User.objects.get(pk=data['user'])).data
-    except Author.DoesNotExist:
+    except Book.DoesNotExist:
       data['book'] = None
     return data
 
