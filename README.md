@@ -1,32 +1,50 @@
 # GreatReads
-[In progress] A web application using Django and Angular to manage book and reading lists, modelled after GoodReads. This is a personal project to teach myself these frameworks.
+[In progress] This is a web application using Django, Angular, Material, SCSS, and HTML to manage book and reading lists. It's modeled after Amazon's GoodReads website. This is a personal project to teach myself these frameworks. The project is still in progress and some features have not been implemented yet.
 
-## Features
-### Screenshots (as of 2/4/23)
-![Login](https://user-images.githubusercontent.com/85655946/216779262-0caf4035-5db1-454b-9fb8-86aa1509e317.png)
+## Backend 
+Django was used for models with foreign keys, serializers, views with ModelViewSet and permission classes, & authentication with JWT. Unit tests are still in progress after adding authentication.
 
-![BrowseBooks](https://user-images.githubusercontent.com/85655946/216779269-65675f21-8585-47dd-b0d5-618915e0e813.png)
+## Logging and registering
+For logging in, a JWT access token is retrieved from the backend and stored in session storage. An HTTP Interceptor appends the bearer token to future requests. This was a simple solution to get it running, but ultimately I would like to switch to cookies as they are not vulnerable to XSS.
 
-![AddBook](https://user-images.githubusercontent.com/85655946/216779276-9167f336-d20f-402c-afa8-e6fc4abec7d6.png)
+<img src="https://user-images.githubusercontent.com/85655946/217087339-55060b3c-c711-494d-ac0f-1f16c102c5cf.png" width=75% height=75%>
 
-![SearchBooks](https://user-images.githubusercontent.com/85655946/216779282-7e6f02db-0c0e-48ab-b628-50716369d079.png)
+When registering, the backend will ensure that the email and username are unique. Data validation with error messages has not been implemented on the frontend yet.
 
-![BookDetail](https://user-images.githubusercontent.com/85655946/216780698-395083ea-888c-485d-8795-727d259d78a6.png)
+<img src="https://user-images.githubusercontent.com/85655946/217087383-909645f4-1a34-4030-8c4f-7aec5749e922.png" width=75% height=75%>
 
-![BrowseAuthors](https://user-images.githubusercontent.com/85655946/216779284-198a4d25-f130-46b8-a685-002f413352c8.png)
+## Newsfeed
+The news feed lists all recent reads across the application. I'm planning to add book cover images but ran into a problem using the MEDIA_URL in a nested serializer (Book is a foreign key in the MyRead model). The book titles contain a link to the book detail page.
 
-![AuthorDetail](https://user-images.githubusercontent.com/85655946/216780691-0efe62ce-8735-4114-909b-3140710449d5.png)
+<img src="https://user-images.githubusercontent.com/85655946/217087437-d0314000-e88a-4f32-912b-7f7c69aa7743.png" width=75% height=75%>
 
+## Profile
+The profile will fetch information about the current reader and display their reads in a table. This is a first draft that will need more work.
 
-### Backend 
-Completed: Models with foreign keys, serializers, views with ModelViewSet and permission classes, login & authentication with JWT 
+<img src="https://user-images.githubusercontent.com/85655946/217087492-66c52df0-d863-429e-a1cd-15eceb56ad7d.png" width=75% height=75%>
 
-In progress: Automated tests for all requests (not just GET), updated tests now that authentication has been added
+## Browsing/Searching Books & Authors
+This component allows users to browse by books or authors using the radio buttons. The search bar uses a pipe to search by either title/author for books or by first/last name for authors. Filters, sorting, and pagination have not been implemented yet.
 
-### Frontend
-Completed: JWT authentication in session storage (although this method is vulnerable to XSS), login, routing (including to specific resource details via id), CRUD capabilities on books and authors (minus images), book and author detail (including listing books by author)
+<img src="https://user-images.githubusercontent.com/85655946/217264797-1a0f6b67-4bc4-4ea6-960c-f31b7d444691.png" width=75% height=75%>
+<img src="https://user-images.githubusercontent.com/85655946/217264816-42dbaed6-075b-40ba-a0ba-2d0840a34a9d.png" width=75% height=75%>
+<img src="https://user-images.githubusercontent.com/85655946/217264822-f0a1d1c5-063b-45da-b09a-de06f545382a.png" width=75% height=75%>
 
-In progress: Token expiration and refresh, role-based authorization, new user registration, my-reads (books saved to a user's lists for tracking with notes, reviews, etc...), newsfeed of all my-reads on the site, updating book or author images
+## Adding/Updating/Deleting Books & Authors
+The pencil and trashcan icons on the card allow for updating or deleting books and authors. The plus button on the bottom right allows for adding new ones. CRUD for images has not been implemented yet.
+
+The book and author lists are automatically refreshed whenever a book/author has been added, updated, or deleted using RxJS Subjects.
+
+Note that books and authors are seperate from your reading records. This functionality will probably be made accessible by admins only in the future. The Add and Update diaologs are from the same Add-Edit component, just with different titles and button names. These will need more styling and data validation.
+
+<img src="https://user-images.githubusercontent.com/85655946/217264275-740d1066-ad8b-4b4b-8e8d-9b850f6f3087.png" width=75% height=75%>
+<img src="https://user-images.githubusercontent.com/85655946/217264282-09c30a89-6375-458c-b914-ab60e47b633f.png" width=75% height=75%>
+
+## Book and Author Detail
+The book detail contains a link to the author and a list of all read records for that book (with reviews, ratings, etc...). The author detail contains a list of all of their books. This book-card is reused from the search/browse feature and contains a link in the title to the book detail.
+
+<img src="https://user-images.githubusercontent.com/85655946/217258625-c9cb0bb8-60b1-454c-bc47-1673bd9975c3.png" width=75% height=75%>
+<img src="https://user-images.githubusercontent.com/85655946/217258629-144bdd74-092e-4a4b-9d97-6bb69427405e.png" width=75% height=75%>
 
 ## Acknowledgments
 Below are resources and tutorials that were heavily borrowed from:
@@ -39,30 +57,3 @@ For authentication on backend (series) - https://www.youtube.com/watch?v=8iiDWPX
 
 For authentication on frontend - https://www.youtube.com/watch?v=7G7qzlblJcI
 
-
-
-# Frontend Setup
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.1.1.
-## Development server
-
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
-
-## Code scaffolding
-
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
