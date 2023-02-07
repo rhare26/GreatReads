@@ -84,6 +84,7 @@ export class SearchMyReadsByUserId implements PipeTransform {
     if(!searchInput) {
       return myReads;
     }
+
     return myReads.filter(
       myRead =>myRead.user.id == Number(searchInput)
     )

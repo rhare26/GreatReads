@@ -12,12 +12,19 @@
 
     <!-- Reviews-->
     <br><h2>Reviews</h2>
-
-    <mat-list  *ngFor="let review of reviews ">
-      <app-my-read-blurb [myRead]="review">
-
-      </app-my-read-blurb>
-    </mat-list>
+    <div class="scroll-list" >
+      <mat-list  *ngFor="let review of reviews |SearchMyReadsByBookId:book.id">
+        <strong>
+          {{review.user.username}}
+          [{{review.status}}]
+          <ng-container *ngIf="review.rating">
+            {{review.rating}} stars
+          </ng-container>
+        </strong>
+        {{review.note}}
+        <mat-divider></mat-divider>
+      </mat-list>
+    </div>
   </mat-list>
 
 

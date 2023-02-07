@@ -1,5 +1,4 @@
-<div>
-  {{myReadList[0]}}
+<div class="main-panel">
   <ng-container>
 
   <table mat-table [dataSource]="myReadList | SearchMyReadsByUserId:(authService.currentUserId$ | async)+''">

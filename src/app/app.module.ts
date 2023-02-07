@@ -21,7 +21,6 @@ import { BooksListComponent } from './book/books-list/books-list.component';
 import { BookCardComponent } from './book/book-card/book-card.component';
 import { AddEditBookComponent } from './book/add-edit-book/add-edit-book.component';
 import { BrowseComponent } from './browse/browse.component';
-import { MyReadTableComponent } from './my-read/my-read-table/my-read-table.component';
 import { BookDetailComponent } from './book/book-detail/book-detail.component';
 import { AuthorDetailComponent } from './author/author-detail/author-detail.component';
 
@@ -55,7 +54,8 @@ import { NavigationComponent } from './navigation/navigation.component';
 import { RegisterComponent } from './user/register/register.component';
 import { ProfileComponent } from './profile/profile.component';
 import {MatPaginatorModule} from "@angular/material/paginator";
-import { MyReadBlurbComponent } from './my-read/my-read-blurb/my-read-blurb.component';
+import {MyReadBlurbComponent} from "./my-read/my-read-blurb/my-read-blurb.component";
+import {MyReadTableComponent} from "./my-read/my-read-table/my-read-table.component";
 
 
 @NgModule({
@@ -75,14 +75,14 @@ import { MyReadBlurbComponent } from './my-read/my-read-blurb/my-read-blurb.comp
     LogoutComponent,
     NavigationComponent,
     BrowseComponent,
-    MyReadTableComponent,
     BookDetailComponent,
     AuthorDetailComponent,
     RegisterComponent,
     ProfileComponent,
     SearchMyReadsByBookId,
     SearchMyReadsByUserId,
-    MyReadBlurbComponent
+    MyReadBlurbComponent,
+    MyReadTableComponent
   ],
   imports: [
     BrowserModule,

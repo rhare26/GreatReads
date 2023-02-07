@@ -1,4 +1,7 @@
+
+
 <div class="panel">
+
 
   <!-- Book list (search by title or author)-->
   <div class="scroll-list" *ngIf="searchType==TITLE_OR_AUTHOR">
@@ -15,11 +18,12 @@
   </div>
 
 </div>
-
 <!-- Button to add a new book -->
-<button mat-fab class="add-button" color="primary" (click)="openAddBookDialog()">
+<button mat-fab class="add-button" [ngStyle]="{transform: 'scale(1.15)'
+              }" color="primary" (click)="openAddBookDialog()">
   <mat-icon>add</mat-icon>
 </button>
+
 
 
 

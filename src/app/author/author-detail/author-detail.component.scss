@@ -1,11 +1,17 @@
 .panel{
   width: 100%;
+  position:absolute;
   margin-left:50px;
   height: 100%;
   padding-left:20px;
   padding-right:20px;
   overflow-y: auto;
 }
+.scroll-list{
+  height: 75%;
+  overflow-y: scroll;
+}
+
 a:link{
   text-decoration: none;
   color:black;
