@@ -9,6 +9,7 @@ router = DefaultRouter()
 router.register(r'get-book', GetBookViewSet, basename='get-book')
 router.register(r'get-author', GetAuthorViewSet, basename='get-author')
 router.register(r'get-myread', GetMyReadViewSet, basename='get-myread')
+
 router.register(r'edit-book', EditBookViewSet, basename='edit-book')
 router.register(r'edit-author', EditAuthorViewSet, basename='edit-author')
 router.register(r'edit-myread', EditMyReadViewSet, basename='edit-myread')

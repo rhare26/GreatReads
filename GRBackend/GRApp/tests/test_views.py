@@ -1,3 +1,5 @@
+from http import client
+
 from django.conf import settings
 from rest_framework import status
 from django.urls import reverse
@@ -6,7 +8,7 @@ from rest_framework.request import Request
 from ..models import Author, Book, User
 from ..serializers import AuthorSerializer, BookSerializer
 from rest_framework.authtoken.models import Token
-from rest_framework.test import APIClient, APITestCase
+from rest_framework.test import APITestCase
 
 
 settings.MEDIA_URL = 'http://testserver/media/' #needed for image urls to match
@@ -29,7 +31,7 @@ def addDummyBooksToDB():
 
 
 class RemoteAuthenticatedTest(APITestCase):
-  client_class = APIClient
+
   def setUp(self):
     self.username = 'my_username'
     self.user = User.objects.create_user(username='my_username',
@@ -37,10 +39,19 @@ class RemoteAuthenticatedTest(APITestCase):
                                          password='p@ssw0rd123')
     Token.objects.create(user=self.user)
     super(RemoteAuthenticatedTest, self).setUp()
+    self.client.credentials(HTTP_AUTHORIZATION='Token ' + self.user.auth_token.key)
 
   def getAuthenticated(self, url) -> Request:
-    self.client.credentials(HTTP_AUTHORIZATION='Token ' + self.user.auth_token.key)
     return self.client.get(url, format='json', REMOTE_USER=self.username)
+
+  def postAuthenticated(self, url, data) -> Request:
+    return self.client.post(url, data=data, format='json', REMOTE_USER=self.username)
+
+  def patchAuthenticated(self, url, data) -> Request:
+    return self.client.patch(url, data=data, format='json', REMOTE_USER=self.username)
+
+  def deleteAuthenticated(self, url) -> Request:
+    return self.client.delete(url, format='json', REMOTE_USER=self.username)
 
 class BookTest(RemoteAuthenticatedTest):
 
@@ -63,7 +74,6 @@ class BookTest(RemoteAuthenticatedTest):
     serializer = BookSerializer(books, many=True)
     self.assertEqual(response.data, serializer.data)
 
-
   def test_get_detail_ok(self):
     itemId=1
     url = reverse(self.get_detail_url, args=(itemId,))
@@ -73,6 +83,23 @@ class BookTest(RemoteAuthenticatedTest):
     item = Book.objects.get(pk=itemId)
     serializer = BookSerializer(item)
     self.assertEqual(response.data, serializer.data)
+
+  def test_post_detail_ok(self):
+    data ={"title":"The Three Musketeers", "genre":"Classic", "averageRating":4.0, "author":1, "synopsis":"In this book..."}
+    url = reverse(self.edit_list_url)
+    response = super().postAuthenticated(url, data)
+    self.assertEqual(response.status_code, status.HTTP_201_CREATED)
+    itemId= response.data['id']
+
+    item = Book.objects.get(pk=itemId)
+    serializer = BookSerializer(item)
+    self.assertEqual(response.data, serializer.data)
+
+  def test_post_detail_no_data(self):
+    data ={}
+    url = reverse(self.edit_list_url)
+    response = super().postAuthenticated(url, data)
+    self.assertEqual(response.status_code, status.HTTP_400_BAD_REQUEST)
 
 class AuthorTest(RemoteAuthenticatedTest):
   def setUp(self):
@@ -88,6 +115,7 @@ class AuthorTest(RemoteAuthenticatedTest):
   def test_get_list_ok(self):
     url = reverse(self.get_list_url)
     response = super().getAuthenticated(url)
+    self.assertEqual(response.status_code, status.HTTP_200_OK)
 
     items = Author.objects.all()
     serializer = AuthorSerializer(items, many=True)
@@ -97,6 +125,7 @@ class AuthorTest(RemoteAuthenticatedTest):
     itemId = 1
     url = reverse(self.get_detail_url, args=(itemId,))
     response = super().getAuthenticated(url)
+    self.assertEqual(response.status_code, status.HTTP_200_OK)
 
     item = Author.objects.get(pk=itemId)
     serializer = AuthorSerializer(item)
@@ -104,6 +133,38 @@ class AuthorTest(RemoteAuthenticatedTest):
 
 
   def test_get_detail_dne(self):
-    response = super().getAuthenticated(self.get_detail_url)
+    nonexistantItemId = 99
+    url = reverse(self.get_detail_url, args=(nonexistantItemId,))
+    response = super().getAuthenticated(url)
+
     self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
+
+  def test_post_detail_ok(self):
+    data ={"firstName":"Agatha", "lastName":"Christie"}
+    url = reverse(self.edit_list_url)
+    response = super().postAuthenticated(url, data)
+    self.assertEqual(response.status_code, status.HTTP_201_CREATED)
+
+    itemId= response.data['id']
+    item = Author.objects.get(pk=itemId)
+    serializer = AuthorSerializer(item)
+    self.assertEqual(response.data, serializer.data)
+
+  def test_post_detail_no_data(self):
+    data ={}
+    url = reverse(self.edit_list_url)
+    response = super().postAuthenticated(url, data)
+    self.assertEqual(response.status_code, status.HTTP_400_BAD_REQUEST)
+
+  def test_patch_detail_ok(self):
+    itemId = 2
+    data = {"lastName": "Harkness"}
+    url = reverse(self.edit_detail_url, args=(itemId,))
+    response = super().patchAuthenticated(url, data)
+    self.assertEqual(response.status_code, status.HTTP_200_OK)
+
+    item = Author.objects.get(pk=itemId)
+    serializer = AuthorSerializer(item)
+    self.assertEqual(response.data, serializer.data)
+
 
