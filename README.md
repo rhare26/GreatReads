@@ -4,8 +4,8 @@
 ## Backend 
 Django was used for models with foreign keys, serializers, views with ModelViewSet and permission classes, & authentication with JWT. Unit tests are still in progress after adding authentication.
 
-## Logging and registering
-For logging in, a JWT access token is retrieved from the backend and stored in session storage. An HTTP Interceptor appends the bearer token to future requests. This was a simple solution to get it running, but ultimately I would like to switch to cookies as they are not vulnerable to XSS.
+## Login & Registration
+For logging in, a JWT access token is retrieved from the backend and stored in session storage. An HTTP Interceptor appends the bearer token to future requests. Logging out clears the session storage. This was a simple solution to get it running, but ultimately I would like to switch to cookies as they are not vulnerable to XSS.
 
 <img src="https://user-images.githubusercontent.com/85655946/217087339-55060b3c-c711-494d-ac0f-1f16c102c5cf.png" width=75% height=75%>
 
