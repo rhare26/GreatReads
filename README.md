@@ -31,11 +31,11 @@ This component allows users to browse by books or authors using the radio button
 <img src="https://user-images.githubusercontent.com/85655946/217264822-f0a1d1c5-063b-45da-b09a-de06f545382a.png" width=75% height=75%>
 
 ## Adding/Updating/Deleting Books & Authors
-The pencil and trashcan icons on the card allow for updating or deleting books and authors. The plus button on the bottom right allows for adding new ones. CRUD for images has not been implemented yet.
+The pencil and trashcan icons on the card allow for updating or deleting books and authors. The plus button on the bottom right allows for adding new ones. Update diaologs are from the same Add-Edit component, just with different titles. CRUD for images has not been implemented yet.
 
 The book and author lists are automatically refreshed whenever a book/author has been added, updated, or deleted using RxJS Subjects.
 
-Note that books and authors are seperate from your reading records. This functionality will probably be made accessible by admins only in the future. The Add and Update diaologs are from the same Add-Edit component, just with different titles and button names. These will need more styling and data validation.
+Note that books and authors are seperate from your reading records. This functionality will probably be made accessible by admins only in the future. The Add and These will need more styling and data validation.
 
 <img src="https://user-images.githubusercontent.com/85655946/217264275-740d1066-ad8b-4b4b-8e8d-9b850f6f3087.png" width=75% height=75%>
 <img src="https://user-images.githubusercontent.com/85655946/217264282-09c30a89-6375-458c-b914-ab60e47b633f.png" width=75% height=75%>
@@ -51,7 +51,7 @@ Below are resources and tutorials that were heavily borrowed from:
 
 For setting up the project structure - https://www.youtube.com/watch?v=1Hc7KlLiU9w
 
-For search function on frontend - https://plainenglish.io/blog/how-to-implement-an-instant-search-functionality-in-angular-e0c0a1e97502
+For search function & pipes on frontend - https://plainenglish.io/blog/how-to-implement-an-instant-search-functionality-in-angular-e0c0a1e97502
 
 For authentication on backend (series) - https://www.youtube.com/watch?v=8iiDWPXleIc&list=PLEt8Tae2spYlosWRH9JDpKNxzb3bSOJGx&index=7
 
