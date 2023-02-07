@@ -1,8 +1,7 @@
 # GreatReads
-[In progress] This is a web application using Django, Angular, Material, SCSS, and HTML to manage book and reading lists. It's modeled after Amazon's GoodReads website. This is a personal project to teach myself these frameworks. The project is still in progress and some features have not been implemented yet.
+[In progress] This is a web application using Django for the backend and Angular for the front end (along with Material, SCSS, and HTML) to manage book and reading lists (modeled after Amazon's GoodReads website). Notable features include automated Django unit tests and basic JWT token authorization with an HTTP Interceptor.
 
-## Backend 
-Django was used for models with foreign keys, serializers, views with ModelViewSet and permission classes, & authentication with JWT. Unit tests are still in progress after adding authentication.
+This is a personal project to teach myself these frameworks. The project is still in progress and some features have not been implemented yet.
 
 ## Login & Registration
 For logging in, a JWT access token is retrieved from the backend and stored in session storage. An HTTP Interceptor appends the bearer token to future requests. Logging out clears the session storage. This was a simple solution to get it running, but ultimately I would like to switch to cookies as they are not vulnerable to XSS.
@@ -45,6 +44,13 @@ The book detail contains a link to the author and a list of all read records for
 
 <img src="https://user-images.githubusercontent.com/85655946/217258625-c9cb0bb8-60b1-454c-bc47-1673bd9975c3.png" width=75% height=75%>
 <img src="https://user-images.githubusercontent.com/85655946/217258629-144bdd74-092e-4a4b-9d97-6bb69427405e.png" width=75% height=75%>
+
+## Backend 
+Django was used for models with foreign keys, serializers, views with ModelViewSet and permission classes, & authentication with JWT. Below is a screenshot of the automated testing via command line. These are used to check authenticated http requests.
+
+<img src="https://user-images.githubusercontent.com/85655946/217355266-1d6f5e19-ff41-41e7-bd87-c29c53e3b716.png" width=75% height=75%>
+
+
 
 ## Acknowledgments
 Below are resources and tutorials that were heavily borrowed from:
