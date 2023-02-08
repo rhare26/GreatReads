@@ -1,10 +1,10 @@
 # GreatReads
 [In progress] This is a web application using Django for the backend and Angular for the front end (along with Material, SCSS, and HTML) to manage book and reading lists (modeled after Amazon's GoodReads website). Notable features include automated Django unit tests and basic JWT token authorization with an HTTP Interceptor.
 
-This is a personal project to teach myself these frameworks. The project is still in progress and some features have not been implemented yet.
+This is a personal project to teach myself these frameworks. The project is still in progress and some features have not been fully implemented yet.
 
 ## Login & Registration
-For logging in, a JWT access token is retrieved from the backend and stored in session storage. An HTTP Interceptor appends the bearer token to future requests. Logging out clears the session storage. This was a simple solution to get it running, but ultimately I would like to switch to cookies as they are not vulnerable to XSS.
+For logging in, a JWT access token is retrieved from the backend and stored in session storage. An HTTP Interceptor appends the bearer token to future requests. Logging out clears the session storage. Storing tokens in session storage is simpler to implement, but is vulnerable to XSS. One potential update would be to use cookies instead.
 
 <img src="https://user-images.githubusercontent.com/85655946/217087339-55060b3c-c711-494d-ac0f-1f16c102c5cf.png" width=75% height=75%>
 
@@ -13,12 +13,12 @@ When registering, the backend will ensure that the email and username are unique
 <img src="https://user-images.githubusercontent.com/85655946/217087383-909645f4-1a34-4030-8c4f-7aec5749e922.png" width=75% height=75%>
 
 ## Newsfeed
-The news feed lists all recent reads across the application. I'm planning to add book cover images but ran into a problem using the MEDIA_URL in a nested serializer (Book is a foreign key in the MyRead model). The book titles contain a link to the book detail page.
+The newsfeed lists all recent reads across the application. Images will be added eventually. The book titles contain a link to the book detail page.
 
 <img src="https://user-images.githubusercontent.com/85655946/217087437-d0314000-e88a-4f32-912b-7f7c69aa7743.png" width=75% height=75%>
 
 ## Profile
-The profile will fetch information about the current reader and display their reads in a table. This is a first draft that will need more work.
+The profile will fetch information about the current reader and display their reads in a table. This is a first draft that will need more work with styling.
 
 <img src="https://user-images.githubusercontent.com/85655946/217087492-66c52df0-d863-429e-a1cd-15eceb56ad7d.png" width=75% height=75%>
 
