@@ -34,7 +34,7 @@ The pencil and trashcan icons on the card allow for updating or deleting books a
 
 The book and author lists are automatically refreshed whenever a book/author has been added, updated, or deleted using RxJS Subjects.
 
-Note that books and authors are seperate from your reading records. This functionality will probably be made accessible by admins only in the future. The Add and These will need more styling and data validation.
+Note that books and authors are seperate from your reading records. This functionality will probably be made accessible by admins only in the future. These will need more styling and data validation.
 
 <img src="https://user-images.githubusercontent.com/85655946/217264275-740d1066-ad8b-4b4b-8e8d-9b850f6f3087.png" width=75% height=75%>
 <img src="https://user-images.githubusercontent.com/85655946/217264282-09c30a89-6375-458c-b914-ab60e47b633f.png" width=75% height=75%>
